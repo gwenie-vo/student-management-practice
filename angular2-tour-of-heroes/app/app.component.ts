@@ -74,4 +74,9 @@ export class AppComponent {
   public selectedHero: Hero;
   onSelect(hero: Hero) { this.selectedHero = hero; }
   constructor(private _heroService: HeroService) {}
+  this.heroes = this._heroService.getHeroes();
+  getHeroes() {
+    this.heroes = this._heroService.getHeroes();
+  }
+
 }

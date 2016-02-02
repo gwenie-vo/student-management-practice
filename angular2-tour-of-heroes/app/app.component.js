@@ -41,6 +41,11 @@ System.register(['angular2/core', './hero-detail.component', './hero.service'], 
                 return AppComponent;
             })();
             exports_1("AppComponent", AppComponent);
+            this.heroes = this._heroService.getHeroes();
+            getHeroes();
+            {
+                this.heroes = this._heroService.getHeroes();
+            }
         }
     }
 });
