@@ -27,6 +27,13 @@ System.register(['angular2/core', './hero-detail.component', './hero.service'], 
                     this._heroService = _heroService;
                     this.title = 'Tour of Heroes';
                 }
+                AppComponent.prototype.getHeroes = function () {
+                    var _this = this;
+                    this._heroService.getHeroes().then(function (heroes) { return _this.heroes = heroes; });
+                };
+                AppComponent.prototype.ngOnInit = function () {
+                    this.getHeroes();
+                };
                 AppComponent.prototype.onSelect = function (hero) { this.selectedHero = hero; };
                 AppComponent = __decorate([
                     core_1.Component({
@@ -41,11 +48,6 @@ System.register(['angular2/core', './hero-detail.component', './hero.service'], 
                 return AppComponent;
             })();
             exports_1("AppComponent", AppComponent);
-            this.heroes = this._heroService.getHeroes();
-            getHeroes();
-            {
-                this.heroes = this._heroService.getHeroes();
-            }
         }
     }
 });
