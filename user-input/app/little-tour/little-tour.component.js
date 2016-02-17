@@ -28,7 +28,7 @@ System.register(['angular2/core'], function(exports_1) {
                 LittleTourComponent = __decorate([
                     core_1.Component({
                         selector: 'little-tour',
-                        template: "\n  <input #newHero\n    (keyup.enter) = \"addHero(newHero.value)\"\n    (blur) = \"addHero(newHero.value); newHero.value=''\">\n\n    <button (click)=addHero(newHero.value)>Add</button>\n    <ul><li *ngFor=\"#hero of heroes\">{{hero}}</li></ul>\n  "
+                        templateUrl: 'app/little-tour/little-tour.component.html'
                     }), 
                     __metadata('design:paramtypes', [])
                 ], LittleTourComponent);

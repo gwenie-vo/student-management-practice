@@ -22,7 +22,7 @@ System.register(['angular2/core'], function(exports_1) {
                 LoopbackComponent = __decorate([
                     core_1.Component({
                         selector: 'loop-back',
-                        template: "\n    <input #box (keyup)=\"0\">\n    <p>{{box.value}}</p>\n  "
+                        templateUrl: 'app/loopback/loop-back.component.html'
                     }), 
                     __metadata('design:paramtypes', [])
                 ], LoopbackComponent);

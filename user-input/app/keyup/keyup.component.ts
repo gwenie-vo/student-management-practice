@@ -2,10 +2,7 @@ import {Component} from 'angular2/core';
 
 @Component({
   selector: 'key-up1',
-  template: `
-    <input (keyup)="onKey($event)">
-    <p>{{values}}</p>
-  `
+  templateUrl: 'app/keyup/keyup1.component.html'
 })
 export class KeyUpComponent_v1 {
   values = '';
@@ -26,11 +23,7 @@ export class KeyUpComponent_v1 {
 
 @Component({
   selector:'key-up2',
-  template:  `
-    <div>Key up 2</div>
-    <input #box (keyup)="onKey(box.value)">
-    <p>{{values}}</p>
-  `
+  templateUrl: 'app/keyup/keyup2.component.html'
 })
 
 export class KeyUpComponent_v2 {
@@ -44,10 +37,7 @@ export class KeyUpComponent_v2 {
 
 @Component({
   selector: 'key-up3',
-  template: `
-    <input #box (keyup.enter)="values=box.value">
-    <p>{{values}}</p>
-  `
+  templateUrl: 'app/keyup/keyup3.component.html'
 })
 export class KeyUpComponent_v3 {
   value = '';
@@ -57,14 +47,7 @@ export class KeyUpComponent_v3 {
 
 @Component({
   selector: 'key-up4',
-  template: `
-    <i>Enter or Click elsewhere to submit</i>
-    <input #box
-      (keyup.enter)="values=box.value"
-      (blur)="values=box.value"
-    >
-    <p>{{values}}</p>
-  `
+  templateUrl: 'app/keyup/keyup4.component.html'
 })
 
 export class KeyUpComponent_v4 {

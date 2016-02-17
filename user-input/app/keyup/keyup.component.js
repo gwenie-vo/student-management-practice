@@ -33,7 +33,7 @@ System.register(['angular2/core'], function(exports_1) {
                 KeyUpComponent_v1 = __decorate([
                     core_1.Component({
                         selector: 'key-up1',
-                        template: "\n    <input (keyup)=\"onKey($event)\">\n    <p>{{values}}</p>\n  "
+                        templateUrl: 'app/keyup/keyup1.component.html'
                     }), 
                     __metadata('design:paramtypes', [])
                 ], KeyUpComponent_v1);
@@ -51,7 +51,7 @@ System.register(['angular2/core'], function(exports_1) {
                 KeyUpComponent_v2 = __decorate([
                     core_1.Component({
                         selector: 'key-up2',
-                        template: "\n    <div>Key up 2</div>\n    <input #box (keyup)=\"onKey(box.value)\">\n    <p>{{values}}</p>\n  "
+                        templateUrl: 'app/keyup/keyup2.component.html'
                     }), 
                     __metadata('design:paramtypes', [])
                 ], KeyUpComponent_v2);
@@ -66,7 +66,7 @@ System.register(['angular2/core'], function(exports_1) {
                 KeyUpComponent_v3 = __decorate([
                     core_1.Component({
                         selector: 'key-up3',
-                        template: "\n    <input #box (keyup.enter)=\"values=box.value\">\n    <p>{{values}}</p>\n  "
+                        templateUrl: 'app/keyup/keyup3.component.html'
                     }), 
                     __metadata('design:paramtypes', [])
                 ], KeyUpComponent_v3);
@@ -81,7 +81,7 @@ System.register(['angular2/core'], function(exports_1) {
                 KeyUpComponent_v4 = __decorate([
                     core_1.Component({
                         selector: 'key-up4',
-                        template: "\n    <i>Enter or Click elsewhere to submit</i>\n    <input #box\n      (keyup.enter)=\"values=box.value\"\n      (blur)=\"values=box.value\"\n    >\n    <p>{{values}}</p>\n  "
+                        templateUrl: 'app/keyup/keyup4.component.html'
                     }), 
                     __metadata('design:paramtypes', [])
                 ], KeyUpComponent_v4);

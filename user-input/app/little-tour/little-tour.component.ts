@@ -2,14 +2,7 @@ import {Component} from 'angular2/core';
 
 @Component({
   selector: 'little-tour',
-  template: `
-  <input #newHero
-    (keyup.enter) = "addHero(newHero.value)"
-    (blur) = "addHero(newHero.value); newHero.value=''">
-
-    <button (click)=addHero(newHero.value)>Add</button>
-    <ul><li *ngFor="#hero of heroes">{{hero}}</li></ul>
-  `
+  templateUrl: 'app/little-tour/little-tour.component.html'
 })
 
 export class LittleTourComponent {
