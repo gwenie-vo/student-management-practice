@@ -9,31 +9,33 @@ System.register(['angular2/core'], function(exports_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var ClickMeComponent;
+    var ClickMeComponent2;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            ClickMeComponent = (function () {
-                function ClickMeComponent() {
+            ClickMeComponent2 = (function () {
+                function ClickMeComponent2() {
                     this.clickMessage = '';
+                    this.clicks = 1;
                 }
-                ClickMeComponent.prototype.onClickMe = function () {
-                    this.clickMessage = 'You are my hero';
+                ClickMeComponent2.prototype.onClickMe2 = function (event) {
+                    var evtMsg = event ? 'Event target is' + " " + event.target.tagName : '';
+                    this.clickMessage = ("Click #" + this.clicks++ + "." + evtMsg);
                 };
-                ClickMeComponent = __decorate([
+                ClickMeComponent2 = __decorate([
                     core_1.Component({
-                        selector: 'click-me',
-                        template: "\n    <button (click) = \"onClickMe()\">Click me!</button>\n    {{clickMessage}}\n  "
+                        selector: 'click-me2',
+                        templateUrl: 'app/clickme2/click-me2.component.html'
                     }), 
                     __metadata('design:paramtypes', [])
-                ], ClickMeComponent);
-                return ClickMeComponent;
+                ], ClickMeComponent2);
+                return ClickMeComponent2;
             })();
-            exports_1("ClickMeComponent", ClickMeComponent);
+            exports_1("ClickMeComponent2", ClickMeComponent2);
         }
     }
 });
-//# sourceMappingURL=click-me.component.js.map
+//# sourceMappingURL=click-me2.component.js.map

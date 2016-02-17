@@ -9,33 +9,31 @@ System.register(['angular2/core'], function(exports_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var ClickMeComponent2;
+    var ClickMeComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            ClickMeComponent2 = (function () {
-                function ClickMeComponent2() {
+            ClickMeComponent = (function () {
+                function ClickMeComponent() {
                     this.clickMessage = '';
-                    this.clicks = 1;
                 }
-                ClickMeComponent2.prototype.onClickMe2 = function (event) {
-                    var evtMsg = event ? 'Event target is' + " " + event.target.tagName : '';
-                    this.clickMessage = ("Click #" + this.clicks++ + "." + evtMsg);
+                ClickMeComponent.prototype.onClickMe = function () {
+                    this.clickMessage = 'You are my hero';
                 };
-                ClickMeComponent2 = __decorate([
+                ClickMeComponent = __decorate([
                     core_1.Component({
-                        selector: 'click-me2',
-                        template: "\n    <button (click) = \"onClickMe2($event)\">No!...Click me!</button>\n    {{clickMessage}}\n  "
+                        selector: 'click-me',
+                        templateUrl: 'app/clickme/click-me.component.html'
                     }), 
                     __metadata('design:paramtypes', [])
-                ], ClickMeComponent2);
-                return ClickMeComponent2;
+                ], ClickMeComponent);
+                return ClickMeComponent;
             })();
-            exports_1("ClickMeComponent2", ClickMeComponent2);
+            exports_1("ClickMeComponent", ClickMeComponent);
         }
     }
 });
-//# sourceMappingURL=click-me2.component.js.map
+//# sourceMappingURL=click-me.component.js.map

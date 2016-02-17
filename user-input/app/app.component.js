@@ -1,4 +1,4 @@
-System.register(['angular2/core', './click-me.component', './click-me2.component', './keyup.component', './loop-back.component', './little-tour.component'], function(exports_1) {
+System.register(['angular2/core', './clickme/click-me.component', './clickme2/click-me2.component', './keyup/keyup.component', './loopback/loop-back.component', './little-tour/little-tour.component'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
