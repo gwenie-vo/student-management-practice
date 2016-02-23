@@ -40,7 +40,7 @@ System.register(['angular2/core', './mock-student'], function(exports_1, context
                 }
                 MockStudentService.prototype.getName = function () {
                     // Mock service
-                    return ["A", "B"];
+                    return [{ "id": 12, "name": "Mock-data1" }, { "id": 13, "name": "Mock-dat2" }];
                 };
                 MockStudentService = __decorate([
                     core_1.Injectable(), 

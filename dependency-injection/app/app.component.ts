@@ -10,8 +10,7 @@ import {provide} from 'angular2/core';
     <h2>User List</h2>
     <ul>
       <li *ngFor="#student of students">
-        // {{student.id}} -- {{student.name}}
-        {{student}}
+        {{student.id}} -- {{student.name}}
       </li>
     </ul>
   `,
@@ -21,7 +20,7 @@ import {provide} from 'angular2/core';
 })
 //?why we dont include @Injectable() here?
 export class AppComponent {
-  students: any[];
+  students: Student[];
 
   constructor(private _studentService: StudentService) {
     console.log("STUDENT NAME:", this._studentService.getName());

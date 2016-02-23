@@ -24,6 +24,6 @@ export class MockStudentService {
   }
   getName() {
     // Mock service
-    return ["A", "B"];
+    return [{ "id": 12, "name": "Mock-data1"}, {"id": 13, "name":"Mock-dat2"}];
   }
 }

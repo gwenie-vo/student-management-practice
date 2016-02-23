@@ -31,7 +31,7 @@ System.register(['angular2/core', './student.service'], function(exports_1, cont
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n    <h2>User List</h2>\n    <ul>\n      <li *ngFor=\"#student of students\">\n        // {{student.id}} -- {{student.name}}\n        {{student}}\n      </li>\n    </ul>\n  ",
+                        template: "\n    <h2>User List</h2>\n    <ul>\n      <li *ngFor=\"#student of students\">\n        {{student.id}} -- {{student.name}}\n      </li>\n    </ul>\n  ",
                         // providers: [StudentService]
                         providers: [core_2.provide(student_service_1.StudentService, { useClass: student_service_1.MockStudentService })]
                     }), 
