@@ -23,10 +23,13 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                     this.heroImageUrl = "http://ww1.prweb.com/prfiles/2014/04/10/11752526/gI_134971_best-image-web-hosting.png";
                     this.tittle = "Template syntax";
                 }
+                AppComponent.prototype.getVal = function () {
+                    return "Message";
+                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n  <h3>\n    {{title}}\n    <img src=\"{{heroImageUrl}}\" style=\"height:350px\">\n  </h3>\n\n  "
+                        template: "\n  <h3>\n    {{title}}\n    <img src=\"{{heroImageUrl}}\" style=\"height:350px\">\n  </h3>\n  <!-- \"The sum of 1 + 1 is 2\" -->\n  <p>The sum of 1 + 1 is {{1 + 1}} + </p>\n\n  <!-- \"The sum of 1 + 1 is not 4\" -->\n  <p>The sum of 1 + 1 is not {{1 + 1 + \" \" + getVal()}}</p>\n  <button [disabled]=\"isUnchanged\">Save</button>\n  "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
