@@ -1,4 +1,4 @@
-System.register(['angular2/core', './mock-student'], function(exports_1, context_1) {
+System.register(['angular2/core', './mock-student', './logger.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './mock-student'], function(exports_1, context
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, mock_student_1;
+    var core_1, mock_student_1, logger_service_1;
     var StudentService, MockStudentService;
     return {
         setters:[
@@ -19,10 +19,14 @@ System.register(['angular2/core', './mock-student'], function(exports_1, context
             },
             function (mock_student_1_1) {
                 mock_student_1 = mock_student_1_1;
+            },
+            function (logger_service_1_1) {
+                logger_service_1 = logger_service_1_1;
             }],
         execute: function() {
             StudentService = (function () {
-                function StudentService() {
+                function StudentService(_logger) {
+                    this._logger = _logger;
                 }
                 StudentService.prototype.getName = function () {
                     // Real service
@@ -30,7 +34,7 @@ System.register(['angular2/core', './mock-student'], function(exports_1, context
                 };
                 StudentService = __decorate([
                     core_1.Injectable(), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [logger_service_1.LoggerService])
                 ], StudentService);
                 return StudentService;
             }());

@@ -2,6 +2,7 @@ import {Component} from 'angular2/core';
 import {Student} from './student';
 import {STUDENTS} from './mock-student';
 import {StudentService, MockStudentService} from './student.service';
+import {LoggerMessage} from './logger-message';
 import {provide} from 'angular2/core';
 
 @Component({
