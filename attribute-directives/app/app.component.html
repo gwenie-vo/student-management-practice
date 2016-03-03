@@ -1,7 +1,7 @@
 <h1>My First Attribute Directive</h1>
-<span myHighlight>Highlight me!</span>
 
-<p [myHighlight] = "color">Paragraph - Highlight me!</p>
+<p [myHighlight] = "color">Highlight me!</p>
+<p [myHighlight]="color" [defaultColor]="'violet'"> Highlight me too!</p>
 
 <h4>Pick a highlight color</h4>
 <div>

@@ -23,6 +23,13 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                     this.el = el;
                     this._defaultColor = 'red';
                 }
+                Object.defineProperty(HighlightDirective.prototype, "defaultColor", {
+                    set: function (colorName) {
+                        this._defaultColor = colorName || this._defaultColor;
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
                 HighlightDirective.prototype._highlight = function (color) {
                     this.el.nativeElement.style.backgroundColor = color;
                 };
@@ -32,6 +39,11 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                     core_1.Input('myHighlight'), 
                     __metadata('design:type', String)
                 ], HighlightDirective.prototype, "highlightColor", void 0);
+                __decorate([
+                    core_1.Input(), 
+                    __metadata('design:type', String), 
+                    __metadata('design:paramtypes', [String])
+                ], HighlightDirective.prototype, "defaultColor", null);
                 HighlightDirective = __decorate([
                     core_1.Directive({
                         selector: '[myHighlight]',
