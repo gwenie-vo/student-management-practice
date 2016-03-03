@@ -1,7 +1,7 @@
 import {Directive, ElementRef, Input} from 'angular2/core';
 
 @Directive({
-  selector: '[myHightlight]'
+  selector: '[myHighlight]'
 })
 
 export class HighlightDirective {
