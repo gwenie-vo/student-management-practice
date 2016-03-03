@@ -19,17 +19,19 @@ System.register(['angular2/core'], function(exports_1, context_1) {
             }],
         execute: function() {
             HighlightDirective = (function () {
-                // constructor(el:ElementRef) {
-                //   el.nativeElement.style.backgroundColor = 'yellow';
-                // }
                 function HighlightDirective(el) {
                     this.el = el;
+                    this._defaultColor = 'red';
                 }
-                HighlightDirective.prototype.onMouseEnter = function () { this._highlight("yellow"); };
-                HighlightDirective.prototype.onMouseLeave = function () { this._highlight(null); };
                 HighlightDirective.prototype._highlight = function (color) {
                     this.el.nativeElement.style.backgroundColor = color;
                 };
+                HighlightDirective.prototype.onMouseEnter = function () { this._highlight(this.highlightColor || this._defaultColor); };
+                HighlightDirective.prototype.onMouseLeave = function () { this._highlight(null); };
+                __decorate([
+                    core_1.Input('myHighlight'), 
+                    __metadata('design:type', String)
+                ], HighlightDirective.prototype, "highlightColor", void 0);
                 HighlightDirective = __decorate([
                     core_1.Directive({
                         selector: '[myHighlight]',
