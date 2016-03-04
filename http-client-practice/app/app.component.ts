@@ -1,10 +1,6 @@
 import {Component, OnInit} from 'angular2/core';
 import {AppService} from './app.service';
 import {HTTP_PROVIDERS}    from 'angular2/http';
-import {Injectable}     from 'angular2/core';
-import {Http, Response} from 'angular2/http';
-import {Headers, RequestOptions} from 'angular2/http';
-import {Observable}     from 'rxjs/Observable';
 
 @Component({
   selector: 'my-app',
@@ -23,17 +19,18 @@ export class AppComponent implements OnInit {
 
 
   title = 'Fetching data example';
-  data: any;
-  err: any;
 
   ngOnInit() { this.getPost(); }
 
   getPost() {
     this._appService.getData()
       .subscribe(
-        data => this.data = data,
-        err => this.err = err
-      );
+          data => this.logError(data),
+          err => this.logError(err)
+        );
   }
 
+  logError(err){
+      console.log(JSON.parse(err._body));
+  }
 }
