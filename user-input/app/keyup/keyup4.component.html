@@ -1,0 +1,6 @@
+<i>Enter or Click elsewhere to submit</i>
+<input #box
+  (keyup.enter)="values=box.value"
+  (blur)="values=box.value"
+>
+<p>{{values}}</p>
