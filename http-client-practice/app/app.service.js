@@ -27,7 +27,10 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
                     this._dataUrl = 'http://jsonplaceholder.typicode.com/posts';
                 }
                 AppService.prototype.getData = function () {
-                    return this.http.get(this._dataUrl); // eyeball results in the console
+                    return this.http.get(this._dataUrl).map(function (res) {
+                        console.log("RES:", res.json());
+                        return res.json();
+                    }); // eyeball results in the console
                 };
                 AppService = __decorate([
                     core_1.Injectable(), 

@@ -33,12 +33,23 @@ System.register(['angular2/core', './app.service', 'angular2/http'], function(ex
                 AppComponent.prototype.getPost = function () {
                     var _this = this;
                     this._appService.getData()
-                        .subscribe(function (data) { return _this.data = data; }, function (err) { return _this.err = err; });
+                        .subscribe(function (data) {
+                        setTimeout(function () {
+                            _this.logError(data);
+                            _this.arr = data;
+                        }, 5000);
+                    }, function (err) {
+                        _this.logError(err);
+                        // next
+                    });
+                };
+                AppComponent.prototype.logError = function (err) {
+                    console.log("Test log:", err);
                 };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n  <h1>{{title}}</h1>\n\n  ",
+                        template: "\n  <h1>{{title}}</h1>\n  <div *ngFor=\"#it of arr\">{{it.id}} -- {{it.body}}</div>\n  ",
                         providers: [
                             http_1.HTTP_PROVIDERS,
                             app_service_1.AppService
