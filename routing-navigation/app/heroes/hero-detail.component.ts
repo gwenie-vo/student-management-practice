@@ -1,0 +1,42 @@
+import {Component, OnInit} from 'angular2/core';
+import {Hero, HeroService} from './hero.service';
+import {RouteParams, Router} from 'angular2/router';
+
+@Component({
+  template: `
+  <h2>HEROES</h2>
+  <div>
+    <h3>"{{hero.name}}"</h3>
+    <div>
+      <label>Id:</label>
+      {{hero.id}}
+    </div>
+    <div>
+      <label>Name: </label>
+      <input />
+    </div>
+    <p>
+      <button></button>
+    </p>
+  </div>
+  `
+})
+
+export class HeroDetailComponent implements OnInit {
+  hero: Hero;
+
+  constructor(
+    private _router: Router,
+    private _routeParams: RouteParams,
+    private _service: HeroService){}
+
+
+  ngOnInit() {
+    let id = this._routeParams.get('id');
+    this._service.getHero(id).then(hero => this.hero = hero);
+  }
+
+  gotoHeroes() {
+    this._router.navigate(['Heroes']);
+  }
+}

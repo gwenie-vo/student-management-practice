@@ -14,9 +14,7 @@ System.register(['./app.component', 'angular2/platform/browser', 'angular2/route
                 router_1 = router_1_1;
             }],
         execute: function() {
-            browser_1.bootstrap(app_component_1.AppComponent, [
-                router_1.ROUTER_PROVIDERS
-            ]);
+            browser_1.bootstrap(app_component_1.AppComponent, [router_1.ROUTER_PROVIDERS]);
         }
     }
 });

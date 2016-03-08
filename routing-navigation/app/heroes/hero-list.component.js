@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1, context_1) {
+System.register(['angular2/core', './hero.service', 'angular2/router'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,22 +10,37 @@ System.register(['angular2/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, hero_service_1, router_1;
     var HeroListComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (hero_service_1_1) {
+                hero_service_1 = hero_service_1_1;
+            },
+            function (router_1_1) {
+                router_1 = router_1_1;
             }],
         execute: function() {
             HeroListComponent = (function () {
-                function HeroListComponent() {
+                function HeroListComponent(_router, _service) {
+                    this._router = _router;
+                    this._service = _service;
                 }
+                HeroListComponent.prototype.ngOnInit = function () {
+                    var _this = this;
+                    this._service.getHeroes().then(function (heroes) { return _this.heroes = heroes; });
+                };
+                HeroListComponent.prototype.onSelect = function (hero) {
+                    this._router.navigate(['HeroDetail', { id: hero.id }]);
+                };
                 HeroListComponent = __decorate([
                     core_1.Component({
-                        template: "\n    <h2>HEROES</h2>\n    <p>Get your heroes here</p>\n  "
+                        template: "\n    <h2>HEROES</h2>\n    <ul class=\"items\">\n      <li *ngFor = \"#hero of heroes\" (click) = \"onSelect(hero)\">\n        <span class=\"badge\">{{hero.id}}</span>\n        {{hero.name}}\n      </li>\n    </ul>\n  "
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [router_1.Router, hero_service_1.HeroService])
                 ], HeroListComponent);
                 return HeroListComponent;
             }());

@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './crisis-list.component', './hero-list.component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './heroes/hero-list.component', './heroes/hero-detail.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', './crisis-list.component', 
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, crisis_list_component_1, hero_list_component_1;
+    var core_1, router_1, hero_list_component_1, hero_detail_component_1;
     var AppComponent;
     return {
         setters:[
@@ -20,11 +20,11 @@ System.register(['angular2/core', 'angular2/router', './crisis-list.component', 
             function (router_1_1) {
                 router_1 = router_1_1;
             },
-            function (crisis_list_component_1_1) {
-                crisis_list_component_1 = crisis_list_component_1_1;
-            },
             function (hero_list_component_1_1) {
                 hero_list_component_1 = hero_list_component_1_1;
+            },
+            function (hero_detail_component_1_1) {
+                hero_detail_component_1 = hero_detail_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -37,8 +37,9 @@ System.register(['angular2/core', 'angular2/router', './crisis-list.component', 
                         directives: [router_1.ROUTER_DIRECTIVES]
                     }),
                     router_1.RouteConfig([
-                        { path: '/crisis-center', name: 'CrisisCenter', component: crisis_list_component_1.CrisisListComponent },
-                        { path: '/heroes', name: 'Heroes', component: hero_list_component_1.HeroListComponent }
+                        { path: '/crisis-center', name: 'CrisisCenter', component: CrisisListComponent },
+                        { path: '/heroes', name: 'Heroes', component: hero_list_component_1.HeroListComponent },
+                        { path: 'hero/:id', name: 'HeroDetail', component: hero_detail_component_1.HeroDetailComponent }
                     ]), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
