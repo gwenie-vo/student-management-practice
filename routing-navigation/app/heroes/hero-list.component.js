@@ -38,7 +38,7 @@ System.register(['angular2/core', './hero.service', 'angular2/router'], function
                 };
                 HeroListComponent = __decorate([
                     core_1.Component({
-                        template: "\n    <h2>HEROES</h2>\n    <ul class=\"items\">\n      <li *ngFor = \"#hero of heroes\" (click) = \"onSelect(hero)\">\n        <span class=\"badge\">{{hero.id}}</span>\n        {{hero.name}}\n      </li>\n    </ul>\n  "
+                        template: "\n    <h2>HEROES</h2>\n    <ul class=\"items\">\n      <li *ngFor=\"#hero of heroes\"\n        (click)=\"onSelect(hero)\">\n        <span class=\"badge\">{{hero.id}}</span> {{hero.name}}\n      </li>\n    </ul>\n  "
                     }), 
                     __metadata('design:paramtypes', [router_1.Router, hero_service_1.HeroService])
                 ], HeroListComponent);

@@ -36,11 +36,12 @@ System.register(['angular2/core', './hero.service', 'angular2/router'], function
                     this._service.getHero(id).then(function (hero) { return _this.hero = hero; });
                 };
                 HeroDetailComponent.prototype.gotoHeroes = function () {
+                    // Like <a [routerLink]="['Heroes']">Heroes</a>
                     this._router.navigate(['Heroes']);
                 };
                 HeroDetailComponent = __decorate([
                     core_1.Component({
-                        template: "\n  <h2>HEROES</h2>\n  <div>\n    <h3>\"{{hero.name}}\"</h3>\n    <div>\n      <label>Id:</label>\n      {{hero.id}}\n    </div>\n    <div>\n      <label>Name: </label>\n      <input />\n    </div>\n    <p>\n      <button></button>\n    </p>\n  </div>\n  "
+                        template: "\n  <h2>HEROES</h2>\n  <div *ngIf=\"hero\">\n    <h3>\"{{hero.name}}\"</h3>\n    <div>\n      <label>Id: </label>{{hero.id}}</div>\n    <div>\n      <label>Name: </label>\n      <input [(ngModel)]=\"hero.name\" placeholder=\"name\"/>\n    </div>\n    <p>\n      <button (click)=\"gotoHeroes()\">Back</button>\n    </p>\n  </div>\n  ",
                     }), 
                     __metadata('design:paramtypes', [router_1.Router, router_1.RouteParams, hero_service_1.HeroService])
                 ], HeroDetailComponent);

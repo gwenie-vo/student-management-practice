@@ -1,10 +1,7 @@
 import {Component} from 'angular2/core';
-
 @Component({
-  template:  `
+  template: `
     <h2>CRISIS CENTER</h2>
-    <p>Get your crisis here</p>
-  `
+    <p>Get your crisis here</p>`
 })
-
-export class CrisisListComponent {}
+export class CrisisListComponent { }

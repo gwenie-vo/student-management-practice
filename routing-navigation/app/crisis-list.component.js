@@ -23,7 +23,7 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 }
                 CrisisListComponent = __decorate([
                     core_1.Component({
-                        template: "\n    <h2>CRISIS CENTER</h2>\n    <p>Get your crisis here</p>\n  "
+                        template: "\n    <h2>CRISIS CENTER</h2>\n    <p>Get your crisis here</p>"
                     }), 
                     __metadata('design:paramtypes', [])
                 ], CrisisListComponent);

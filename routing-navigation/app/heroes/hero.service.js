@@ -29,11 +29,10 @@ System.register(['angular2/core'], function(exports_1, context_1) {
             HeroService = (function () {
                 function HeroService() {
                 }
-                HeroService.prototype.getHeroes = function () {
-                    return heroesPromise;
-                };
+                HeroService.prototype.getHeroes = function () { return heroesPromise; };
                 HeroService.prototype.getHero = function (id) {
-                    return heroesPromise.then(function (heroes) { return heroes.filter(function (h) { return h.id === +id; })[0]; });
+                    return heroesPromise
+                        .then(function (heroes) { return heroes.filter(function (h) { return h.id === +id; })[0]; });
                 };
                 HeroService = __decorate([
                     core_1.Injectable(), 
@@ -47,8 +46,8 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 new Hero(12, 'Narco'),
                 new Hero(13, 'Bombasto'),
                 new Hero(14, 'Celeritas'),
-                new Hero(15, 'Magbera'),
-                new Hero(16, 'RubbeMan')
+                new Hero(15, 'Magneta'),
+                new Hero(16, 'RubberMan')
             ];
             heroesPromise = Promise.resolve(HEROES);
         }
