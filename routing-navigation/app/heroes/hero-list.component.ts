@@ -2,16 +2,17 @@
 import {Component, OnInit}   from 'angular2/core';
 import {Hero, HeroService}   from './hero.service';
 import {Router}              from 'angular2/router';
+import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 @Component({
   template: `
     <h2>HEROES</h2>
     <ul class="items">
-      <li *ngFor="#hero of heroes"
-        (click)="onSelect(hero)">
-        <span class="badge">{{hero.id}}</span> {{hero.name}}
+      <li *ngFor="#hero of heroes">
+        <a [routerLink]="['HeroDetail', {id:hero.id}]">{{hero.name}}</a>
       </li>
     </ul>
-  `
+  `,
+  directives: [ROUTER_DIRECTIVES]
 })
 export class HeroListComponent implements OnInit {
   heroes: Hero[];

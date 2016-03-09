@@ -10,7 +10,7 @@ System.register(['angular2/core', './hero.service', 'angular2/router'], function
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, hero_service_1, router_1;
+    var core_1, hero_service_1, router_1, router_2;
     var HeroListComponent;
     return {
         setters:[
@@ -22,6 +22,7 @@ System.register(['angular2/core', './hero.service', 'angular2/router'], function
             },
             function (router_1_1) {
                 router_1 = router_1_1;
+                router_2 = router_1_1;
             }],
         execute: function() {
             HeroListComponent = (function () {
@@ -38,7 +39,8 @@ System.register(['angular2/core', './hero.service', 'angular2/router'], function
                 };
                 HeroListComponent = __decorate([
                     core_1.Component({
-                        template: "\n    <h2>HEROES</h2>\n    <ul class=\"items\">\n      <li *ngFor=\"#hero of heroes\"\n        (click)=\"onSelect(hero)\">\n        <span class=\"badge\">{{hero.id}}</span> {{hero.name}}\n      </li>\n    </ul>\n  "
+                        template: "\n    <h2>HEROES</h2>\n    <ul class=\"items\">\n      <li *ngFor=\"#hero of heroes\">\n        <a [routerLink]=\"['HeroDetail', {id:hero.id}]\">{{hero.name}}</a>\n      </li>\n    </ul>\n  ",
+                        directives: [router_2.ROUTER_DIRECTIVES]
                     }), 
                     __metadata('design:paramtypes', [router_1.Router, hero_service_1.HeroService])
                 ], HeroListComponent);
