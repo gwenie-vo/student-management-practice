@@ -1,29 +1,24 @@
-import {Component} from 'angular2/core';
-// import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
+import {Component, OnInit} from 'angular2/core';
 
-// import {CreateStudentComponent} from './create-student.component';
-// import {EditStudentComponent} from './edit-student.component';
+import {CreateStudentComponent} from './create-student.component';
+import {EditStudentComponent} from './edit-student.component';
+import {StudentService} from './student.service';
+import {Student} from './student';
 
 @Component({
-  selector: 'student-list',
-  // templateUrl: "app/student/student-list.component.html"
-  // template: `
-  // <div class="link">
-  //   <nav>
-  //     <a [routerLink] = "['CreateStudent']">Link to CreateStudentComponent</a>
-  //     <a [routerLink] = "['EditStudent']">Link to EditStudentComponent</a>
-  //   </nav>
-  //   <router-outlet></router-outlet>
-  // </div>
-  // `,
-  // directives: [ROUTER_DIRECTIVES]
+  templateUrl: "app/student/student-list.component.html"
 })
 
-// @RouteConfig([
-//   { path: '/create-student', name: 'CreateStudent', component: CreateStudentComponent },
-//   { path: '/edit-student', name: 'EditStudent', component: EditStudentComponent }
-// ])
+export class StudentListComponent implements OnInit {
 
-export class StudentListComponent {
+  constructor(private _studentService: StudentService) {}
+
+  students: Student[];
+
+  ngOnInit() { this.getStudent(); }
+
+  getStudent() {
+    this._studentService.getStudent().subscribe(students => this.students = students);
+  }
 
 }

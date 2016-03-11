@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1, context_1) {
+System.register(['angular2/core', './student.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,25 +10,31 @@ System.register(['angular2/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, student_service_1;
     var StudentListComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (student_service_1_1) {
+                student_service_1 = student_service_1_1;
             }],
         execute: function() {
-            // import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
-            // import {CreateStudentComponent} from './create-student.component';
-            // import {EditStudentComponent} from './edit-student.component';
             StudentListComponent = (function () {
-                function StudentListComponent() {
+                function StudentListComponent(_studentService) {
+                    this._studentService = _studentService;
                 }
+                StudentListComponent.prototype.ngOnInit = function () { this.getStudent(); };
+                StudentListComponent.prototype.getStudent = function () {
+                    var _this = this;
+                    this._studentService.getStudent().subscribe(function (students) { return _this.students = students; });
+                };
                 StudentListComponent = __decorate([
                     core_1.Component({
-                        selector: 'student-list',
+                        templateUrl: "app/student/student-list.component.html"
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [student_service_1.StudentService])
                 ], StudentListComponent);
                 return StudentListComponent;
             }());

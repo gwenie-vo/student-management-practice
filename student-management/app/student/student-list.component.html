@@ -1,7 +1,21 @@
-<div>
-  <div class="class">Class</div>
-  <div class="stt">STT</div>
-  <div class="name">Full Name</div>
-  <div class="age">Age</div>
-  <div class="gender">Gender</div>
+<div class="wrapper">
+  <div class = "table-head">
+    <div class="column class">Class</div>
+    <div class="column stt">STT</div>
+    <div class="column name">Full Name</div>
+    <div class="column age">Age</div>
+    <div class="column gender">Gender</div>
+  </div>
+  <div class="table-content" *ngFor="#student of students">
+<!--     <div class="column class">A</div>
+    <div class="column stt">1</div>
+    <div class="column name">Robinson Trake</div>
+    <div class="column age">23</div>
+    <div class="column gender">Male</div> -->
+    <div class="column class">{{student.class}}</div>
+    <div class="column stt">{{student.id}}</div>
+    <div class="column name">{{student.name}}</div>
+    <div class="column age">{{student.age}}</div>
+    <div class="column gender">{{student.gender}}</div>
+  </div>
 </div>

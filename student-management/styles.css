@@ -1,7 +1,28 @@
-h2 {
+.title {
   text-align: center;
   color: red;
 }
 .link {
   text-align: center;
+}
+.wrapper {
+  width: 1280px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.column {
+  float: left;
+  text-align: center;
+  border: 1px solid gray;
+  width: 19.83%;
+  border-bottom: 0;
+}
+.table-head {
+  clear: both;
+}
+.table-head .column {
+  font-weight: bold;
+}
+.table-content {
+  clear: both;
 }
