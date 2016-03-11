@@ -1,4 +1,4 @@
-System.register(['angular2/core', './student/student-list.component'], function(exports_1, context_1) {
+System.register(['angular2/core'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,33 +10,27 @@ System.register(['angular2/core', './student/student-list.component'], function(
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, student_list_component_1;
-    var AppComponent;
+    var core_1;
+    var EditStudentComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
-            },
-            function (student_list_component_1_1) {
-                student_list_component_1 = student_list_component_1_1;
             }],
         execute: function() {
-            AppComponent = (function () {
-                function AppComponent() {
-                    this.title = "Student Management Application";
+            EditStudentComponent = (function () {
+                function EditStudentComponent() {
                 }
-                AppComponent = __decorate([
+                EditStudentComponent = __decorate([
                     core_1.Component({
-                        selector: 'my-app',
-                        template: "\n    <h2>{{title}}</h2>\n    <student-list></student-list>\n  ",
-                        directives: [student_list_component_1.StudentListComponent]
+                        template: "<h2>Edit Student Profile</h2>"
                     }), 
                     __metadata('design:paramtypes', [])
-                ], AppComponent);
-                return AppComponent;
+                ], EditStudentComponent);
+                return EditStudentComponent;
             }());
-            exports_1("AppComponent", AppComponent);
+            exports_1("EditStudentComponent", EditStudentComponent);
         }
     }
 });
-//# sourceMappingURL=app.component.js.map
+//# sourceMappingURL=edit-student.component.js.map
