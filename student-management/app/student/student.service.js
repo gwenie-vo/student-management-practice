@@ -29,7 +29,6 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
                 StudentService.prototype.getStudent = function () {
                     return this.http.get(this._studentUrl)
                         .map(function (res) {
-                        //how to console log here
                         console.log("RES:", res.json());
                         return res.json();
                     });

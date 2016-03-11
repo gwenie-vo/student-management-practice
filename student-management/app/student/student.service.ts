@@ -17,7 +17,6 @@ export class StudentService {
   getStudent() {
     return this.http.get(this._studentUrl)
                     .map(res => {
-                      //how to console log here
                       console.log("RES:", res.json());
                       return res.json();
                     });

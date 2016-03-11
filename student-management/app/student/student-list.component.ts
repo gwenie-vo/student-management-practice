@@ -6,11 +6,13 @@ import {StudentService} from './student.service';
 import {Student} from './student';
 
 @Component({
+  selector: '',
   templateUrl: "app/student/student-list.component.html"
 })
 
 export class StudentListComponent implements OnInit {
 
+  //inject StudentService
   constructor(private _studentService: StudentService) {}
 
   students: Student[];

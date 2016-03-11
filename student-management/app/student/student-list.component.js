@@ -22,6 +22,7 @@ System.register(['angular2/core', './student.service'], function(exports_1, cont
             }],
         execute: function() {
             StudentListComponent = (function () {
+                //inject StudentService
                 function StudentListComponent(_studentService) {
                     this._studentService = _studentService;
                 }
@@ -32,6 +33,7 @@ System.register(['angular2/core', './student.service'], function(exports_1, cont
                 };
                 StudentListComponent = __decorate([
                     core_1.Component({
+                        selector: '',
                         templateUrl: "app/student/student-list.component.html"
                     }), 
                     __metadata('design:paramtypes', [student_service_1.StudentService])
