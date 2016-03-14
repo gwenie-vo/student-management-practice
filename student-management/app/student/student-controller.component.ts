@@ -5,11 +5,14 @@ import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
   selector: 'student-controller',
   template:`
   <nav>
-    <a [routerLink] = "['CreateStudent']">Link to CreateStudentComponent</a>
-    <a [routerLink] = "['EditStudent']">Link to EditStudentComponent</a>
+    <a [routerLink] = "['CreateStudent']">Add New Student</a>
+    <a [routerLink] = "['EditStudent']">Edit Student Profile</a>
   </nav>
   `,
   directives: [ROUTER_DIRECTIVES]
 })
 
-export class StudentControllerComponent {}
+export class StudentControllerComponent {
+
+
+}

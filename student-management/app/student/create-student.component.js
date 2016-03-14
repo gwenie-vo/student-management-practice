@@ -23,8 +23,7 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 }
                 CreateStudentComponent = __decorate([
                     core_1.Component({
-                        selector: 'create-student-component',
-                        template: '<h2>Add new student to the list</h2>'
+                        templateUrl: 'app/student/student-form.component.html'
                     }), 
                     __metadata('design:paramtypes', [])
                 ], CreateStudentComponent);

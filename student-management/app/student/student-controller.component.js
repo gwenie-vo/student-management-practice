@@ -27,7 +27,7 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
                 StudentControllerComponent = __decorate([
                     core_1.Component({
                         selector: 'student-controller',
-                        template: "\n  <nav>\n    <a [routerLink] = \"['CreateStudent']\">Link to CreateStudentComponent</a>\n    <a [routerLink] = \"['EditStudent']\">Link to EditStudentComponent</a>\n  </nav>\n  ",
+                        template: "\n  <nav>\n    <a [routerLink] = \"['CreateStudent']\">Add New Student</a>\n    <a [routerLink] = \"['EditStudent']\">Edit Student Profile</a>\n  </nav>\n  ",
                         directives: [router_1.ROUTER_DIRECTIVES]
                     }), 
                     __metadata('design:paramtypes', [])

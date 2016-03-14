@@ -1,10 +1,11 @@
 import {Component} from 'angular2/core';
 
 @Component({
-  selector: 'create-student-component',
-  template:'<h2>Add new student to the list</h2>'
+  templateUrl: 'app/student/student-form.component.html'
 })
 
-export class CreateStudentComponent {}
+export class CreateStudentComponent {
+
+}
 
 
