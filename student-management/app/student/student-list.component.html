@@ -7,15 +7,16 @@
     <div class="column gender">Gender</div>
   </div>
   <div class="table-content" *ngFor="#student of students">
-<!--     <div class="column class">A</div>
-    <div class="column stt">1</div>
-    <div class="column name">Robinson Trake</div>
-    <div class="column age">23</div>
-    <div class="column gender">Male</div> -->
     <div class="column class">{{student.class}}</div>
     <div class="column stt">{{student.id}}</div>
-    <div class="column name">{{student.name}}</div>
+    <div class="column name">{{student.firstName}} {{student.lastName}}</div>
     <div class="column age">{{student.age}}</div>
     <div class="column gender">{{student.gender}}</div>
   </div>
 </div>
+
+
+<nav>
+  <a [routerLink] = "['CreateStudent']">Link to CreateStudentComponent</a>
+  <a [routerLink] = "['EditStudent']">Link to EditStudentComponent</a>
+</nav>

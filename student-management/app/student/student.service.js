@@ -21,16 +21,17 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
                 http_1 = http_1_1;
             }],
         execute: function() {
+            //Inject Http service
             StudentService = (function () {
                 function StudentService(http) {
                     this.http = http;
                     this._studentUrl = 'app/student/student.json'; //URL to JSON file
                 }
                 StudentService.prototype.getStudent = function () {
+                    // console.debug("TEST:", this.http.get(this._studentUrl));
                     return this.http.get(this._studentUrl)
                         .map(function (res) {
-                        console.log("RES:", res.json());
-                        return res.json();
+                        return res.json().data;
                     });
                 };
                 StudentService = __decorate([

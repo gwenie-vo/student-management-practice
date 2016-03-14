@@ -1,4 +1,4 @@
-System.register(['angular2/core', './student.service'], function(exports_1, context_1) {
+System.register(['angular2/core', './student.service', 'angular2/router'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './student.service'], function(exports_1, cont
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, student_service_1;
+    var core_1, student_service_1, router_1;
     var StudentListComponent;
     return {
         setters:[
@@ -19,6 +19,9 @@ System.register(['angular2/core', './student.service'], function(exports_1, cont
             },
             function (student_service_1_1) {
                 student_service_1 = student_service_1_1;
+            },
+            function (router_1_1) {
+                router_1 = router_1_1;
             }],
         execute: function() {
             StudentListComponent = (function () {
@@ -26,15 +29,20 @@ System.register(['angular2/core', './student.service'], function(exports_1, cont
                 function StudentListComponent(_studentService) {
                     this._studentService = _studentService;
                 }
-                StudentListComponent.prototype.ngOnInit = function () { this.getStudent(); };
+                StudentListComponent.prototype.ngOnInit = function () {
+                    console.debug("_studentService:", this._studentService);
+                    this.getStudent();
+                };
                 StudentListComponent.prototype.getStudent = function () {
                     var _this = this;
                     this._studentService.getStudent().subscribe(function (students) { return _this.students = students; });
                 };
                 StudentListComponent = __decorate([
                     core_1.Component({
-                        selector: '',
-                        templateUrl: "app/student/student-list.component.html"
+                        selector: 'student-list-component',
+                        templateUrl: "app/student/student-list.component.html",
+                        providers: [student_service_1.StudentService],
+                        directives: [router_1.ROUTER_DIRECTIVES]
                     }), 
                     __metadata('design:paramtypes', [student_service_1.StudentService])
                 ], StudentListComponent);

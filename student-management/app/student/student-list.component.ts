@@ -4,10 +4,13 @@ import {CreateStudentComponent} from './create-student.component';
 import {EditStudentComponent} from './edit-student.component';
 import {StudentService} from './student.service';
 import {Student} from './student';
+import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 
 @Component({
-  selector: '',
-  templateUrl: "app/student/student-list.component.html"
+  selector: 'student-list-component',
+  templateUrl: "app/student/student-list.component.html",
+  providers: [StudentService],
+  directives: [ROUTER_DIRECTIVES]
 })
 
 export class StudentListComponent implements OnInit {
@@ -17,10 +20,17 @@ export class StudentListComponent implements OnInit {
 
   students: Student[];
 
-  ngOnInit() { this.getStudent(); }
+  ngOnInit() {
+     console.debug("_studentService:", this._studentService);
+          this.getStudent(); }
+
 
   getStudent() {
-    this._studentService.getStudent().subscribe(students => this.students = students);
+    this._studentService.getStudent().subscribe(
+      students => this.students = students
+    );
+
+
   }
 
 }

@@ -37,7 +37,7 @@ System.register(['angular2/core', 'angular2/router', './student/student-list.com
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n    <h2 class=\"title\">{{title}}</h2>\n    <div class=\"link\">\n      <nav>\n        <a [routerLink] = \"['CreateStudent']\">Link to CreateStudentComponent</a>\n        <a [routerLink] = \"['EditStudent']\">Link to EditStudentComponent</a>\n      </nav>\n      <router-outlet></router-outlet>\n    </div>\n  ",
+                        template: "\n    <h2 class=\"title\">{{title}}</h2>\n    <div class=\"link\">\n\n      <router-outlet></router-outlet>\n    </div>\n  ",
                         directives: [router_1.ROUTER_DIRECTIVES]
                     }),
                     router_1.RouteConfig([

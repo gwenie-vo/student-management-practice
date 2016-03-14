@@ -10,10 +10,7 @@ import {EditStudentComponent} from './student/edit-student.component';
   template:`
     <h2 class="title">{{title}}</h2>
     <div class="link">
-      <nav>
-        <a [routerLink] = "['CreateStudent']">Link to CreateStudentComponent</a>
-        <a [routerLink] = "['EditStudent']">Link to EditStudentComponent</a>
-      </nav>
+
       <router-outlet></router-outlet>
     </div>
   `,
