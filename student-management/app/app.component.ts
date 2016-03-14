@@ -12,6 +12,7 @@ import {StudentControllerComponent} from './student/student-controller.component
     <h2 class="title">{{title}}</h2>
     <div class="link">
       <router-outlet></router-outlet>
+      <br />
       <student-controller></student-controller>
     </div>
   `,

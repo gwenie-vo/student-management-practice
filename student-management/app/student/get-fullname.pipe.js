@@ -11,31 +11,27 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var getFullNamePipe;
+    var GetFullNamePipe;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            getFullNamePipe = (function () {
-                function getFullNamePipe() {
+            GetFullNamePipe = (function () {
+                function GetFullNamePipe() {
                 }
-                getFullNamePipe = __decorate([
+                GetFullNamePipe.prototype.transform = function (student, args) {
+                    return student.firstName + ' ' + student.lastName;
+                };
+                GetFullNamePipe = __decorate([
                     core_1.Pipe({ name: 'getFullName' }), 
                     __metadata('design:paramtypes', [])
-                ], getFullNamePipe);
-                return getFullNamePipe;
+                ], GetFullNamePipe);
+                return GetFullNamePipe;
             }());
-            exports_1("getFullNamePipe", getFullNamePipe);
+            exports_1("GetFullNamePipe", GetFullNamePipe);
         }
     }
 });
-/*
-export class ExponentialStrengthPipe implements PipeTransform {
-  transform(value: number, args: string[]): any {
-    return Math.pow(value, parseInt(args[0] || '1', 10));
-  }
-}
- */
 //# sourceMappingURL=get-fullname.pipe.js.map

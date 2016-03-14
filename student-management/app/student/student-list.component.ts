@@ -5,12 +5,14 @@ import {CreateStudentComponent} from './create-student.component';
 import {EditStudentComponent} from './edit-student.component';
 import {StudentService} from './student.service';
 import {Student} from './student';
+import {GetFullNamePipe} from './get-fullname.pipe';
 
 @Component({
   selector: 'student-list-component',
   templateUrl: "app/student/student-list.component.html",
   providers: [StudentService],
-  directives: [ROUTER_DIRECTIVES]
+  directives: [ROUTER_DIRECTIVES],
+  pipes: [GetFullNamePipe]
 })
 
 export class StudentListComponent implements OnInit {
@@ -21,16 +23,14 @@ export class StudentListComponent implements OnInit {
   students: Student[];
 
   ngOnInit() {
-     console.debug("_studentService:", this._studentService);
-          this.getStudent(); }
+    console.debug("_studentService:", this._studentService);
+    this.getStudent(); }
 
 
   getStudent() {
     this._studentService.getStudent().subscribe(
       students => this.students = students
     );
-
-
   }
 
 }

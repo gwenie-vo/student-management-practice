@@ -9,7 +9,7 @@
   <div class="table-content" *ngFor="#student of students">
     <div class="column class">{{student.class}}</div>
     <div class="column stt">{{student.id}}</div>
-    <div class="column name"><!-- {{firstName | addString: lastName}}  --></div>
+    <div class="column name">{{student | getFullName }} </div>
     <div class="column age">{{student.age}}</div>
     <div class="column gender">{{student.gender}}</div>
   </div>
