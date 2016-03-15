@@ -6,12 +6,13 @@ import {EditStudentComponent} from './edit-student.component';
 import {StudentService} from './student.service';
 import {Student} from './student';
 import {GetFullNamePipe} from './get-fullname.pipe';
+import {StudentControllerComponent} from './student-controller.component';
 
 @Component({
   selector: 'student-list-component',
   templateUrl: "app/student/student-list.component.html",
   providers: [StudentService],
-  directives: [ROUTER_DIRECTIVES],
+  directives: [ROUTER_DIRECTIVES, StudentControllerComponent],
   pipes: [GetFullNamePipe]
 })
 
@@ -21,6 +22,7 @@ export class StudentListComponent implements OnInit {
   constructor(private _studentService: StudentService) {}
 
   students: Student[];
+  currentStudent: Student;
 
   ngOnInit() {
     console.debug("_studentService:", this._studentService);
@@ -33,4 +35,8 @@ export class StudentListComponent implements OnInit {
     );
   }
 
+  getCurrentStudent(student) {
+    console.log("Student:", student);
+    this.currentStudent = student;
+  }
 }

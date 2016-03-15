@@ -1,17 +1,23 @@
-<div class="wrapper">
-  <div class = "table-head">
-    <div class="column class">Class</div>
-    <div class="column stt">STT</div>
-    <div class="column name">Full Name</div>
-    <div class="column age">Age</div>
-    <div class="column gender">Gender</div>
-  </div>
-  <div class="table-content" *ngFor="#student of students">
-    <div class="column class">{{student.class}}</div>
-    <div class="column stt">{{student.id}}</div>
-    <div class="column name">{{student | getFullName }} </div>
-    <div class="column age">{{student.age}}</div>
-    <div class="column gender">{{student.gender}}</div>
-  </div>
+<!-- Student Table -->
+<table class="wrapper">
+  <thead class = "table-head">
+    <td class="column class">Class</td>
+    <td class="column stt">Ordinal Number</td>
+    <td class="column name">Full Name</td>
+    <td class="column age">Age</td>
+    <td class="column gender">Gender</td>
+  </thead>
+  <tbody class="table-content">
+    <tr *ngFor="#student of students" class="student-row" (click)="getCurrentStudent(student)">
+      <td class="student-cell class">{{student.class}}</td>
+      <td class="student-cell ordinal-number">{{student.id}}</td>
+      <td class="student-cell name">{{student | getFullName }} </td>
+      <td class="student-cell age">{{student.age}}</td>
+      <td class="student-cell gender">{{student.gender}}</td>
+    </tr>
+  </tbody>
+</table>
+<!-- Control -->
+<div class="link">
+  <student-controller [student]="currentStudent"></student-controller>
 </div>
-

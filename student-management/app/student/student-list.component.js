@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './student.service', './get-fullname.pipe'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './student.service', './get-fullname.pipe', './student-controller.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', './student.service', './get
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, student_service_1, get_fullname_pipe_1;
+    var core_1, router_1, student_service_1, get_fullname_pipe_1, student_controller_component_1;
     var StudentListComponent;
     return {
         setters:[
@@ -25,6 +25,9 @@ System.register(['angular2/core', 'angular2/router', './student.service', './get
             },
             function (get_fullname_pipe_1_1) {
                 get_fullname_pipe_1 = get_fullname_pipe_1_1;
+            },
+            function (student_controller_component_1_1) {
+                student_controller_component_1 = student_controller_component_1_1;
             }],
         execute: function() {
             StudentListComponent = (function () {
@@ -40,12 +43,16 @@ System.register(['angular2/core', 'angular2/router', './student.service', './get
                     var _this = this;
                     this._studentService.getStudent().subscribe(function (students) { return _this.students = students; });
                 };
+                StudentListComponent.prototype.getCurrentStudent = function (student) {
+                    console.log("Student:", student);
+                    this.currentStudent = student;
+                };
                 StudentListComponent = __decorate([
                     core_1.Component({
                         selector: 'student-list-component',
                         templateUrl: "app/student/student-list.component.html",
                         providers: [student_service_1.StudentService],
-                        directives: [router_1.ROUTER_DIRECTIVES],
+                        directives: [router_1.ROUTER_DIRECTIVES, student_controller_component_1.StudentControllerComponent],
                         pipes: [get_fullname_pipe_1.GetFullNamePipe]
                     }), 
                     __metadata('design:paramtypes', [student_service_1.StudentService])

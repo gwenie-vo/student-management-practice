@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './student/student-list.component', './student/create-student.component', './student/edit-student.component', './student/student-controller.component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './student/student-list.component', './student/create-student.component', './student/edit-student.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', './student/student-list.com
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, student_list_component_1, create_student_component_1, edit_student_component_1, student_controller_component_1;
+    var core_1, router_1, student_list_component_1, create_student_component_1, edit_student_component_1;
     var AppComponent;
     return {
         setters:[
@@ -28,9 +28,6 @@ System.register(['angular2/core', 'angular2/router', './student/student-list.com
             },
             function (edit_student_component_1_1) {
                 edit_student_component_1 = edit_student_component_1_1;
-            },
-            function (student_controller_component_1_1) {
-                student_controller_component_1 = student_controller_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -40,13 +37,13 @@ System.register(['angular2/core', 'angular2/router', './student/student-list.com
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n    <h2 class=\"title\">{{title}}</h2>\n    <div class=\"link\">\n      <router-outlet></router-outlet>\n      <br />\n      <student-controller></student-controller>\n    </div>\n  ",
-                        directives: [router_1.ROUTER_DIRECTIVES, student_controller_component_1.StudentControllerComponent]
+                        template: "\n    <h2 class=\"title\">{{title}}</h2>\n    <div class=\"container\">\n      <router-outlet></router-outlet>\n    <div>\n  ",
+                        directives: [router_1.ROUTER_DIRECTIVES]
                     }),
                     router_1.RouteConfig([
                         { path: '/', name: 'StudentList', component: student_list_component_1.StudentListComponent },
                         { path: '/create-student', name: 'CreateStudent', component: create_student_component_1.CreateStudentComponent },
-                        { path: '/edit-student', name: 'EditStudent', component: edit_student_component_1.EditStudentComponent }
+                        { path: '/edit-student/:id', name: 'EditStudent', component: edit_student_component_1.EditStudentComponent }
                     ]), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);

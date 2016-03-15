@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1;
+    var core_1, router_1, router_2;
     var StudentControllerComponent;
     return {
         setters:[
@@ -19,18 +19,27 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
             },
             function (router_1_1) {
                 router_1 = router_1_1;
+                router_2 = router_1_1;
             }],
         execute: function() {
             StudentControllerComponent = (function () {
-                function StudentControllerComponent() {
+                function StudentControllerComponent(_router) {
+                    this._router = _router;
                 }
+                StudentControllerComponent.prototype.navigateToEditStudent = function (e) {
+                    e.preventDefault();
+                    if (this.student) {
+                        this._router.navigate(['EditStudent', { id: this.student.id }]);
+                    }
+                };
                 StudentControllerComponent = __decorate([
                     core_1.Component({
                         selector: 'student-controller',
-                        template: "\n  <nav>\n    <a [routerLink] = \"['CreateStudent']\">Add New Student</a>\n    <a [routerLink] = \"['EditStudent']\">Edit Student Profile</a>\n  </nav>\n  ",
-                        directives: [router_1.ROUTER_DIRECTIVES]
+                        template: "\n  <nav>\n    <a [routerLink] = \"['CreateStudent']\">Add New Student</a>\n    <a href=\"#\" (click)=\"navigateToEditStudent($event)\">Edit Student Profile</a>\n  </nav>\n  <div *ngIf=\"student\">{{student.id}}</div>\n  ",
+                        directives: [router_1.ROUTER_DIRECTIVES],
+                        inputs: ['student']
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [router_2.Router])
                 ], StudentControllerComponent);
                 return StudentControllerComponent;
             }());

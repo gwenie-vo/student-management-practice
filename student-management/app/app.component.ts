@@ -10,13 +10,11 @@ import {StudentControllerComponent} from './student/student-controller.component
   selector: 'my-app',
   template:`
     <h2 class="title">{{title}}</h2>
-    <div class="link">
+    <div class="container">
       <router-outlet></router-outlet>
-      <br />
-      <student-controller></student-controller>
-    </div>
+    <div>
   `,
-  directives: [ROUTER_DIRECTIVES, StudentControllerComponent]
+  directives: [ROUTER_DIRECTIVES]
 })
 
 /*
@@ -25,7 +23,7 @@ import {StudentControllerComponent} from './student/student-controller.component
 @RouteConfig([
   { path: '/', name: 'StudentList', component: StudentListComponent },
   { path: '/create-student', name: 'CreateStudent', component: CreateStudentComponent },
-  { path: '/edit-student', name: 'EditStudent', component: EditStudentComponent }
+  { path: '/edit-student/:id', name: 'EditStudent', component: EditStudentComponent }
 ])
 
 export class AppComponent {
