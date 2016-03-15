@@ -33,15 +33,20 @@ System.register(['angular2/core', 'angular2/router', './student.service'], funct
                 EditStudentComponent.prototype.ngOnInit = function () {
                     var id = this._routeParams.get('id');
                     console.log("student id:", id);
-                    this.getStudentFromList();
+                    this.getStudentFromList(id);
                 };
-                EditStudentComponent.prototype.getStudentFromList = function () {
-                    var _this = this;
-                    this._studentService.getStudent().subscribe(function (student) { return _this.student = student; });
+                EditStudentComponent.prototype.getStudentFromList = function (id) {
+                    this.students = JSON.parse(localStorage.getItem('students'));
+                    console.log(this.students);
+                    this.studentIndex = this._studentService.findStudentById(this.students, id);
+                };
+                EditStudentComponent.prototype.SaveEditing = function () {
+                    localStorage.setItem('students', JSON.stringify(this.students));
+                    this._router.navigate(['StudentList']);
                 };
                 EditStudentComponent = __decorate([
                     core_1.Component({
-                        template: "<h2>Edit Student Profile</h2>",
+                        templateUrl: "app/student/edit-student-form.component.html",
                         providers: [student_service_1.StudentService]
                     }), 
                     __metadata('design:paramtypes', [router_1.Router, router_1.RouteParams, student_service_1.StudentService])

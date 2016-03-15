@@ -26,10 +26,6 @@ System.register(['angular2/core', './student-list.component'], function(exports_
                 }
                 CreateStudentComponent.prototype.addNewStudent = function (newStudent) {
                     if (newStudent) {
-                        //push new Student to Student Table
-                        //....
-                        this.student.push(newStudent);
-                        console.log("NEW STUDENT", newStudent);
                     }
                 };
                 CreateStudentComponent = __decorate([

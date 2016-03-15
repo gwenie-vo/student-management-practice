@@ -1,28 +1,27 @@
 <div class="container">
   <div>
     <h2>Edit Student Profile</h2>
-    <form>
+    <form *ngIf="students[studentIndex]">
       <div class="form-group">
         <label for="class">Class</label>
-        <input type="text" class="form-control" >
+        <input type="text" class="form-control" [(ngModel)]="students[studentIndex].class">
       </div>
       <div class="form-group">
         <label for="fistname">First Name</label>
-        <input type="text" class="form-control" >
+        <input type="text" class="form-control" [(ngModel)]="students[studentIndex].firstName">
       </div>
       <div class="form-group">
         <label for="lastname">Last Name</label>
-        <input type="text" class="form-control" >
+        <input type="text" class="form-control" [(ngModel)]="students[studentIndex].lastName">
       </div>
       <div class="form-group">
         <label for="age">Age:</label>
-        <input type="text" class="form-control" >
+        <input type="text" class="form-control" [(ngModel)]="students[studentIndex].age">
       </div>
       <div class="form-group">
         <label for="gender">Gender:</label>
-        <input class="gender-option" type="radio" name="gender" value="male" checked> Male
-        <input class="gender-option" type="radio" name="gender" value="female"> Female
-        <input class="gender-option" type="radio" name="gender" value="other"> Other
+        <input class="gender-option" type="radio" name="gender" value="male" [(ngModel)]="students[studentIndex].gender"> Male
+        <input class="gender-option" type="radio" name="gender" value="female" [(ngModel)]="students[studentIndex].gender"> Female
       </div>
       <button type="button" class="btn btn-default" (click)="SaveEditing()">Save</button>
     </form>

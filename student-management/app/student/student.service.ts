@@ -22,4 +22,14 @@ export class StudentService {
                 return res.json().data;
               });
   }
+
+  findStudentById(students, id) {
+
+    for (var i = 0; i < students.length; i++) {
+      if (students[i].id === id) {
+        return i;
+      }
+    }
+
+  }
 }

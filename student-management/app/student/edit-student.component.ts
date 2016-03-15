@@ -5,13 +5,14 @@ import {StudentService} from './student.service';
 import {Student} from './student';
 
 @Component({
-  template: "<h2>Edit Student Profile</h2>",
+  templateUrl: "app/student/edit-student-form.component.html",
   providers: [StudentService]
 })
 
 export class EditStudentComponent {
 
-  student: Student;
+  students: Student[];
+  studentIndex: number;
 
   constructor(
     private _router: Router,
@@ -21,12 +22,21 @@ export class EditStudentComponent {
   ngOnInit() {
     let id = this._routeParams.get('id');
     console.log("student id:", id);
-    this.getStudentFromList();
+
+    this.getStudentFromList(id);
   }
 
-  getStudentFromList() {
-    this._studentService.getStudent().subscribe(
-      student => this.student = student
-    );
+  getStudentFromList(id) {
+
+    this.students = JSON.parse(localStorage.getItem('students'));
+    console.log(this.students);
+
+    this.studentIndex = this._studentService.findStudentById(this.students, id);
+
+  }
+
+  SaveEditing() {
+    localStorage.setItem('students', JSON.stringify(this.students));
+    this._router.navigate(['StudentList']);
   }
 }

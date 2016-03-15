@@ -37,11 +37,20 @@ System.register(['angular2/core', 'angular2/router', './student.service', './get
                 }
                 StudentListComponent.prototype.ngOnInit = function () {
                     console.debug("_studentService:", this._studentService);
-                    this.getStudent();
+                    var students = JSON.parse(localStorage.getItem('students'));
+                    if (students) {
+                        this.students = students;
+                    }
+                    else {
+                        this.getStudent();
+                    }
                 };
                 StudentListComponent.prototype.getStudent = function () {
                     var _this = this;
-                    this._studentService.getStudent().subscribe(function (students) { return _this.students = students; });
+                    this._studentService.getStudent().subscribe(function (students) {
+                        _this.students = students;
+                        localStorage.setItem('students', JSON.stringify(_this.students));
+                    });
                 };
                 StudentListComponent.prototype.getCurrentStudent = function (student) {
                     console.log("Student:", student);

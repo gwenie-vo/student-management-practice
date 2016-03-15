@@ -26,12 +26,24 @@ export class StudentListComponent implements OnInit {
 
   ngOnInit() {
     console.debug("_studentService:", this._studentService);
-    this.getStudent(); }
+
+    let students = JSON.parse(localStorage.getItem('students'));
+
+    if (students) {
+      this.students = students;
+    } else {
+      this.getStudent();
+    }
+  }
 
 
   getStudent() {
     this._studentService.getStudent().subscribe(
-      students => this.students = students
+      students => {
+        this.students = students;
+
+        localStorage.setItem('students', JSON.stringify(this.students));
+      }
     );
   }
 

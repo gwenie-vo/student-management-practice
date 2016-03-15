@@ -34,6 +34,13 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
                         return res.json().data;
                     });
                 };
+                StudentService.prototype.findStudentById = function (students, id) {
+                    for (var i = 0; i < students.length; i++) {
+                        if (students[i].id === id) {
+                            return i;
+                        }
+                    }
+                };
                 StudentService = __decorate([
                     core_1.Injectable(), 
                     __metadata('design:paramtypes', [http_1.Http])
