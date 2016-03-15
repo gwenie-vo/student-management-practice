@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1, context_1) {
+System.register(['angular2/core', './student-list.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,12 +10,15 @@ System.register(['angular2/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, student_list_component_1;
     var CreateStudentComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (student_list_component_1_1) {
+                student_list_component_1 = student_list_component_1_1;
             }],
         execute: function() {
             CreateStudentComponent = (function () {
@@ -23,11 +26,16 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 }
                 CreateStudentComponent.prototype.addNewStudent = function (newStudent) {
                     if (newStudent) {
+                        //push new Student to Student Table
+                        //....
+                        this.student.push(newStudent);
+                        console.log("NEW STUDENT", newStudent);
                     }
                 };
                 CreateStudentComponent = __decorate([
                     core_1.Component({
-                        templateUrl: 'app/student/student-form.component.html'
+                        templateUrl: 'app/student/student-form.component.html',
+                        directives: [student_list_component_1.StudentListComponent]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], CreateStudentComponent);
