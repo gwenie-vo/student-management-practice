@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './student.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1;
+    var core_1, router_1, student_service_1;
     var EditStudentComponent;
     return {
         setters:[
@@ -19,23 +19,32 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
             },
             function (router_1_1) {
                 router_1 = router_1_1;
+            },
+            function (student_service_1_1) {
+                student_service_1 = student_service_1_1;
             }],
         execute: function() {
             EditStudentComponent = (function () {
-                // student: Student;
-                function EditStudentComponent(_router, _routeParams) {
+                function EditStudentComponent(_router, _routeParams, _studentService) {
                     this._router = _router;
                     this._routeParams = _routeParams;
+                    this._studentService = _studentService;
                 }
                 EditStudentComponent.prototype.ngOnInit = function () {
                     var id = this._routeParams.get('id');
                     console.log("student id:", id);
+                    this.getStudentFromList();
+                };
+                EditStudentComponent.prototype.getStudentFromList = function () {
+                    var _this = this;
+                    this._studentService.getStudent().subscribe(function (student) { return _this.student = student; });
                 };
                 EditStudentComponent = __decorate([
                     core_1.Component({
-                        template: "<h2>Edit Student Profile</h2>"
+                        template: "<h2>Edit Student Profile</h2>",
+                        providers: [student_service_1.StudentService]
                     }), 
-                    __metadata('design:paramtypes', [router_1.Router, router_1.RouteParams])
+                    __metadata('design:paramtypes', [router_1.Router, router_1.RouteParams, student_service_1.StudentService])
                 ], EditStudentComponent);
                 return EditStudentComponent;
             }());

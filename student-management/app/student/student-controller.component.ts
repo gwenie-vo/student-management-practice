@@ -8,7 +8,7 @@ import {Router}              from 'angular2/router';
   template:`
   <nav>
     <a [routerLink] = "['CreateStudent']">Add New Student</a>
-    <a href="#" (click)="navigateToEditStudent($event)">Edit Student Profile</a>
+    <a (click)="navigateToEditStudent($event)">Edit Student Profile</a>
   </nav>
   <div *ngIf="student">{{student.id}}</div>
   `,
@@ -18,8 +18,7 @@ import {Router}              from 'angular2/router';
 
 export class StudentControllerComponent {
   student: Student;
-  constructor(
-    private _router: Router) { }
+  constructor(private _router: Router) {}
 
   navigateToEditStudent(e) {
     e.preventDefault();

@@ -10,6 +10,7 @@ import {Student}   from './student';
 @Injectable()
 
 export class StudentService {
+
   constructor(private http: Http) {}
 
   private _studentUrl = 'app/student/student.json'; //URL to JSON file
@@ -21,7 +22,4 @@ export class StudentService {
                 return res.json().data;
               });
   }
-
-
-
 }

@@ -21,6 +21,10 @@ System.register(['angular2/core'], function(exports_1, context_1) {
             CreateStudentComponent = (function () {
                 function CreateStudentComponent() {
                 }
+                CreateStudentComponent.prototype.addNewStudent = function (newStudent) {
+                    if (newStudent) {
+                    }
+                };
                 CreateStudentComponent = __decorate([
                     core_1.Component({
                         templateUrl: 'app/student/student-form.component.html'

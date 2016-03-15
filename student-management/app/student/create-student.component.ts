@@ -6,6 +6,13 @@ import {Component} from 'angular2/core';
 
 export class CreateStudentComponent {
 
+  addNewStudent(newStudent: string) {
+    if(newStudent) {
+      //push new Student to Student Table
+      //....
+    }
+  }
+
 }
 
 
