@@ -7,13 +7,14 @@ import {StudentService} from './student.service';
 import {Student} from './student';
 import {GetFullNamePipe} from './get-fullname.pipe';
 import {StudentControllerComponent} from './student-controller.component';
+import {HighLightDirective} from './highlight.directive';
 
 @Component({
   selector: 'student-list-component',
   templateUrl: "app/student/student-list.component.html",
   providers: [StudentService],
-  directives: [ROUTER_DIRECTIVES, StudentControllerComponent],
-  pipes: [GetFullNamePipe]
+  directives: [ROUTER_DIRECTIVES, StudentControllerComponent, HighLightDirective],
+  pipes: [GetFullNamePipe],
 })
 
 export class StudentListComponent implements OnInit {

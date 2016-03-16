@@ -11,7 +11,7 @@ import {Router}              from 'angular2/router';
     <a (click)="navigateToEditStudent($event)" class="nav-link">Edit Student Profile</a>
   </nav>
   <br />
-  <div *ngIf="student" class="chosen-id">{{student.id}}</div>
+  <div class="chosen-id" *ngIf="student">{{student.id}}</div>
   `,
   directives: [ROUTER_DIRECTIVES],
   inputs: ['student']

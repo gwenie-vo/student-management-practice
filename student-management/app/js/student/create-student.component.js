@@ -23,6 +23,7 @@ System.register(['angular2/core', './student-list.component'], function(exports_
         execute: function() {
             CreateStudentComponent = (function () {
                 function CreateStudentComponent() {
+                    this.classes = ['A', 'B', 'C', 'D', 'E'];
                 }
                 CreateStudentComponent.prototype.addNewStudent = function (newStudent) {
                     if (newStudent) {
@@ -30,7 +31,7 @@ System.register(['angular2/core', './student-list.component'], function(exports_
                 };
                 CreateStudentComponent = __decorate([
                     core_1.Component({
-                        templateUrl: 'app/student/student-form.component.html',
+                        templateUrl: 'app/student/create-student-form.component.html',
                         directives: [student_list_component_1.StudentListComponent]
                     }), 
                     __metadata('design:paramtypes', [])

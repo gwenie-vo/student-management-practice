@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './student.service', './get-fullname.pipe', './student-controller.component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './student.service', './get-fullname.pipe', './student-controller.component', './highlight.directive'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', './student.service', './get
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, student_service_1, get_fullname_pipe_1, student_controller_component_1;
+    var core_1, router_1, student_service_1, get_fullname_pipe_1, student_controller_component_1, highlight_directive_1;
     var StudentListComponent;
     return {
         setters:[
@@ -28,6 +28,9 @@ System.register(['angular2/core', 'angular2/router', './student.service', './get
             },
             function (student_controller_component_1_1) {
                 student_controller_component_1 = student_controller_component_1_1;
+            },
+            function (highlight_directive_1_1) {
+                highlight_directive_1 = highlight_directive_1_1;
             }],
         execute: function() {
             StudentListComponent = (function () {
@@ -61,8 +64,8 @@ System.register(['angular2/core', 'angular2/router', './student.service', './get
                         selector: 'student-list-component',
                         templateUrl: "app/student/student-list.component.html",
                         providers: [student_service_1.StudentService],
-                        directives: [router_1.ROUTER_DIRECTIVES, student_controller_component_1.StudentControllerComponent],
-                        pipes: [get_fullname_pipe_1.GetFullNamePipe]
+                        directives: [router_1.ROUTER_DIRECTIVES, student_controller_component_1.StudentControllerComponent, highlight_directive_1.HighLightDirective],
+                        pipes: [get_fullname_pipe_1.GetFullNamePipe],
                     }), 
                     __metadata('design:paramtypes', [student_service_1.StudentService])
                 ], StudentListComponent);

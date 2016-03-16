@@ -25,8 +25,8 @@
       <!-- gender group -->
       <div class="form-group">
         <label for="gender">Gender:</label>
-        <input #female name="gender" type="radio"  value="Female" (click)="student.gender = female.value" />Female
-        <input #male name="gender" type="radio" value="Male" (click)="student.gender = male.value"/>Male
+        <input #female name="gender" type="radio"  value="Female"  (click)="student.gender = female.value" />Female
+        <input #male name="gender" type="radio" value="Male"  (click)="student.gender = male.value"/>Male
         (Selected gender is <strong>{{student.gender}}</strong>)
       </div>
       <!-- submit button -->

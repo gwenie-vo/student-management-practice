@@ -4,12 +4,13 @@ import {NgForm}    from 'angular2/common';
 import {StudentListComponent} from './student-list.component';
 
 @Component({
-  templateUrl: 'app/student/student-form.component.html',
+  templateUrl: 'app/student/create-student-form.component.html',
   directives: [StudentListComponent]
 })
 
 export class CreateStudentComponent {
   student: Student;
+  classes = ['A', 'B', 'C', 'D', 'E'];
 
   addNewStudent(newStudent) {
     if(newStudent) {

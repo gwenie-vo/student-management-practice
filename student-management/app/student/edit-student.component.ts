@@ -16,7 +16,7 @@ export class EditStudentComponent {
   constructor(
     private _router: Router,
     private _routeParams: RouteParams,
-    private _studentService: StudentService) { }
+    private _studentService: StudentService) {}
 
   ngOnInit() {
     //get id from URL

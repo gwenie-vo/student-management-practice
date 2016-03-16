@@ -8,7 +8,7 @@
     <td class="column gender">Gender</td>
   </thead>
   <tbody class="table-content">
-    <tr *ngFor="#student of students" class="student-row" (click)="getCurrentStudent(student)">
+    <tr *ngFor="#student of students" class="student-row" (click)="getCurrentStudent(student)" myHighLight>
       <td class="student-cell class">{{student.class}}</td>
       <td class="student-cell ordinal-number">{{student.id}}</td>
       <td class="student-cell name">{{student | getFullName }} </td>
