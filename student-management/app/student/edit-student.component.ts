@@ -11,8 +11,7 @@ import {Student} from './student';
 
 export class EditStudentComponent {
 
-  students: Student[];
-  studentIndex: number;
+  student: Student;
 
   constructor(
     private _router: Router,
@@ -23,20 +22,23 @@ export class EditStudentComponent {
     let id = this._routeParams.get('id');
     console.log("student id:", id);
 
-    this.getStudentFromList(id);
+    this.getStudentById(id);
   }
 
-  getStudentFromList(id) {
+  getStudentById(id) {
 
-    this.students = JSON.parse(localStorage.getItem('students'));
-    console.log(this.students);
+    // this.students = JSON.parse(localStorage.getItem('students'));
+    // console.log(this.students);
 
-    this.studentIndex = this._studentService.findStudentById(this.students, id);
+     this._studentService.findStudentById(id).subscribe( student => {
+       this.student = student;
+     });
 
   }
 
-  SaveEditing() {
-    localStorage.setItem('students', JSON.stringify(this.students));
-    this._router.navigate(['StudentList']);
+  saveEditing() {
+    // localStorage.setItem('students', JSON.stringify(this.students));
+    // this._router.navigate(['StudentList']);
+    console.log("save:", this.student);
   }
 }

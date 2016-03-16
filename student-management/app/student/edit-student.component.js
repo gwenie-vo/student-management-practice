@@ -33,16 +33,20 @@ System.register(['angular2/core', 'angular2/router', './student.service'], funct
                 EditStudentComponent.prototype.ngOnInit = function () {
                     var id = this._routeParams.get('id');
                     console.log("student id:", id);
-                    this.getStudentFromList(id);
+                    this.getStudentById(id);
                 };
-                EditStudentComponent.prototype.getStudentFromList = function (id) {
-                    this.students = JSON.parse(localStorage.getItem('students'));
-                    console.log(this.students);
-                    this.studentIndex = this._studentService.findStudentById(this.students, id);
+                EditStudentComponent.prototype.getStudentById = function (id) {
+                    // this.students = JSON.parse(localStorage.getItem('students'));
+                    // console.log(this.students);
+                    var _this = this;
+                    this._studentService.findStudentById(id).subscribe(function (student) {
+                        _this.student = student;
+                    });
                 };
-                EditStudentComponent.prototype.SaveEditing = function () {
-                    localStorage.setItem('students', JSON.stringify(this.students));
-                    this._router.navigate(['StudentList']);
+                EditStudentComponent.prototype.saveEditing = function () {
+                    // localStorage.setItem('students', JSON.stringify(this.students));
+                    // this._router.navigate(['StudentList']);
+                    console.log("save:", this.student);
                 };
                 EditStudentComponent = __decorate([
                     core_1.Component({

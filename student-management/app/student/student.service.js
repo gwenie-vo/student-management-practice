@@ -34,12 +34,17 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
                         return res.json().data;
                     });
                 };
-                StudentService.prototype.findStudentById = function (students, id) {
-                    for (var i = 0; i < students.length; i++) {
-                        if (students[i].id === id) {
-                            return i;
+                // find a student has id === currentStudent id
+                StudentService.prototype.findStudentById = function (id) {
+                    var student = null;
+                    return this.getStudent().map(function (students) {
+                        for (var i = 0; i < students.length; i++) {
+                            if (students[i].id === id) {
+                                student = students[i];
+                            }
                         }
-                    }
+                        return student;
+                    });
                 };
                 StudentService = __decorate([
                     core_1.Injectable(), 

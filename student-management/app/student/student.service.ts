@@ -23,13 +23,19 @@ export class StudentService {
               });
   }
 
-  findStudentById(students, id) {
-
-    for (var i = 0; i < students.length; i++) {
-      if (students[i].id === id) {
-        return i;
+  // find a student has id === currentStudent id
+  findStudentById(id) {
+    let student = null;
+    return this.getStudent().map(
+      students => {
+        for (var i = 0; i < students.length; i++) {
+          if (students[i].id === id) {
+            student = students[i];
+          }
+        }
+        return student;
       }
-    }
-
+    );
   }
+
 }
