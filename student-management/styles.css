@@ -29,6 +29,7 @@
 .chosen-id {
   font-size: 25px;
   font-weight: bold;
+  color: red;
 }
 .table-head .column {
   font-weight: bold;

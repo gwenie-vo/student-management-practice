@@ -19,6 +19,7 @@ export class EditStudentComponent {
     private _studentService: StudentService) { }
 
   ngOnInit() {
+    //get id from URL
     let id = this._routeParams.get('id');
     console.log("student id:", id);
 

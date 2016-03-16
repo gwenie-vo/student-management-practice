@@ -31,6 +31,7 @@ System.register(['angular2/core', 'angular2/router', './student.service'], funct
                     this._studentService = _studentService;
                 }
                 EditStudentComponent.prototype.ngOnInit = function () {
+                    //get id from URL
                     var id = this._routeParams.get('id');
                     console.log("student id:", id);
                     this.getStudentById(id);
