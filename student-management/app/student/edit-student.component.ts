@@ -41,4 +41,8 @@ export class EditStudentComponent {
     // this._router.navigate(['StudentList']);
     console.log("save:", this.student);
   }
+
+  backToStudentList() {
+    this._router.navigate(['StudentList']);
+  }
 }
