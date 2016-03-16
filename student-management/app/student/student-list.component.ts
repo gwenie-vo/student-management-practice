@@ -27,13 +27,14 @@ export class StudentListComponent implements OnInit {
   ngOnInit() {
     console.debug("_studentService:", this._studentService);
 
-    let students = JSON.parse(localStorage.getItem('students'));
+    // let students = JSON.parse(localStorage.getItem('students'));
 
-    if (students) {
-      this.students = students;
-    } else {
-      this.getStudent();
-    }
+    // if (students) {
+    //   this.students = students;
+    // } else {
+    //   this.getStudent();
+    // }
+    this.getStudent();
   }
 
 
@@ -42,7 +43,7 @@ export class StudentListComponent implements OnInit {
       students => {
         this.students = students;
 
-        localStorage.setItem('students', JSON.stringify(this.students));
+        // localStorage.setItem('students', JSON.stringify(this.students));
       }
     );
   }
