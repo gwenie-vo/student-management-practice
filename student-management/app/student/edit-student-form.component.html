@@ -2,27 +2,34 @@
   <div>
     <h2>Edit Student Profile</h2>
     <form *ngIf="student">
+      <!-- Class Name -->
       <div class="form-group">
         <label for="class">Class</label>
         <input type="text" class="form-control" [(ngModel)]="student.class">
       </div>
+      <!-- First Name -->
       <div class="form-group">
         <label for="fistname">First Name</label>
         <input type="text" class="form-control" [(ngModel)]="student.firstName">
       </div>
+      <!-- Last Name -->
       <div class="form-group">
         <label for="lastname">Last Name</label>
         <input type="text" class="form-control" [(ngModel)]="student.lastName">
       </div>
+      <!-- age -->
       <div class="form-group">
         <label for="age">Age:</label>
         <input type="text" class="form-control" [(ngModel)]="student.age">
       </div>
+      <!-- gender group -->
       <div class="form-group">
         <label for="gender">Gender:</label>
-        <input class="gender-option" type="radio" name="gender" value="male" [(ngModel)]="student.gender"> Male
-        <input class="gender-option" type="radio" name="gender" value="female" [(ngModel)]="student.gender"> Female
+        <input #female name="gender" type="radio"  value="Female" (click)="student.gender = female.value" />Female
+        <input #male name="gender" type="radio" value="Male" (click)="student.gender = male.value"/>Male
+        (Selected gender is <strong>{{student.gender}}</strong>)
       </div>
+      <!-- submit button -->
       <button type="button" class="btn btn-default" (click)="saveEditing()">Save</button>
     </form>
   </div>
