@@ -7,10 +7,11 @@ import {Router}              from 'angular2/router';
   selector: 'student-controller',
   template:`
   <nav>
-    <a [routerLink] = "['CreateStudent']">Add New Student</a>
-    <a (click)="navigateToEditStudent($event)">Edit Student Profile</a>
+    <a [routerLink] = "['CreateStudent']" class="nav-link">Add New Student</a>
+    <a (click)="navigateToEditStudent($event)" class="nav-link">Edit Student Profile</a>
   </nav>
-  <div *ngIf="student">{{student.id}}</div>
+  <br />
+  <div *ngIf="student" class="chosen-id">{{student.id}}</div>
   `,
   directives: [ROUTER_DIRECTIVES],
   inputs: ['student']

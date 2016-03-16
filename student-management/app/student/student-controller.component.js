@@ -35,7 +35,7 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
                 StudentControllerComponent = __decorate([
                     core_1.Component({
                         selector: 'student-controller',
-                        template: "\n  <nav>\n    <a [routerLink] = \"['CreateStudent']\">Add New Student</a>\n    <a (click)=\"navigateToEditStudent($event)\">Edit Student Profile</a>\n  </nav>\n  <div *ngIf=\"student\">{{student.id}}</div>\n  ",
+                        template: "\n  <nav>\n    <a [routerLink] = \"['CreateStudent']\" class=\"nav-link\">Add New Student</a>\n    <a (click)=\"navigateToEditStudent($event)\" class=\"nav-link\">Edit Student Profile</a>\n  </nav>\n  <br />\n  <div *ngIf=\"student\" class=\"chosen-id\">{{student.id}}</div>\n  ",
                         directives: [router_1.ROUTER_DIRECTIVES],
                         inputs: ['student']
                     }), 
