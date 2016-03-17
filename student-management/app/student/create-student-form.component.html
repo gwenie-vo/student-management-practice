@@ -2,31 +2,29 @@
   <div>
     <h2>Add new student</h2>
     <form #studentForm="ngForm" (ngSubmit)="onSubmit()">
+    <!-- class -->
       <div class="form-group">
         <label for="class">Class:</label>
           <select class="form-control" required [(ngModel)]="student.class">
             <option *ngFor="#class of classes" [value]="class">{{class}}</option>
           </select>
-        <!-- <select name="class">
-          <option value="A">A</option>
-          <option value="B">B</option>
-          <option value="C">C</option>
-          <option value="D">D</option>
-          <option value="E">E</option>
-        </select> -->
       </div>
+      <!-- first name -->
       <div class="form-group">
         <label for="firstname">First Name:</label>
-        <input type="text" class="form-control" [(ngModel)]="student.firstName">
+        <input type="text" class="form-control" [(ngModel)]="student.firstName" #firstName="ngForm">
       </div>
+      <!-- lastname -->
       <div class="form-group">
         <label for="lastname">Last Name:</label>
-        <input type="text" class="form-control" [(ngModel)]="student.lastName">
+        <input type="text" class="form-control" [(ngModel)]="student.lastName" #lastName="ngForm">
       </div>
+      <!-- age -->
       <div class="form-group">
         <label for="age">Age:</label>
         <input type="text" class="form-control" [(ngModel)]="student.age">
       </div>
+      <!-- gender -->
       <div class="form-group">
         <label for="gender">Gender:</label>
         <input class="gender-option" type="radio" name="gender" value="male" > Male

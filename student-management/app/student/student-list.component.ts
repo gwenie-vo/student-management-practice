@@ -24,6 +24,8 @@ export class StudentListComponent implements OnInit {
 
   students: Student[];
   currentStudent: Student;
+  // isSelected: boolean;
+  // selectedStudent: Student;
 
   ngOnInit() {
     console.debug("_studentService:", this._studentService);
@@ -53,4 +55,13 @@ export class StudentListComponent implements OnInit {
     console.log("Student:", student);
     this.currentStudent = student;
   }
+
+  // getSelectedStudent(currentStudent) {
+  //   for (var i = 0; i < this.students.length; i++) {
+  //     if (this.students[i] === currentStudent) {
+  //       this.isSelected = !this.isSelected;
+  //       console.log("this.isSelected:", this.isSelected);
+  //     }
+  //   }
+  // }
 }
