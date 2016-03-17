@@ -1,22 +1,35 @@
-<!-- Student Table -->
-<table class="wrapper">
-  <thead class = "table-head">
-    <td class="column class">Class</td>
-    <td class="column ordinal-number">Ordinal Number</td>
-    <td class="column name">Full Name</td>
-    <td class="column age">Age</td>
-    <td class="column gender">Gender</td>
-  </thead>
-  <tbody class="table-content">
-    <tr [class.selected]="currentStudent?.id == student.id" *ngFor="#student of students" class="student-row" (click)="getCurrentStudent(student)" myHighLight>
-      <td class="student-cell class">{{student.class}}</td>
-      <td class="student-cell ordinal-number">{{student.id}}</td>
-      <td class="student-cell name">{{student | getFullName }} </td>
-      <td class="student-cell age">{{student.age}}</td>
-      <td class="student-cell gender">{{student.gender}}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="container">
+  <!-- class navigation -->
+  <div class="col-md-2">
+    <ul class="class-menu"> Select Class
+      <li class="class-name">Class A</li>
+      <li class="class-name">Class B</li>
+      <li class="class-name">Class C</li>
+      <li class="class-name">Class D</li>
+      <li class="class-name">Class E</li>
+    </ul>
+  </div>
+  <div class="col-md-10">
+    <!-- Student Table -->
+    <table class="wrapper">
+      <thead class = "table-head">
+        <td class="column ordinal-number">Ordinal Number</td>
+        <td class="column name">Full Name</td>
+        <td class="column age">Age</td>
+        <td class="column gender">Gender</td>
+      </thead>
+      <tbody class="table-content">
+        <tr [class.selected]="currentStudent?.id == student.id" *ngFor="#student of students" class="student-row" (click)="getCurrentStudent(student)" myHighLight>
+          <!-- <td class="student-cell class">{{student.class}}</td> -->
+          <td class="student-cell ordinal-number">{{student.id}}</td>
+          <td class="student-cell name">{{student | getFullName }} </td>
+          <td class="student-cell age">{{student.age}}</td>
+          <td class="student-cell gender">{{student.gender}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 <!-- Control -->
 <div class="link">
   <student-controller [student]="currentStudent"></student-controller>

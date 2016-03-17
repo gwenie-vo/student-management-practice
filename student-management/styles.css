@@ -61,3 +61,10 @@ h2 {
 .selected {
   background-color: #f2dede;
 }
+.class-menu {
+  font-weight: bold;
+}
+.class-menu .class-name {
+  list-style: none;
+  font-weight: normal;
+}

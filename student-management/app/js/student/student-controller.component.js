@@ -36,9 +36,10 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
                 */
                 StudentControllerComponent.prototype.deletedStudent = function (student) {
                     console.log('Selected Student', this.student);
-                    var result = confirm("Are you sure to delete this student?");
+                    student = this.student.firstName + " " + this.student.lastName;
+                    var result = confirm("Are you sure to delete " + student + " profile ?");
                     if (result === true) {
-                        console.log("Student has deleted!");
+                        console.log(student + " has been removed!");
                     }
                 };
                 StudentControllerComponent = __decorate([
