@@ -38,8 +38,6 @@ System.register(['angular2/core', 'angular2/router', './student.service', './get
                 function StudentListComponent(_studentService) {
                     this._studentService = _studentService;
                 }
-                // isSelected: boolean;
-                // selectedStudent: Student;
                 StudentListComponent.prototype.ngOnInit = function () {
                     console.debug("_studentService:", this._studentService);
                     // let students = JSON.parse(localStorage.getItem('students'));
