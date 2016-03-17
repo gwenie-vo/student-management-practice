@@ -9,6 +9,7 @@ import {Router}              from 'angular2/router';
   <nav>
     <a [routerLink] = "['CreateStudent']" class="nav-link">Add New Student</a>
     <a (click)="navigateToEditStudent($event)" class="nav-link">Edit Student Profile</a>
+    <a (click)="deletedStudent()" class="nav-link">Delete Student</a>
   </nav>
   `,
   directives: [ROUTER_DIRECTIVES],
@@ -23,6 +24,16 @@ export class StudentControllerComponent {
     e.preventDefault();
     if (this.student){
       this._router.navigate(['EditStudent', { id: this.student.id }]);
+    }
+  }
+
+  deletedStudent(student) {
+    var result = confirm("Are you sure to delete this student?");
+    console.log('Selected Student', this.student);
+    if (result === true) {
+      console.log("Student has deleted!");
+    } else {
+      console.log("Do nothing!");
     }
   }
 }

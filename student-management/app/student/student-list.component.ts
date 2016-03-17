@@ -20,7 +20,7 @@ import {HighLightDirective} from './highlight.directive';
 export class StudentListComponent implements OnInit {
 
   //inject StudentService
-  constructor(private _studentService: StudentService) {}
+  constructor(private _studentService: StudentService) { }
 
   students: Student[];
   currentStudent: Student;

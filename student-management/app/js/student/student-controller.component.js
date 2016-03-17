@@ -32,10 +32,20 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
                         this._router.navigate(['EditStudent', { id: this.student.id }]);
                     }
                 };
+                StudentControllerComponent.prototype.deletedStudent = function (student) {
+                    var result = confirm("Are you sure to delete this student?");
+                    console.log('Selected Student', this.student);
+                    if (result === true) {
+                        console.log("Student has deleted!");
+                    }
+                    else {
+                        console.log("Do nothing!");
+                    }
+                };
                 StudentControllerComponent = __decorate([
                     core_1.Component({
                         selector: 'student-controller',
-                        template: "\n  <nav>\n    <a [routerLink] = \"['CreateStudent']\" class=\"nav-link\">Add New Student</a>\n    <a (click)=\"navigateToEditStudent($event)\" class=\"nav-link\">Edit Student Profile</a>\n  </nav>\n  ",
+                        template: "\n  <nav>\n    <a [routerLink] = \"['CreateStudent']\" class=\"nav-link\">Add New Student</a>\n    <a (click)=\"navigateToEditStudent($event)\" class=\"nav-link\">Edit Student Profile</a>\n    <a (click)=\"deletedStudent()\" class=\"nav-link\">Delete Student</a>\n  </nav>\n  ",
                         directives: [router_1.ROUTER_DIRECTIVES],
                         inputs: ['student']
                     }), 
