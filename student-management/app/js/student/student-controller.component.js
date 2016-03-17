@@ -32,14 +32,13 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
                         this._router.navigate(['EditStudent', { id: this.student.id }]);
                     }
                 };
+                /*Delete student from list
+                */
                 StudentControllerComponent.prototype.deletedStudent = function (student) {
-                    var result = confirm("Are you sure to delete this student?");
                     console.log('Selected Student', this.student);
+                    var result = confirm("Are you sure to delete this student?");
                     if (result === true) {
                         console.log("Student has deleted!");
-                    }
-                    else {
-                        console.log("Do nothing!");
                     }
                 };
                 StudentControllerComponent = __decorate([

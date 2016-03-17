@@ -27,13 +27,15 @@ export class StudentControllerComponent {
     }
   }
 
+  /*Delete student from list
+  */
   deletedStudent(student) {
-    var result = confirm("Are you sure to delete this student?");
     console.log('Selected Student', this.student);
+
+    var result = confirm("Are you sure to delete this student?");
+
     if (result === true) {
       console.log("Student has deleted!");
-    } else {
-      console.log("Do nothing!");
     }
   }
 }
