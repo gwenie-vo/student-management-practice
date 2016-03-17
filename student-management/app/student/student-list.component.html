@@ -1,12 +1,8 @@
 <div class="container">
   <!-- class navigation -->
   <div class="col-md-2">
-    <ul class="class-menu"> Select Class
-      <li class="class-name">Class A</li>
-      <li class="class-name">Class B</li>
-      <li class="class-name">Class C</li>
-      <li class="class-name">Class D</li>
-      <li class="class-name">Class E</li>
+    <ul class="class-menu">Select Class
+      <li [class.chosen]="selectedClass==className" class="class-name" (click)="getClassName(className)" *ngFor="#className of classes">Class {{className}}</li>
     </ul>
   </div>
   <div class="col-md-10">
@@ -20,7 +16,6 @@
       </thead>
       <tbody class="table-content">
         <tr [class.selected]="currentStudent?.id == student.id" *ngFor="#student of students" class="student-row" (click)="getCurrentStudent(student)" myHighLight>
-          <!-- <td class="student-cell class">{{student.class}}</td> -->
           <td class="student-cell ordinal-number">{{student.id}}</td>
           <td class="student-cell name">{{student | getFullName }} </td>
           <td class="student-cell age">{{student.age}}</td>

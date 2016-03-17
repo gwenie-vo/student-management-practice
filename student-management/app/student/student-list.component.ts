@@ -22,8 +22,11 @@ export class StudentListComponent implements OnInit {
   //inject StudentService
   constructor(private _studentService: StudentService) { }
 
+  classes = ["A", "B", "C", "D", "E"];
   students: Student[];
   currentStudent: Student;
+  selectedClassName; //keyword to filter
+  isSelected: boolean;
 
   ngOnInit() {
     console.debug("_studentService:", this._studentService);
@@ -38,7 +41,7 @@ export class StudentListComponent implements OnInit {
     this.getStudent();
   }
 
-
+  //get student list
   getStudent() {
     this._studentService.getStudent().subscribe(
       students => {
@@ -47,6 +50,14 @@ export class StudentListComponent implements OnInit {
         // localStorage.setItem('students', JSON.stringify(this.students));
       }
     );
+  }
+
+  //get className for filtering
+  getClassName(className) {
+    console.log("CLASS NAME ", className);
+    this.selectedClassName = className;
+    console.log("SELECTED CLASS ",this.selectedClassName);
+    this.isSelected = !this.isSelected;
   }
 
   getCurrentStudent(student) {

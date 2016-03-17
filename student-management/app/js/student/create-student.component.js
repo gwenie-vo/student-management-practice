@@ -1,4 +1,4 @@
-System.register(['angular2/core', './student-list.component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './student-list.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,31 +10,43 @@ System.register(['angular2/core', './student-list.component'], function(exports_
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, student_list_component_1;
+    var core_1, router_1, student_list_component_1;
     var CreateStudentComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
+            function (router_1_1) {
+                router_1 = router_1_1;
+            },
             function (student_list_component_1_1) {
                 student_list_component_1 = student_list_component_1_1;
             }],
         execute: function() {
             CreateStudentComponent = (function () {
-                function CreateStudentComponent() {
+                function CreateStudentComponent(_router, _routeParams) {
+                    this._router = _router;
+                    this._routeParams = _routeParams;
                     this.classes = ['A', 'B', 'C', 'D', 'E'];
                 }
-                CreateStudentComponent.prototype.addNewStudent = function (newStudent) {
-                    if (newStudent) {
-                    }
+                // addNewStudent(newStudent) {
+                //   if(newStudent) {
+                //     //push new Student to Student Table
+                //     //....
+                //     // this.student.push(newStudent);
+                //     // console.log("NEW STUDENT", newStudent);
+                //   }
+                // }
+                CreateStudentComponent.prototype.backToStudentList = function () {
+                    this._router.navigate(['StudentList']);
                 };
                 CreateStudentComponent = __decorate([
                     core_1.Component({
                         templateUrl: 'app/student/create-student-form.component.html',
                         directives: [student_list_component_1.StudentListComponent]
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [router_1.Router, router_1.RouteParams])
                 ], CreateStudentComponent);
                 return CreateStudentComponent;
             }());

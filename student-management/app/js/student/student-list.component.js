@@ -37,6 +37,7 @@ System.register(['angular2/core', 'angular2/router', './student.service', './get
                 //inject StudentService
                 function StudentListComponent(_studentService) {
                     this._studentService = _studentService;
+                    this.classes = ["A", "B", "C", "D", "E"];
                 }
                 StudentListComponent.prototype.ngOnInit = function () {
                     console.debug("_studentService:", this._studentService);
@@ -48,12 +49,20 @@ System.register(['angular2/core', 'angular2/router', './student.service', './get
                     // }
                     this.getStudent();
                 };
+                //get student list
                 StudentListComponent.prototype.getStudent = function () {
                     var _this = this;
                     this._studentService.getStudent().subscribe(function (students) {
                         _this.students = students;
                         // localStorage.setItem('students', JSON.stringify(this.students));
                     });
+                };
+                //get className for filtering
+                StudentListComponent.prototype.getClassName = function (className) {
+                    console.log("CLASS NAME ", className);
+                    this.selectedClassName = className;
+                    console.log("SELECTED CLASS ", this.selectedClassName);
+                    this.isSelected = !this.isSelected;
                 };
                 StudentListComponent.prototype.getCurrentStudent = function (student) {
                     console.log("Student:", student);
