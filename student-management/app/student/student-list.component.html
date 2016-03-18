@@ -2,7 +2,7 @@
   <!-- class navigation -->
   <div class="col-md-2">
     <ul class="class-menu">Select Class
-      <li [class.chosen]="selectedClass==className" class="class-name" (click)="getClassName(className)" *ngFor="#className of classes">Class {{className}}</li>
+      <li [class.chosen]="selectedClassName==className" class="class-name" (click)="getClassName(className)" *ngFor="#className of classes">Class {{className}}</li>
     </ul>
   </div>
   <div class="col-md-10">
@@ -15,7 +15,8 @@
         <td class="column gender">Gender</td>
       </thead>
       <tbody class="table-content">
-        <tr [class.selected]="currentStudent?.id == student.id" *ngFor="#student of students" class="student-row" (click)="getCurrentStudent(student)" myHighLight>
+        <tr [class.selected]="currentStudent?.id == student.id" *ngFor="#student of students | classNameFilter:selectedClassName" class="student-row" (click)="getCurrentStudent(student)" myHighLight>
+          <td class="student-cell ordinal-number">{{student.class}}</td>
           <td class="student-cell ordinal-number">{{student.id}}</td>
           <td class="student-cell name">{{student | getFullName }} </td>
           <td class="student-cell age">{{student.age}}</td>

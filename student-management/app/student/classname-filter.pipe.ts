@@ -1,15 +1,49 @@
 import {Pipe, PipeTransform} from 'angular2/core';
 
-@Pipe({ name: 'filterByClassName'})
+@Pipe({ name: 'classNameFilter' })
 
-export class FilterStudentByClassName implements PipeTransform {
-  transform(students: any, className) {
-    // return
-    // let [className] = className;
-    return students.filter(student => {
-      return student.className = className;
-    });
-    console.log("ARRAY:", student.className);
+export class ClassNameFilterPipe implements PipeTransform {
+  transform(students: any, args: any[]) {
+    console.debug("students:", students);
+    console.debug("args:", args);
+    // let className = null;
+    // if (args && args.length > 0){
+    //   className = args[0];
+    // }
+    let [className] = args;
+
+    if (className && students) {
+       // Filter
+      students = students.filter(student => {
+        return student.class === className;
+      });
+    }
+    return students;
   }
   //http://jilles.me/ng-filter-in-angular2-pipes/
 }
+
+// import {Pipe, PipeTransform} from 'angular2/core';
+
+// @Pipe({ name: 'classNameFilter' })
+
+// export class ClassNameFilterPipe implements PipeTransform {
+//   transform(students: any, args?) {
+//     console.debug("students:", students);
+//     console.debug("args:", args);
+//     let [className] = args;
+//     // let className = null;
+//     // if (args && args.length > 0){
+//     //   className = args[0];
+//     // }
+
+//     if (className && students) {
+//       // Filter
+//       students = students.filter(student => {
+//         return student.class === className;
+//       });
+//     }
+//     return students;
+//   }
+//   //http://jilles.me/ng-filter-in-angular2-pipes/
+// }

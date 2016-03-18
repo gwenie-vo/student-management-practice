@@ -7,6 +7,7 @@ import {StudentService} from './student.service';
 import {Student} from './student';
 import {GetFullNamePipe} from './get-fullname.pipe';
 import {StudentControllerComponent} from './student-controller.component';
+import {ClassNameFilterPipe} from './classname-filter.pipe';
 import {HighLightDirective} from './highlight.directive';
 
 @Component({
@@ -14,7 +15,7 @@ import {HighLightDirective} from './highlight.directive';
   templateUrl: "app/student/student-list.component.html",
   providers: [StudentService],
   directives: [ROUTER_DIRECTIVES, StudentControllerComponent, HighLightDirective],
-  pipes: [GetFullNamePipe],
+  pipes: [GetFullNamePipe, ClassNameFilterPipe]
 })
 
 export class StudentListComponent implements OnInit {
@@ -30,15 +31,8 @@ export class StudentListComponent implements OnInit {
 
   ngOnInit() {
     console.debug("_studentService:", this._studentService);
-
-    // let students = JSON.parse(localStorage.getItem('students'));
-
-    // if (students) {
-    //   this.students = students;
-    // } else {
-    //   this.getStudent();
-    // }
     this.getStudent();
+    // this.selectedClassName = "B";
   }
 
   //get student list
@@ -46,8 +40,6 @@ export class StudentListComponent implements OnInit {
     this._studentService.getStudent().subscribe(
       students => {
         this.students = students;
-
-        // localStorage.setItem('students', JSON.stringify(this.students));
       }
     );
   }
@@ -60,6 +52,7 @@ export class StudentListComponent implements OnInit {
     this.isSelected = !this.isSelected;
   }
 
+  //get current student
   getCurrentStudent(student) {
     console.log("Student:", student);
     this.currentStudent = student;

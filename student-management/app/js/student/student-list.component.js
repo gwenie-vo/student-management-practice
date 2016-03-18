@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './student.service', './get-fullname.pipe', './student-controller.component', './highlight.directive'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './student.service', './get-fullname.pipe', './student-controller.component', './classname-filter.pipe', './highlight.directive'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', './student.service', './get
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, student_service_1, get_fullname_pipe_1, student_controller_component_1, highlight_directive_1;
+    var core_1, router_1, student_service_1, get_fullname_pipe_1, student_controller_component_1, classname_filter_pipe_1, highlight_directive_1;
     var StudentListComponent;
     return {
         setters:[
@@ -29,6 +29,9 @@ System.register(['angular2/core', 'angular2/router', './student.service', './get
             function (student_controller_component_1_1) {
                 student_controller_component_1 = student_controller_component_1_1;
             },
+            function (classname_filter_pipe_1_1) {
+                classname_filter_pipe_1 = classname_filter_pipe_1_1;
+            },
             function (highlight_directive_1_1) {
                 highlight_directive_1 = highlight_directive_1_1;
             }],
@@ -41,20 +44,14 @@ System.register(['angular2/core', 'angular2/router', './student.service', './get
                 }
                 StudentListComponent.prototype.ngOnInit = function () {
                     console.debug("_studentService:", this._studentService);
-                    // let students = JSON.parse(localStorage.getItem('students'));
-                    // if (students) {
-                    //   this.students = students;
-                    // } else {
-                    //   this.getStudent();
-                    // }
                     this.getStudent();
+                    // this.selectedClassName = "B";
                 };
                 //get student list
                 StudentListComponent.prototype.getStudent = function () {
                     var _this = this;
                     this._studentService.getStudent().subscribe(function (students) {
                         _this.students = students;
-                        // localStorage.setItem('students', JSON.stringify(this.students));
                     });
                 };
                 //get className for filtering
@@ -64,6 +61,7 @@ System.register(['angular2/core', 'angular2/router', './student.service', './get
                     console.log("SELECTED CLASS ", this.selectedClassName);
                     this.isSelected = !this.isSelected;
                 };
+                //get current student
                 StudentListComponent.prototype.getCurrentStudent = function (student) {
                     console.log("Student:", student);
                     this.currentStudent = student;
@@ -74,7 +72,7 @@ System.register(['angular2/core', 'angular2/router', './student.service', './get
                         templateUrl: "app/student/student-list.component.html",
                         providers: [student_service_1.StudentService],
                         directives: [router_1.ROUTER_DIRECTIVES, student_controller_component_1.StudentControllerComponent, highlight_directive_1.HighLightDirective],
-                        pipes: [get_fullname_pipe_1.GetFullNamePipe],
+                        pipes: [get_fullname_pipe_1.GetFullNamePipe, classname_filter_pipe_1.ClassNameFilterPipe]
                     }), 
                     __metadata('design:paramtypes', [student_service_1.StudentService])
                 ], StudentListComponent);
