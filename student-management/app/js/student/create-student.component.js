@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './student-list.component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './student-list.component', './student.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', './student-list.component']
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, student_list_component_1;
+    var core_1, router_1, student_list_component_1, student_service_1;
     var CreateStudentComponent;
     return {
         setters:[
@@ -22,31 +22,51 @@ System.register(['angular2/core', 'angular2/router', './student-list.component']
             },
             function (student_list_component_1_1) {
                 student_list_component_1 = student_list_component_1_1;
+            },
+            function (student_service_1_1) {
+                student_service_1 = student_service_1_1;
             }],
         execute: function() {
             CreateStudentComponent = (function () {
-                function CreateStudentComponent(_router, _routeParams) {
+                function CreateStudentComponent(_router, _routeParams, _studentService) {
                     this._router = _router;
                     this._routeParams = _routeParams;
+                    this._studentService = _studentService;
                     this.classes = ['A', 'B', 'C', 'D', 'E'];
                 }
-                // addNewStudent(newStudent) {
-                //   if(newStudent) {
-                //     //push new Student to Student Table
-                //     //....
-                //     // this.student.push(newStudent);
-                //     // console.log("NEW STUDENT", newStudent);
-                //   }
-                // }
+                CreateStudentComponent.prototype.ngOnInit = function () {
+                    console.log("STUDENT", this.student);
+                    console.log("STUDENT ARRAY", this.students);
+                };
+                //get student list
+                CreateStudentComponent.prototype.getStudent = function () {
+                    var _this = this;
+                    this._studentService.getStudent().subscribe(function (students) {
+                        _this.students = students;
+                    });
+                };
+                CreateStudentComponent.prototype.addNewStudent = function () {
+                    // this.student = new Student(32, '', '', '', '', '');
+                    // if(newStudent) {
+                    //push new Student to Student Table
+                    //....
+                    // this.student.push(newStudent);
+                    // console.log("NEW STUDENT", newStudent);
+                    // }
+                };
                 CreateStudentComponent.prototype.backToStudentList = function () {
                     this._router.navigate(['StudentList']);
+                };
+                CreateStudentComponent.prototype.onSubmit = function (data) {
+                    console.debug("DATA:", data);
                 };
                 CreateStudentComponent = __decorate([
                     core_1.Component({
                         templateUrl: 'app/student/create-student-form.component.html',
-                        directives: [student_list_component_1.StudentListComponent]
+                        directives: [student_list_component_1.StudentListComponent],
+                        providers: [student_service_1.StudentService]
                     }), 
-                    __metadata('design:paramtypes', [router_1.Router, router_1.RouteParams])
+                    __metadata('design:paramtypes', [router_1.Router, router_1.RouteParams, student_service_1.StudentService])
                 ], CreateStudentComponent);
                 return CreateStudentComponent;
             }());

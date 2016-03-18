@@ -28,6 +28,8 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                     // if (args && args.length > 0){
                     //   className = args[0];
                     // }
+                    //
+                    //get the first value of array
                     var className = args[0];
                     if (className && students) {
                         // Filter
@@ -47,25 +49,4 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         }
     }
 });
-// import {Pipe, PipeTransform} from 'angular2/core';
-// @Pipe({ name: 'classNameFilter' })
-// export class ClassNameFilterPipe implements PipeTransform {
-//   transform(students: any, args?) {
-//     console.debug("students:", students);
-//     console.debug("args:", args);
-//     let [className] = args;
-//     // let className = null;
-//     // if (args && args.length > 0){
-//     //   className = args[0];
-//     // }
-//     if (className && students) {
-//       // Filter
-//       students = students.filter(student => {
-//         return student.class === className;
-//       });
-//     }
-//     return students;
-//   }
-//   //http://jilles.me/ng-filter-in-angular2-pipes/
-// }
 //# sourceMappingURL=classname-filter.pipe.js.map
