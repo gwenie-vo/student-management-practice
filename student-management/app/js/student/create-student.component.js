@@ -43,23 +43,13 @@ System.register(['angular2/core', 'angular2/router', './student-list.component',
                         _this.students = students;
                     });
                 };
-                CreateStudentComponent.prototype.addNewStudent = function () {
-                    // this.student = new Student(32, '', '', '', '', '');
-                    // if(newStudent) {
-                    //push new Student to Student Table
-                    //....
-                    // this.student.push(newStudent);
-                    // console.log("NEW STUDENT", newStudent);
-                    // }
-                    // this.active = false;
-                    // setTimeout(() => this.active = true, 0);
-                };
                 CreateStudentComponent.prototype.backToStudentList = function () {
                     this._router.navigate(['StudentList']);
                 };
                 CreateStudentComponent.prototype.onSubmit = function (data) {
                     console.debug("data:", data);
                     // localStorage.setItem('student', JSON.stringify(data));
+                    this._studentService.createNewStudent(data);
                 };
                 CreateStudentComponent = __decorate([
                     core_1.Component({

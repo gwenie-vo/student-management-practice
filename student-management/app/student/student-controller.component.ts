@@ -2,6 +2,7 @@ import {Component} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 import {Student} from './student';
 import {Router}              from 'angular2/router';
+import {StudentService} from './student.service';
 
 @Component({
   selector: 'student-controller',
@@ -13,12 +14,14 @@ import {Router}              from 'angular2/router';
   </nav>
   `,
   directives: [ROUTER_DIRECTIVES],
+  providers: [StudentService],
   inputs: ['student']
 })
 
 export class StudentControllerComponent {
   student: Student;
-  constructor(private _router: Router) {}
+  constructor(private _router: Router,
+              private _studentService: StudentService) {}
 
   navigateToEditStudent(e) {
     e.preventDefault();
@@ -29,14 +32,17 @@ export class StudentControllerComponent {
 
   /*Delete student from list
   */
-  deletedStudent(student) {
+  deletedStudent() {
     console.log('Selected Student', this.student);
-    student = this.student.firstName + " " + this.student.lastName;
+    if (this.student) {
+      let student = this.student.firstName + " " + this.student.lastName;
 
-    var result = confirm("Are you sure to delete " + student + " profile ?");
+      var result = confirm("Are you sure to delete " + student + " profile ?");
 
-    if (result === true) {
-      console.log(student + " has been removed!");
+      if (result === true) {
+        console.log(student + " has been removed!");
+        this._studentService.deleteStudent(this.student.id);
+      }
     }
   }
 }

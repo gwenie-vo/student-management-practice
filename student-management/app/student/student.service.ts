@@ -15,15 +15,40 @@ export class StudentService {
 
   private _studentUrl = 'app/student/student.json'; //URL to JSON file
 
+  getStudentLocalStorage(){
+    let studentLocalStorage: any = localStorage.getItem('student');
+    if (!studentLocalStorage) {
+      studentLocalStorage = "{}";
+      let studentLocalStorageJson = JSON.parse(studentLocalStorage);
+      if (!studentLocalStorageJson.list) {
+        studentLocalStorageJson.list = [];
+      }
+      if (!studentLocalStorageJson.classes) {
+        studentLocalStorageJson.classes = ["A", "B", "C", "D", "E", "F"];
+      }
+      // localStorage.setItem('student', JSON.stringify(studentLocalStorageJson));
+      this.saveStudentStg(studentLocalStorageJson);
+    }
+    let studentStg = JSON.parse(localStorage.getItem('student'));
+    return studentStg;
+  }
+
+
+  saveStudentStg(studentStg){
+    localStorage.setItem('student', JSON.stringify(studentStg));
+  }
+
   getStudent() {
-     console.debug("TEST:", this.http.get(this._studentUrl));
-    return this.http.get(this._studentUrl)
-              .map(res => {
-                return res.json().data;
-              });
-    // return Observable.create((observe) => {
-    //   let studentLocalStorage:any = localStorage.getItem('student');
-    // });
+     console.debug("TEST2:", this.http.get(this._studentUrl));
+    // return this.http.get(this._studentUrl)
+    //           .map(res => {
+    //             return res.json().data;
+    //           });
+    return Observable.create((observe) => {
+      let studentStg = this.getStudentLocalStorage();
+      observe.next(studentStg.list);
+        observe.complete();
+    });
   }
 
   // find a student has id === currentStudent id
@@ -41,4 +66,33 @@ export class StudentService {
     );
   }
 
+  /**
+   * [saveStudent description]
+   * @param {[type]} student [description]
+   */
+  saveStudent(student) {
+    // localStorage.setItem('students', JSON.stringify(this.students));
+    // this._router.navigate(['StudentList']);
+    console.log("save:", student);
+  }
+
+  createNewStudent(student) {
+    let studentStg = this.getStudentLocalStorage();
+    student.id = (Math.random() * 10000) + 1;
+    studentStg.list.push(student);
+    this.saveStudentStg(studentStg);
+  }
+
+  deleteStudent(studentId) {
+    let studentStg = this.getStudentLocalStorage();
+    studentStg.list.forEach((student, idx) => {
+      console.debug("studentId:", studentId, student.id);
+      console.log("DELETE1:", idx);
+      if (student.id === studentId) {
+        console.log("DELETE:", idx);
+        studentStg.list.splice(idx, 1);
+      }
+    })
+    this.saveStudentStg(studentStg);
+  }
 }

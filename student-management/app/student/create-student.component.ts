@@ -34,21 +34,6 @@ export class CreateStudentComponent {
     );
   }
 
-  addNewStudent() {
-    // this.student = new Student(32, '', '', '', '', '');
-
-
-
-    // if(newStudent) {
-      //push new Student to Student Table
-      //....
-      // this.student.push(newStudent);
-      // console.log("NEW STUDENT", newStudent);
-    // }
-    // this.active = false;
-    // setTimeout(() => this.active = true, 0);
-  }
-
   backToStudentList() {
     this._router.navigate(['StudentList']);
   }
@@ -56,6 +41,7 @@ export class CreateStudentComponent {
   onSubmit(data){
     console.debug("data:", data);
     // localStorage.setItem('student', JSON.stringify(data));
+    this._studentService.createNewStudent(data);
   }
 }
 
