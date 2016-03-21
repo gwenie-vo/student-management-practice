@@ -28,11 +28,14 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
                     this._studentUrl = 'app/student/student.json'; //URL to JSON file
                 }
                 StudentService.prototype.getStudent = function () {
-                    // console.debug("TEST:", this.http.get(this._studentUrl));
+                    console.debug("TEST:", this.http.get(this._studentUrl));
                     return this.http.get(this._studentUrl)
                         .map(function (res) {
                         return res.json().data;
                     });
+                    // return Observable.create((observe) => {
+                    //   let studentLocalStorage:any = localStorage.getItem('student');
+                    // });
                 };
                 // find a student has id === currentStudent id
                 StudentService.prototype.findStudentById = function (id) {

@@ -23,8 +23,6 @@ export class CreateStudentComponent {
     private _studentService: StudentService){}
 
   ngOnInit() {
-    console.log("STUDENT",this.student);
-    console.log("STUDENT ARRAY", this.students);
   }
 
   //get student list
@@ -38,12 +36,17 @@ export class CreateStudentComponent {
 
   addNewStudent() {
     // this.student = new Student(32, '', '', '', '', '');
+
+
+
     // if(newStudent) {
       //push new Student to Student Table
       //....
       // this.student.push(newStudent);
       // console.log("NEW STUDENT", newStudent);
     // }
+    // this.active = false;
+    // setTimeout(() => this.active = true, 0);
   }
 
   backToStudentList() {
@@ -51,7 +54,8 @@ export class CreateStudentComponent {
   }
 
   onSubmit(data){
-    console.debug("DATA:", data);
+    console.debug("data:", data);
+    // localStorage.setItem('student', JSON.stringify(data));
   }
 }
 

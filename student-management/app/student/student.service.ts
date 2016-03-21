@@ -16,11 +16,14 @@ export class StudentService {
   private _studentUrl = 'app/student/student.json'; //URL to JSON file
 
   getStudent() {
-     // console.debug("TEST:", this.http.get(this._studentUrl));
+     console.debug("TEST:", this.http.get(this._studentUrl));
     return this.http.get(this._studentUrl)
               .map(res => {
                 return res.json().data;
               });
+    // return Observable.create((observe) => {
+    //   let studentLocalStorage:any = localStorage.getItem('student');
+    // });
   }
 
   // find a student has id === currentStudent id

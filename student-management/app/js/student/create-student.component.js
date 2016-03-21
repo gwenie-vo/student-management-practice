@@ -35,8 +35,6 @@ System.register(['angular2/core', 'angular2/router', './student-list.component',
                     this.classes = ['A', 'B', 'C', 'D', 'E'];
                 }
                 CreateStudentComponent.prototype.ngOnInit = function () {
-                    console.log("STUDENT", this.student);
-                    console.log("STUDENT ARRAY", this.students);
                 };
                 //get student list
                 CreateStudentComponent.prototype.getStudent = function () {
@@ -53,12 +51,15 @@ System.register(['angular2/core', 'angular2/router', './student-list.component',
                     // this.student.push(newStudent);
                     // console.log("NEW STUDENT", newStudent);
                     // }
+                    // this.active = false;
+                    // setTimeout(() => this.active = true, 0);
                 };
                 CreateStudentComponent.prototype.backToStudentList = function () {
                     this._router.navigate(['StudentList']);
                 };
                 CreateStudentComponent.prototype.onSubmit = function (data) {
-                    console.debug("DATA:", data);
+                    console.debug("data:", data);
+                    // localStorage.setItem('student', JSON.stringify(data));
                 };
                 CreateStudentComponent = __decorate([
                     core_1.Component({

@@ -16,6 +16,7 @@
       <div class="form-group">
         <label for="firstname">First Name:</label>
         <input type="text" required class="form-control" ngControl="firstName" #firstName="ngForm" >
+        {{firstName.valid}}--{{firstName.pristine}}
         <div [hidden]="firstName.valid || firstName.pristine" class="alert alert-danger">
           First Name is required
         </div>
@@ -31,7 +32,7 @@
       <!-- age -->
       <div class="form-group">
         <label for="age">Age:</label>
-        <input type="text" class="form-control" ngControl="age" #age="ngForm">
+        <input type="text" class="form-control" required ngControl="age" #age="ngForm">
         <div [hidden]="age.valid || age.pristine" class="alert alert-danger">
           Age is required
         </div>
@@ -40,7 +41,7 @@
       <div class="form-group">
         <label for="gender">Gender:</label>
         <input class="gender-option" type="radio" name="gender" value="male" > Male
-        <input class="gender-option" type="radio" name="gender" value="female"  > Female
+        <input class="gender-option" type="radio" name="gender" value="female" > Female
       </div>
       <button type="submit" class="btn btn-primary" (click)="addNewStudent()">New Student</button>
       <button type="button" class="btn btn-primary" (click)="backToStudentList()">Back</button>
