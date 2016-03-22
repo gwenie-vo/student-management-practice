@@ -23,7 +23,7 @@ export class StudentListComponent implements OnInit {
   //inject StudentService
   constructor(private _studentService: StudentService) { }
 
-  classes = ["A", "B", "C", "D", "E"];
+  classes = null;
   students: Student[];
   currentStudent: Student;
   selectedClassName; //keyword to filter
@@ -32,6 +32,7 @@ export class StudentListComponent implements OnInit {
   ngOnInit() {
     console.debug("_studentService:", this._studentService);
     this.getStudent();
+    this.getClasses();
     // this.selectedClassName = "B";
   }
 
@@ -42,6 +43,12 @@ export class StudentListComponent implements OnInit {
         this.students = students;
       }
     );
+  }
+
+  getClasses(){
+    this._studentService.getClasses().subscribe( (classes) => {
+      this.classes = classes;
+     });
   }
 
   //get className for filtering
@@ -56,5 +63,13 @@ export class StudentListComponent implements OnInit {
   getCurrentStudent(student) {
     console.log("Student:", student);
     this.currentStudent = student;
+  }
+
+  deleteStudentInController(student: any){
+    console.debug("DELETE1111:", student);
+    if (student && student.id){
+    console.debug("Deleted student:", student.id, "--Refresh list student");
+      this.getStudent();
+    }
   }
 }

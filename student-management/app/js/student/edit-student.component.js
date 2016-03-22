@@ -47,8 +47,9 @@ System.register(['angular2/core', 'angular2/router', './student.service'], funct
                 EditStudentComponent.prototype.saveEditing = function () {
                     // localStorage.setItem('students', JSON.stringify(this.students));
                     // this._router.navigate(['StudentList']);
-                    this._studentService.saveStudent(this.student);
-                    console.log("save:", this.student);
+                    this._studentService.saveStudent(this.student).subscribe(function (student) {
+                        console.debug("Save student sucessful.");
+                    });
                 };
                 EditStudentComponent.prototype.backToStudentList = function () {
                     this._router.navigate(['StudentList']);

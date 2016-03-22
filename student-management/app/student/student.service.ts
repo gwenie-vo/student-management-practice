@@ -15,25 +15,46 @@ export class StudentService {
 
   // private _studentUrl = 'app/student/student.json'; //URL to JSON file
 
-  getStudentLocalStorage(){
-    let studentLocalStorage: any = localStorage.getItem('student');
-    if (!studentLocalStorage) {
-      studentLocalStorage = "{}";
+  initStudentLocalStorage(){
+      let studentLocalStorage = "{}";
+
+      //parse string data to JSON
       let studentLocalStorageJson = JSON.parse(studentLocalStorage);
+
+      //check if the data list is not exists, then set the blank array for
       if (!studentLocalStorageJson.list) {
         studentLocalStorageJson.list = [];
       }
+
+      // add list of class name array
       if (!studentLocalStorageJson.classes) {
         studentLocalStorageJson.classes = ["A", "B", "C", "D", "E", "F"];
       }
       // localStorage.setItem('student', JSON.stringify(studentLocalStorageJson));
       this.saveStudentStg(studentLocalStorageJson);
+  }
+
+  getClasses(){
+    return Observable.create((observe) => {
+        let studentStg = this.getStudentLocalStorage();
+        observe.next(studentStg.classes);
+        observe.complete();
+    });
+  }
+
+  getStudentLocalStorage(){
+    let studentLocalStorage: any = localStorage.getItem('student');
+
+    //check if data is not exist then set a blank string object
+    if (!studentLocalStorage) {
+        this.initStudentLocalStorage();
     }
+
     let studentStg = JSON.parse(localStorage.getItem('student'));
     return studentStg;
   }
 
-
+  //push student list to localStorage
   saveStudentStg(studentStg){
     localStorage.setItem('student', JSON.stringify(studentStg));
   }
@@ -46,8 +67,8 @@ export class StudentService {
     //             return res.json().data;
     //           });
     return Observable.create((observe) => {
-      let studentStg = this.getStudentLocalStorage();
-      observe.next(studentStg.list);
+        let studentStg = this.getStudentLocalStorage();
+        observe.next(studentStg.list);
         observe.complete();
     });
   }
@@ -74,7 +95,20 @@ export class StudentService {
   saveStudent(student) {
     // localStorage.setItem('students', JSON.stringify(this.students));
     // this._router.navigate(['StudentList']);
-    console.log("save:", student);
+    console.log("saveStudentsaveStudentsaveStudentsaveStudentsaveStudent:", student);
+    return Observable.create((observe) => {
+        let studentStg = this.getStudentLocalStorage();
+        let currentStudent = null;
+        studentStg.list.forEach((std, idx) => {
+          if (std.id === student.id){
+              studentStg.list[idx] = student;
+              currentStudent = student;
+          }
+        });
+        this.saveStudentStg(studentStg);
+        observe.next(currentStudent);
+        observe.complete();
+    });
   }
 
   createNewStudent(student) {
@@ -96,4 +130,5 @@ export class StudentService {
     })
     this.saveStudentStg(studentStg);
   }
+
 }

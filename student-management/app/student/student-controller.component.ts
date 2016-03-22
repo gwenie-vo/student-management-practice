@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core';
+import {Component, EventEmitter, Output, Input} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 import {Student} from './student';
 import {Router}              from 'angular2/router';
@@ -15,11 +15,13 @@ import {StudentService} from './student.service';
   `,
   directives: [ROUTER_DIRECTIVES],
   providers: [StudentService],
-  inputs: ['student']
+  // inputs: ['student'],
+  // outputs: ['deleteStudent']
 })
 
 export class StudentControllerComponent {
-  student: Student;
+  @Input() student: Student;
+  @Output() deleteStudent = new EventEmitter<any>();
   constructor(private _router: Router,
               private _studentService: StudentService) {}
 
@@ -42,6 +44,7 @@ export class StudentControllerComponent {
       if (result === true) {
         console.log(student + " has been removed!");
         this._studentService.deleteStudent(this.student.id);
+        this.deleteStudent.next(this.student);
       }
     }
   }

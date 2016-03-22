@@ -29,5 +29,5 @@
 </div>
 <!-- Control -->
 <div class="link">
-  <student-controller [student]="currentStudent"></student-controller>
+  <student-controller [student]="currentStudent" (deleteStudent)="deleteStudentInController($event)"></student-controller>
 </div>

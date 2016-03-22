@@ -30,23 +30,39 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
                     this.http = http;
                 }
                 // private _studentUrl = 'app/student/student.json'; //URL to JSON file
+                StudentService.prototype.initStudentLocalStorage = function () {
+                    var studentLocalStorage = "{}";
+                    //parse string data to JSON
+                    var studentLocalStorageJson = JSON.parse(studentLocalStorage);
+                    //check if the data list is not exists, then set the blank array for
+                    if (!studentLocalStorageJson.list) {
+                        studentLocalStorageJson.list = [];
+                    }
+                    // add list of class name array
+                    if (!studentLocalStorageJson.classes) {
+                        studentLocalStorageJson.classes = ["A", "B", "C", "D", "E", "F"];
+                    }
+                    // localStorage.setItem('student', JSON.stringify(studentLocalStorageJson));
+                    this.saveStudentStg(studentLocalStorageJson);
+                };
+                StudentService.prototype.getClasses = function () {
+                    var _this = this;
+                    return Rx_1.Observable.create(function (observe) {
+                        var studentStg = _this.getStudentLocalStorage();
+                        observe.next(studentStg.classes);
+                        observe.complete();
+                    });
+                };
                 StudentService.prototype.getStudentLocalStorage = function () {
                     var studentLocalStorage = localStorage.getItem('student');
+                    //check if data is not exist then set a blank string object
                     if (!studentLocalStorage) {
-                        studentLocalStorage = "{}";
-                        var studentLocalStorageJson = JSON.parse(studentLocalStorage);
-                        if (!studentLocalStorageJson.list) {
-                            studentLocalStorageJson.list = [];
-                        }
-                        if (!studentLocalStorageJson.classes) {
-                            studentLocalStorageJson.classes = ["A", "B", "C", "D", "E", "F"];
-                        }
-                        // localStorage.setItem('student', JSON.stringify(studentLocalStorageJson));
-                        this.saveStudentStg(studentLocalStorageJson);
+                        this.initStudentLocalStorage();
                     }
                     var studentStg = JSON.parse(localStorage.getItem('student'));
                     return studentStg;
                 };
+                //push student list to localStorage
                 StudentService.prototype.saveStudentStg = function (studentStg) {
                     localStorage.setItem('student', JSON.stringify(studentStg));
                 };
@@ -81,9 +97,23 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
                  * @param {[type]} student [description]
                  */
                 StudentService.prototype.saveStudent = function (student) {
+                    var _this = this;
                     // localStorage.setItem('students', JSON.stringify(this.students));
                     // this._router.navigate(['StudentList']);
-                    console.log("save:", student);
+                    console.log("saveStudentsaveStudentsaveStudentsaveStudentsaveStudent:", student);
+                    return Rx_1.Observable.create(function (observe) {
+                        var studentStg = _this.getStudentLocalStorage();
+                        var currentStudent = null;
+                        studentStg.list.forEach(function (std, idx) {
+                            if (std.id === student.id) {
+                                studentStg.list[idx] = student;
+                                currentStudent = student;
+                            }
+                        });
+                        _this.saveStudentStg(studentStg);
+                        observe.next(currentStudent);
+                        observe.complete();
+                    });
                 };
                 StudentService.prototype.createNewStudent = function (student) {
                     var studentStg = this.getStudentLocalStorage();

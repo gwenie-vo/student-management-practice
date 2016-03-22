@@ -40,11 +40,12 @@ System.register(['angular2/core', 'angular2/router', './student.service', './get
                 //inject StudentService
                 function StudentListComponent(_studentService) {
                     this._studentService = _studentService;
-                    this.classes = ["A", "B", "C", "D", "E"];
+                    this.classes = null;
                 }
                 StudentListComponent.prototype.ngOnInit = function () {
                     console.debug("_studentService:", this._studentService);
                     this.getStudent();
+                    this.getClasses();
                     // this.selectedClassName = "B";
                 };
                 //get student list
@@ -52,6 +53,12 @@ System.register(['angular2/core', 'angular2/router', './student.service', './get
                     var _this = this;
                     this._studentService.getStudent().subscribe(function (students) {
                         _this.students = students;
+                    });
+                };
+                StudentListComponent.prototype.getClasses = function () {
+                    var _this = this;
+                    this._studentService.getClasses().subscribe(function (classes) {
+                        _this.classes = classes;
                     });
                 };
                 //get className for filtering
@@ -65,6 +72,13 @@ System.register(['angular2/core', 'angular2/router', './student.service', './get
                 StudentListComponent.prototype.getCurrentStudent = function (student) {
                     console.log("Student:", student);
                     this.currentStudent = student;
+                };
+                StudentListComponent.prototype.deleteStudentInController = function (student) {
+                    console.debug("DELETE1111:", student);
+                    if (student && student.id) {
+                        console.debug("Deleted student:", student.id, "--Refresh list student");
+                        this.getStudent();
+                    }
                 };
                 StudentListComponent = __decorate([
                     core_1.Component({

@@ -40,8 +40,9 @@ export class EditStudentComponent {
   saveEditing() {
     // localStorage.setItem('students', JSON.stringify(this.students));
     // this._router.navigate(['StudentList']);
-    this._studentService.saveStudent(this.student);
-    console.log("save:", this.student);
+    this._studentService.saveStudent(this.student).subscribe(student => {
+      console.debug("Save student sucessful.");
+    });
   }
 
   backToStudentList() {
