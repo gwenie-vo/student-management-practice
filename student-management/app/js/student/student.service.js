@@ -28,8 +28,8 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
             StudentService = (function () {
                 function StudentService(http) {
                     this.http = http;
-                    this._studentUrl = 'app/student/student.json'; //URL to JSON file
                 }
+                // private _studentUrl = 'app/student/student.json'; //URL to JSON file
                 StudentService.prototype.getStudentLocalStorage = function () {
                     var studentLocalStorage = localStorage.getItem('student');
                     if (!studentLocalStorage) {
@@ -52,7 +52,8 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
                 };
                 StudentService.prototype.getStudent = function () {
                     var _this = this;
-                    console.debug("TEST2:", this.http.get(this._studentUrl));
+                    // console.debug("TEST2:", this.http.get(this._studentUrl));
+                    // get data from JSON
                     // return this.http.get(this._studentUrl)
                     //           .map(res => {
                     //             return res.json().data;

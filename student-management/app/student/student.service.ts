@@ -13,7 +13,7 @@ export class StudentService {
 
   constructor(private http: Http) {}
 
-  private _studentUrl = 'app/student/student.json'; //URL to JSON file
+  // private _studentUrl = 'app/student/student.json'; //URL to JSON file
 
   getStudentLocalStorage(){
     let studentLocalStorage: any = localStorage.getItem('student');
@@ -39,7 +39,8 @@ export class StudentService {
   }
 
   getStudent() {
-     console.debug("TEST2:", this.http.get(this._studentUrl));
+    // console.debug("TEST2:", this.http.get(this._studentUrl));
+    // get data from JSON
     // return this.http.get(this._studentUrl)
     //           .map(res => {
     //             return res.json().data;
