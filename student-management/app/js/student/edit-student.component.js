@@ -37,17 +37,13 @@ System.register(['angular2/core', 'angular2/router', './student.service'], funct
                     this.getStudentById(id);
                 };
                 EditStudentComponent.prototype.getStudentById = function (id) {
-                    // this.students = JSON.parse(localStorage.getItem('students'));
-                    // console.log(this.students);
                     var _this = this;
                     this._studentService.findStudentById(id).subscribe(function (student) {
                         _this.student = student;
                     });
                 };
                 EditStudentComponent.prototype.saveEditing = function () {
-                    // localStorage.setItem('students', JSON.stringify(this.students));
-                    // this._router.navigate(['StudentList']);
-                    this._studentService.saveStudent(this.student).subscribe(function (student) {
+                    this._studentService.saveEditStudent(this.student).subscribe(function (student) {
                         console.debug("Save student sucessful.");
                     });
                 };

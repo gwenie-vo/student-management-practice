@@ -96,7 +96,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
                  * [saveStudent description]
                  * @param {[type]} student [description]
                  */
-                StudentService.prototype.saveStudent = function (student) {
+                StudentService.prototype.saveEditStudent = function (student) {
                     var _this = this;
                     // localStorage.setItem('students', JSON.stringify(this.students));
                     // this._router.navigate(['StudentList']);

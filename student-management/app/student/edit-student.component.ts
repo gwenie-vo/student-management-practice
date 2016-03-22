@@ -27,20 +27,14 @@ export class EditStudentComponent {
   }
 
   getStudentById(id) {
-
-    // this.students = JSON.parse(localStorage.getItem('students'));
-    // console.log(this.students);
-
-     this._studentService.findStudentById(id).subscribe( student => {
-       this.student = student;
-     });
+    this._studentService.findStudentById(id).subscribe( student => {
+      this.student = student;
+    });
 
   }
 
   saveEditing() {
-    // localStorage.setItem('students', JSON.stringify(this.students));
-    // this._router.navigate(['StudentList']);
-    this._studentService.saveStudent(this.student).subscribe(student => {
+    this._studentService.saveEditStudent(this.student).subscribe(student => {
       console.debug("Save student sucessful.");
     });
   }

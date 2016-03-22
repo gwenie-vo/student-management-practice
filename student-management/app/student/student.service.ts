@@ -92,7 +92,7 @@ export class StudentService {
    * [saveStudent description]
    * @param {[type]} student [description]
    */
-  saveStudent(student) {
+  saveEditStudent(student) {
     // localStorage.setItem('students', JSON.stringify(this.students));
     // this._router.navigate(['StudentList']);
     console.log("saveStudentsaveStudentsaveStudentsaveStudentsaveStudent:", student);
