@@ -98,9 +98,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
                  */
                 StudentService.prototype.saveEditStudent = function (student) {
                     var _this = this;
-                    // localStorage.setItem('students', JSON.stringify(this.students));
-                    // this._router.navigate(['StudentList']);
-                    console.log("saveStudentsaveStudentsaveStudentsaveStudentsaveStudent:", student);
+                    console.log("Student is edited****:", student);
                     return Rx_1.Observable.create(function (observe) {
                         var studentStg = _this.getStudentLocalStorage();
                         var currentStudent = null;
@@ -124,10 +122,10 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
                 StudentService.prototype.deleteStudent = function (studentId) {
                     var studentStg = this.getStudentLocalStorage();
                     studentStg.list.forEach(function (student, idx) {
-                        console.debug("studentId:", studentId, student.id);
-                        console.log("DELETE1:", idx);
+                        // console.debug("studentId:", studentId, student.id);
+                        // console.log("DELETE1:", idx);
                         if (student.id === studentId) {
-                            console.log("DELETE:", idx);
+                            // console.log("DELETE:", idx);
                             studentStg.list.splice(idx, 1);
                         }
                     });

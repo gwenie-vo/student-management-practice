@@ -29,17 +29,26 @@ System.register(['angular2/core', 'angular2/router', './student.service'], funct
                     this._router = _router;
                     this._routeParams = _routeParams;
                     this._studentService = _studentService;
+                    this.title = "Edit student";
                 }
                 EditStudentComponent.prototype.ngOnInit = function () {
                     //get id from URL
                     var id = this._routeParams.get('id');
                     console.log("student id:", id);
                     this.getStudentById(id);
+                    this.getClasses();
                 };
                 EditStudentComponent.prototype.getStudentById = function (id) {
                     var _this = this;
                     this._studentService.findStudentById(id).subscribe(function (student) {
                         _this.student = student;
+                    });
+                };
+                EditStudentComponent.prototype.getClasses = function () {
+                    var _this = this;
+                    this._studentService.getClasses().subscribe(function (classes) {
+                        _this.classes = classes;
+                        console.log("CLASSESSSSSSSSSSSSSSSS", classes);
                     });
                 };
                 EditStudentComponent.prototype.saveEditing = function () {
@@ -49,7 +58,7 @@ System.register(['angular2/core', 'angular2/router', './student.service'], funct
                 };
                 EditStudentComponent = __decorate([
                     core_1.Component({
-                        templateUrl: "app/student/edit-student-form.component.html",
+                        templateUrl: "app/student/student-form.component.html",
                         providers: [student_service_1.StudentService]
                     }), 
                     __metadata('design:paramtypes', [router_1.Router, router_1.RouteParams, student_service_1.StudentService])

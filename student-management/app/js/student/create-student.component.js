@@ -32,6 +32,7 @@ System.register(['angular2/core', 'angular2/router', './student-list.component',
                     this._router = _router;
                     this._routeParams = _routeParams;
                     this._studentService = _studentService;
+                    this.title = "Add a new student";
                     this.classes = ['A', 'B', 'C', 'D', 'E'];
                 }
                 CreateStudentComponent.prototype.ngOnInit = function () {
@@ -53,7 +54,7 @@ System.register(['angular2/core', 'angular2/router', './student-list.component',
                 };
                 CreateStudentComponent = __decorate([
                     core_1.Component({
-                        templateUrl: 'app/student/create-student-form.component.html',
+                        templateUrl: 'app/student/student-form.component.html',
                         directives: [student_list_component_1.StudentListComponent],
                         providers: [student_service_1.StudentService]
                     }), 

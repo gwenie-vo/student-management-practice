@@ -6,12 +6,13 @@ import {StudentListComponent} from './student-list.component';
 import {StudentService} from './student.service';
 
 @Component({
-  templateUrl: 'app/student/create-student-form.component.html',
+  templateUrl: 'app/student/student-form.component.html',
   directives: [StudentListComponent],
   providers: [StudentService]
 })
 
 export class CreateStudentComponent {
+  title = "Add a new student";
   student: Student;
   students: Student[];
 
