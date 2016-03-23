@@ -5,13 +5,15 @@ import {StudentService} from './student.service';
 import {Student} from './student';
 
 @Component({
-  templateUrl: "app/student/edit-student-form.component.html",
+  templateUrl: "app/student/student-form.component.html",
   providers: [StudentService]
 })
 
 export class EditStudentComponent {
 
+  title = "Edit student";
   student: Student;
+  classes: string[];
 
   constructor(
     private _router: Router,
@@ -24,6 +26,7 @@ export class EditStudentComponent {
     console.log("student id:", id);
 
     this.getStudentById(id);
+    this.getClasses();
   }
 
   getStudentById(id) {
@@ -31,6 +34,13 @@ export class EditStudentComponent {
       this.student = student;
     });
 
+  }
+
+  getClasses() {
+    this._studentService.getClasses().subscribe( classes => {
+      this.classes = classes;
+      console.log("CLASSESSSSSSSSSSSSSSSS", classes);
+    });
   }
 
   saveEditing() {

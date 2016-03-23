@@ -4,8 +4,13 @@
     <form *ngIf="student">
       <!-- Class Name -->
       <div class="form-group">
-        <label for="class">Class</label>
-        <input type="text" class="form-control" [(ngModel)]="student.class">
+        <label for="class">Class:</label>
+          <select class="form-control" required ngControl="class" #class="ngForm" >
+            <option *ngFor="#class of classes" [value]="class">{{class}}</option>
+          </select>
+<!--           <div [hidden]="class.valid || class.pristine" class="alert alert-danger">
+          Class is required
+        </div> -->
       </div>
       <!-- First Name -->
       <div class="form-group">

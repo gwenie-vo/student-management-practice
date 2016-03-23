@@ -1,0 +1,59 @@
+<div class="container">
+  <div>
+    <h2>{{title}}</h2>
+    <form #studentForm="ngForm" (ngSubmit)="onSubmit(studentForm.value)" novalidate>
+    <!-- class -->
+      <div class="form-group">
+        <label for="class">Class:</label>
+          <select class="form-control" required ngControl="class" #class="ngForm" >
+            <option *ngFor="#class of classes" [value]="class">{{class}}</option>
+          </select>
+          <div [hidden]="class.valid || class.pristine" class="alert alert-danger">
+          Class is required
+        </div>
+      </div>
+      <!-- first name -->
+      <div class="form-group">
+        <label for="firstname">First Name:</label>
+        <input type="text" required class="form-control" ngControl="firstName" #firstName="ngForm" >
+        <div [hidden]="firstName.valid || firstName.pristine" class="alert alert-danger">
+          First Name is required
+        </div>
+      </div>
+      <!-- lastname -->
+      <div class="form-group">
+        <label for="lastname">Last Name:</label>
+        <input type="text" required class="form-control" ngControl="lastName" #lastName="ngForm">
+        <div [hidden]="lastName.valid || lastName.pristine" class="alert alert-danger">
+          Last Name is required
+        </div>
+      </div>
+      <!-- age -->
+      <div class="form-group">
+        <label for="age">Age:</label>
+        <input type="text" class="form-control" required ngControl="age" #age="ngForm">
+        <div [hidden]="age.valid || age.pristine" class="alert alert-danger">
+          Age is required
+        </div>
+      </div>
+
+      <!-- gender group -->
+      <div class="form-group">
+        <label for="gender">Gender:</label>
+        <input #female name="gender" type="radio" [checked]="student.gender === 'Female'" value="Female" (click)="student.gender = female.value" />Female
+        <input #male name="gender" type="radio" [checked]="student.gender === 'Male'" value="Male"  (click)="student.gender = male.value"/>Male
+        (Selected gender is <strong>{{student.gender}}</strong>)
+      </div>
+
+      <!-- gender -->
+      <!-- <div class="form-group">
+        <label for="gender">Gender:</label>
+        <input class="gender-option" type="radio" name="gender" value="male"> Male
+        <input class="gender-option" type="radio" name="gender" value="female"> Female
+        </div>
+       -->
+      <button type="submit" class="btn btn-primary">New Student</button>
+      <button type="button" class="btn btn-primary" (click)="backToStudentList()">Back</button>
+    </form>
+  </div>
+</div>

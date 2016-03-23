@@ -93,9 +93,7 @@ export class StudentService {
    * @param {[type]} student [description]
    */
   saveEditStudent(student) {
-    // localStorage.setItem('students', JSON.stringify(this.students));
-    // this._router.navigate(['StudentList']);
-    console.log("saveStudentsaveStudentsaveStudentsaveStudentsaveStudent:", student);
+    console.log("Student is edited****:", student);
     return Observable.create((observe) => {
         let studentStg = this.getStudentLocalStorage();
         let currentStudent = null;
@@ -121,10 +119,10 @@ export class StudentService {
   deleteStudent(studentId) {
     let studentStg = this.getStudentLocalStorage();
     studentStg.list.forEach((student, idx) => {
-      console.debug("studentId:", studentId, student.id);
-      console.log("DELETE1:", idx);
+      // console.debug("studentId:", studentId, student.id);
+      // console.log("DELETE1:", idx);
       if (student.id === studentId) {
-        console.log("DELETE:", idx);
+        // console.log("DELETE:", idx);
         studentStg.list.splice(idx, 1);
       }
     })
