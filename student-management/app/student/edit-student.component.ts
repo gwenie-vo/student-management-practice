@@ -39,7 +39,7 @@ export class EditStudentComponent {
     });
   }
 
-  backToStudentList() {
-    this._router.navigate(['StudentList']);
-  }
+  // backToStudentList() {
+  //   this._router.navigate(['StudentList']);
+  // }
 }

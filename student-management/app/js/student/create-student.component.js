@@ -43,9 +43,9 @@ System.register(['angular2/core', 'angular2/router', './student-list.component',
                         _this.students = students;
                     });
                 };
-                CreateStudentComponent.prototype.backToStudentList = function () {
-                    this._router.navigate(['StudentList']);
-                };
+                // backToStudentList() {
+                //   this._router.navigate(['StudentList']);
+                // }
                 CreateStudentComponent.prototype.onSubmit = function (data) {
                     console.debug("data:", data);
                     // localStorage.setItem('student', JSON.stringify(data));

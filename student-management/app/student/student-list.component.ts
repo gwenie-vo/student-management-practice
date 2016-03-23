@@ -1,8 +1,8 @@
 import {Component, OnInit} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 
-import {CreateStudentComponent} from './create-student.component';
-import {EditStudentComponent} from './edit-student.component';
+// import {CreateStudentComponent} from './create-student.component';
+// import {EditStudentComponent} from './edit-student.component';
 import {StudentService} from './student.service';
 import {Student} from './student';
 import {GetFullNamePipe} from './get-fullname.pipe';

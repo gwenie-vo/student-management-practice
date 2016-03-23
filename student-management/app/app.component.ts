@@ -2,8 +2,7 @@ import {Component} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 
 import {StudentListComponent}   from './student/student-list.component';
-import {CreateStudentComponent} from './student/create-student.component';
-import {EditStudentComponent} from './student/edit-student.component';
+import {StudentFormComponent} from './student/student-form.component';
 import {StudentControllerComponent} from './student/student-controller.component';
 
 @Component({
@@ -22,8 +21,8 @@ import {StudentControllerComponent} from './student/student-controller.component
  */
 @RouteConfig([
   { path: '/', name: 'StudentList', component: StudentListComponent },
-  { path: '/create-student', name: 'CreateStudent', component: CreateStudentComponent },
-  { path: '/edit-student/:id', name: 'EditStudent', component: EditStudentComponent }
+  { path: '/create-student', name: 'CreateStudent', component: StudentFormComponent },
+  { path: '/edit-student/:id', name: 'EditStudent', component: StudentFormComponent }
 ])
 
 export class AppComponent {

@@ -133,6 +133,9 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
                     });
                     this.saveStudentStg(studentStg);
                 };
+                StudentService.prototype.checkStudent = function () {
+                    console.log("Here's to redirect to Create/Edit form");
+                };
                 StudentService = __decorate([
                     core_1.Injectable(), 
                     __metadata('design:paramtypes', [http_1.Http])

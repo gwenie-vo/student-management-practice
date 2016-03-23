@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './student/student-list.component', './student/create-student.component', './student/edit-student.component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './student/student-list.component', './student/student-form.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', './student/student-list.com
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, student_list_component_1, create_student_component_1, edit_student_component_1;
+    var core_1, router_1, student_list_component_1, student_form_component_1;
     var AppComponent;
     return {
         setters:[
@@ -23,11 +23,8 @@ System.register(['angular2/core', 'angular2/router', './student/student-list.com
             function (student_list_component_1_1) {
                 student_list_component_1 = student_list_component_1_1;
             },
-            function (create_student_component_1_1) {
-                create_student_component_1 = create_student_component_1_1;
-            },
-            function (edit_student_component_1_1) {
-                edit_student_component_1 = edit_student_component_1_1;
+            function (student_form_component_1_1) {
+                student_form_component_1 = student_form_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -42,8 +39,8 @@ System.register(['angular2/core', 'angular2/router', './student/student-list.com
                     }),
                     router_1.RouteConfig([
                         { path: '/', name: 'StudentList', component: student_list_component_1.StudentListComponent },
-                        { path: '/create-student', name: 'CreateStudent', component: create_student_component_1.CreateStudentComponent },
-                        { path: '/edit-student/:id', name: 'EditStudent', component: edit_student_component_1.EditStudentComponent }
+                        { path: '/create-student', name: 'CreateStudent', component: student_form_component_1.StudentFormComponent },
+                        { path: '/edit-student/:id', name: 'EditStudent', component: student_form_component_1.StudentFormComponent }
                     ]), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);

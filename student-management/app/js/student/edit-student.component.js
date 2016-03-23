@@ -47,9 +47,6 @@ System.register(['angular2/core', 'angular2/router', './student.service'], funct
                         console.debug("Save student sucessful.");
                     });
                 };
-                EditStudentComponent.prototype.backToStudentList = function () {
-                    this._router.navigate(['StudentList']);
-                };
                 EditStudentComponent = __decorate([
                     core_1.Component({
                         templateUrl: "app/student/edit-student-form.component.html",

@@ -34,9 +34,9 @@ export class CreateStudentComponent {
     );
   }
 
-  backToStudentList() {
-    this._router.navigate(['StudentList']);
-  }
+  // backToStudentList() {
+  //   this._router.navigate(['StudentList']);
+  // }
 
   onSubmit(data){
     console.debug("data:", data);

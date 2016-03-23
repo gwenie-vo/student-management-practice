@@ -131,4 +131,7 @@ export class StudentService {
     this.saveStudentStg(studentStg);
   }
 
+  checkStudent() {
+    console.log("Here's to redirect to Create/Edit form");
+  }
 }
