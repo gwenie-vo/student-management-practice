@@ -45,14 +45,6 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
                     // localStorage.setItem('student', JSON.stringify(studentLocalStorageJson));
                     this.saveStudentStg(studentLocalStorageJson);
                 };
-                StudentService.prototype.getClasses = function () {
-                    var _this = this;
-                    return Rx_1.Observable.create(function (observe) {
-                        var studentStg = _this.getStudentLocalStorage();
-                        observe.next(studentStg.classes);
-                        observe.complete();
-                    });
-                };
                 StudentService.prototype.getStudentLocalStorage = function () {
                     var studentLocalStorage = localStorage.getItem('student');
                     //check if data is not exist then set a blank string object
@@ -60,7 +52,16 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
                         this.initStudentLocalStorage();
                     }
                     var studentStg = JSON.parse(localStorage.getItem('student'));
+                    //return student list
                     return studentStg;
+                };
+                StudentService.prototype.getClasses = function () {
+                    var _this = this;
+                    return Rx_1.Observable.create(function (observe) {
+                        var studentStg = _this.getStudentLocalStorage();
+                        observe.next(studentStg.classes);
+                        observe.complete();
+                    });
                 };
                 //push student list to localStorage
                 StudentService.prototype.saveStudentStg = function (studentStg) {
@@ -115,7 +116,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
                 };
                 StudentService.prototype.createNewStudent = function (student) {
                     var studentStg = this.getStudentLocalStorage();
-                    student.id = (Math.random() * 10000) + 1;
+                    student.id = (Math.random() * 100) + 1;
                     studentStg.list.push(student);
                     this.saveStudentStg(studentStg);
                 };

@@ -11,51 +11,53 @@ import {Student}   from './student';
 
 export class StudentService {
 
-  constructor(private http: Http) {}
+  constructor(private http: Http) { }
 
   // private _studentUrl = 'app/student/student.json'; //URL to JSON file
 
-  initStudentLocalStorage(){
-      let studentLocalStorage = "{}";
+  initStudentLocalStorage() {
+    let studentLocalStorage = "{}";
 
-      //parse string data to JSON
-      let studentLocalStorageJson = JSON.parse(studentLocalStorage);
+    //parse string data to JSON
+    let studentLocalStorageJson = JSON.parse(studentLocalStorage);
 
-      //check if the data list is not exists, then set the blank array for
-      if (!studentLocalStorageJson.list) {
-        studentLocalStorageJson.list = [];
-      }
+    //check if the data list is not exists, then set the blank array for
+    if (!studentLocalStorageJson.list) {
+      studentLocalStorageJson.list = [];
+    }
 
-      // add list of class name array
-      if (!studentLocalStorageJson.classes) {
-        studentLocalStorageJson.classes = ["A", "B", "C", "D", "E", "F"];
-      }
-      // localStorage.setItem('student', JSON.stringify(studentLocalStorageJson));
-      this.saveStudentStg(studentLocalStorageJson);
+    // add list of class name array
+    if (!studentLocalStorageJson.classes) {
+      studentLocalStorageJson.classes = ["A", "B", "C", "D", "E", "F"];
+    }
+    // localStorage.setItem('student', JSON.stringify(studentLocalStorageJson));
+    this.saveStudentStg(studentLocalStorageJson);
   }
 
-  getClasses(){
-    return Observable.create((observe) => {
-        let studentStg = this.getStudentLocalStorage();
-        observe.next(studentStg.classes);
-        observe.complete();
-    });
-  }
-
-  getStudentLocalStorage(){
+  getStudentLocalStorage() {
     let studentLocalStorage: any = localStorage.getItem('student');
 
     //check if data is not exist then set a blank string object
     if (!studentLocalStorage) {
-        this.initStudentLocalStorage();
+      this.initStudentLocalStorage();
     }
 
     let studentStg = JSON.parse(localStorage.getItem('student'));
+    //return student list
     return studentStg;
   }
 
+  getClasses() {
+    return Observable.create((observe) => {
+      let studentStg = this.getStudentLocalStorage();
+      observe.next(studentStg.classes);
+      observe.complete();
+    });
+  }
+
+
   //push student list to localStorage
-  saveStudentStg(studentStg){
+  saveStudentStg(studentStg) {
     localStorage.setItem('student', JSON.stringify(studentStg));
   }
 
@@ -67,9 +69,9 @@ export class StudentService {
     //             return res.json().data;
     //           });
     return Observable.create((observe) => {
-        let studentStg = this.getStudentLocalStorage();
-        observe.next(studentStg.list);
-        observe.complete();
+      let studentStg = this.getStudentLocalStorage();
+      observe.next(studentStg.list);
+      observe.complete();
     });
   }
 
@@ -95,23 +97,23 @@ export class StudentService {
   saveEditStudent(student) {
     console.log("Student is edited****:", student);
     return Observable.create((observe) => {
-        let studentStg = this.getStudentLocalStorage();
-        let currentStudent = null;
-        studentStg.list.forEach((std, idx) => {
-          if (std.id === student.id){
-              studentStg.list[idx] = student;
-              currentStudent = student;
-          }
-        });
-        this.saveStudentStg(studentStg);
-        observe.next(currentStudent);
-        observe.complete();
+      let studentStg = this.getStudentLocalStorage();
+      let currentStudent = null;
+      studentStg.list.forEach((std, idx) => {
+        if (std.id === student.id) {
+          studentStg.list[idx] = student;
+          currentStudent = student;
+        }
+      });
+      this.saveStudentStg(studentStg);
+      observe.next(currentStudent);
+      observe.complete();
     });
   }
 
   createNewStudent(student) {
     let studentStg = this.getStudentLocalStorage();
-    student.id = (Math.random() * 10000) + 1;
+    student.id = (Math.random() * 100) + 1;
     studentStg.list.push(student);
     this.saveStudentStg(studentStg);
   }

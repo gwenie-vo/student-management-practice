@@ -44,15 +44,7 @@
         <input #male name="gender" type="radio" [checked]="student.gender === 'Male'" value="Male"  (click)="student.gender = male.value" />Male
         (Selected gender is <strong>{{student.gender}}</strong>)
       </div>
-
-      <!-- gender -->
-<!--       <div class="form-group">
-        <label for="gender">Gender:</label>
-        <input class="gender-option" type="radio" name="gender" value="male"> Male
-        <input class="gender-option" type="radio" name="gender" value="female"> Female
-        </div>
- -->
-      <!-- <button type="submit" class="btn btn-primary">New Student</button> -->
+      <!-- buttons -->
       <button type="submit" class="btn btn-primary">Save</button>
       <button type="button" class="btn btn-primary" (click)="backToStudentList()">Back</button>
     </form>

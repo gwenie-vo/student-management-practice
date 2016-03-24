@@ -24,7 +24,7 @@ export class StudentFormComponent {
     let id = this._routeParams.get('id');
     console.log("student id:", id);
 
-    // if there's an id then we get student by that Id and bind to the form
+    // if there's an id then get student by that Id and bind to the form
     if (id){
       this.getStudentById(id);
     }
@@ -34,7 +34,6 @@ export class StudentFormComponent {
   getClasses() {
     this._studentService.getClasses().subscribe( classes => {
       this.classes = classes;
-      console.log("CLASSSSSSSSSSS", classes);
     })
   }
 
@@ -53,15 +52,13 @@ export class StudentFormComponent {
   // }
 
   onSubmit(data) {
-    console.debug("SUBMITTED:", data);
-    console.debug("222222222222:", this.student);
     if (this.student.id !== undefined) {
       this._studentService.saveEditStudent(this.student).subscribe(student => {
         console.debug("Save student sucessful.");
       });
     } else {
       this._studentService.createNewStudent(data);
-      console.debug("CREATED NEW STUDENT.");
+      console.debug("CREATED NEW STUDENT.", data);
     }
   }
 

@@ -39,7 +39,7 @@ System.register(['angular2/core', 'angular2/router', './student.service', './stu
                     //get id from URL
                     var id = this._routeParams.get('id');
                     console.log("student id:", id);
-                    // if there's an id then we get student by that Id and bind to the form
+                    // if there's an id then get student by that Id and bind to the form
                     if (id) {
                         this.getStudentById(id);
                     }
@@ -49,7 +49,6 @@ System.register(['angular2/core', 'angular2/router', './student.service', './stu
                     var _this = this;
                     this._studentService.getClasses().subscribe(function (classes) {
                         _this.classes = classes;
-                        console.log("CLASSSSSSSSSSS", classes);
                     });
                 };
                 StudentFormComponent.prototype.getStudentById = function (id) {
@@ -66,8 +65,6 @@ System.register(['angular2/core', 'angular2/router', './student.service', './stu
                 //   );
                 // }
                 StudentFormComponent.prototype.onSubmit = function (data) {
-                    console.debug("SUBMITTED:", data);
-                    console.debug("222222222222:", this.student);
                     if (this.student.id !== undefined) {
                         this._studentService.saveEditStudent(this.student).subscribe(function (student) {
                             console.debug("Save student sucessful.");
@@ -75,7 +72,7 @@ System.register(['angular2/core', 'angular2/router', './student.service', './stu
                     }
                     else {
                         this._studentService.createNewStudent(data);
-                        console.debug("CREATED NEW STUDENT.");
+                        console.debug("CREATED NEW STUDENT.", data);
                     }
                 };
                 StudentFormComponent.prototype.backToStudentList = function () {
