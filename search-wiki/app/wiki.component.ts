@@ -38,7 +38,7 @@ export class WikiComponent {
   items: any[];
   search(term: string) {
     this._wikipediaService.search(term).subscribe(data => {
-      // console.log("DATA:", data);
+      console.log("DATA:", data);
       let dataJson = data.json();
       if (dataJson && dataJson.query){
         this.items = dataJson.query.search;

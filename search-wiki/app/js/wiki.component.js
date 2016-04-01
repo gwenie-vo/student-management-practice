@@ -31,7 +31,7 @@ System.register(['angular2/core', 'angular2/http', './wikipedia.service'], funct
                 WikiComponent.prototype.search = function (term) {
                     var _this = this;
                     this._wikipediaService.search(term).subscribe(function (data) {
-                        // console.log("DATA:", data);
+                        console.log("DATA:", data);
                         var dataJson = data.json();
                         if (dataJson && dataJson.query) {
                             _this.items = dataJson.query.search;
