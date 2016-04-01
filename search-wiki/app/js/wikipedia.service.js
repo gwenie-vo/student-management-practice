@@ -22,21 +22,24 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
             }],
         execute: function() {
             WikipediaService = (function () {
-                function WikipediaService(jsonp) {
+                function WikipediaService(jsonp, http) {
                     this.jsonp = jsonp;
-                    search(term, string);
-                    {
-                        var wikiUrl = 'https://en.wikipedia.org/w/api.php?action=query&format=json&list=search&utf8=1&srsearch=Albert+Einstein';
-                        var params = new http_1.URLSearchParams();
-                        params.set('search', term); // the user's search value
-                        params.set('action', 'opensearch');
-                        params.set('format', 'json');
-                        params.set('callback', 'JSONP_CALLBACK');
-                    }
+                    this.http = http;
                 }
+                WikipediaService.prototype.search = function (term) {
+                    // let wikiUrl = 'https://en.wikipedia.org/w/api.php?action=query&format=json&list=search&utf8=1&srsearch=Albert+Einstein';
+                    var wikiUrl = 'https://en.wikipedia.org/w/api.php';
+                    var params = new http_1.URLSearchParams();
+                    params.set('srsearch', term); // the user's search value
+                    params.set('action', 'query');
+                    params.set('format', 'json');
+                    params.set('list', 'search');
+                    params.set('callback', 'JSONP_CALLBACK');
+                    return this.jsonp.get(wikiUrl, { search: params });
+                };
                 WikipediaService = __decorate([
                     core_1.Injectable(), 
-                    __metadata('design:paramtypes', [http_1.Jsonp])
+                    __metadata('design:paramtypes', [http_1.Jsonp, http_1.Http])
                 ], WikipediaService);
                 return WikipediaService;
             }());
