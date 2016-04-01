@@ -31,7 +31,7 @@ System.register(['angular2/core', 'angular2/http', './wikipedia.service'], funct
                 WikiComponent.prototype.search = function (term) {
                     var _this = this;
                     this._wikipediaService.search(term).subscribe(function (data) {
-                        console.log("DATA:", data);
+                        // console.log("DATA:", data);
                         var dataJson = data.json();
                         if (dataJson && dataJson.query) {
                             _this.items = dataJson.query.search;
@@ -44,7 +44,7 @@ System.register(['angular2/core', 'angular2/http', './wikipedia.service'], funct
                 WikiComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n    <div class=\"container\">\n      <h1>Wikipedia Search Practice</h1>\n\n      <p><i>Fetches after each keystroke</i></p>\n\n      <input #term />\n      <button (click)=\"search(term.value)\" type=\"button\" class=\"btn btn-default\">Search</button>\n\n      <ul>\n        <li *ngFor=\"#item of items\">\n          {{item.title}}\n          <pre>{{item.snippet}}</pre>\n        </li>\n      </ul>\n    </div>\n  ",
+                        template: "\n    <div class=\"container\">\n      <h1>Wikipedia Search Practice</h1>\n\n      <p><i>Press button to search</i></p>\n\n      <input #term />\n\n      <button (click)=\"search(term.value)\" type=\"button\" class=\"btn btn-default\">Search</button>\n\n      <ul>\n        <li *ngFor=\"#item of items\">\n          {{item.title}}\n          <pre>{{item.snippet}}</pre>\n        </li>\n      </ul>\n    </div>\n  ",
                         providers: [http_1.JSONP_PROVIDERS, wikipedia_service_1.WikipediaService],
                         styles: ["\n    .container {\n      width: 80%;\n      margin: 0 auto;\n    }\n  "]
                     }), 

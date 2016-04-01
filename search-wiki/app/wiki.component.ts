@@ -10,9 +10,10 @@ import {WikipediaService} from './wikipedia.service';
     <div class="container">
       <h1>Wikipedia Search Practice</h1>
 
-      <p><i>Fetches after each keystroke</i></p>
+      <p><i>Press button to search</i></p>
 
       <input #term />
+
       <button (click)="search(term.value)" type="button" class="btn btn-default">Search</button>
 
       <ul>
@@ -37,7 +38,7 @@ export class WikiComponent {
   items: any[];
   search(term: string) {
     this._wikipediaService.search(term).subscribe(data => {
-      console.log("DATA:", data);
+      // console.log("DATA:", data);
       let dataJson = data.json();
       if (dataJson && dataJson.query){
         this.items = dataJson.query.search;
