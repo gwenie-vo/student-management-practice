@@ -1,0 +1,10 @@
+.container {
+  width: 65%;
+  margin: 0 auto;
+  font-family: arial;
+}
+.title {
+ font-size: 70px;
+ text-align: center;
+ color: rgba(175, 47, 47, 0.15);
+}
