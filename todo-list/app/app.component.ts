@@ -5,7 +5,6 @@ import {Component} from 'angular2/core';
   templateUrl: "./app/app.component.html"
 })
 
-
 export class AppComponent {
   title = "Todos Management";
 }
