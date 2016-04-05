@@ -9,6 +9,14 @@ import {Todo, TodoStatus}      from './todo';
 export class TodoListComponent {
   todolist = TODOLIST;
 
+  /*
+   * delete a todo
+   */
+  deletedTodo(todo) {
+    console.log("Todo " + todo.name + " has been delete")
+    console.log("DELETEDTODO:", todo);
+  }
+
 }
 
 var TODOLIST: Todo[] = [
