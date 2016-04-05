@@ -14,9 +14,8 @@ export class TodoListComponent {
    */
   deletedTodo(todo) {
     console.log("Todo " + todo.name + " has been delete")
-    console.log("DELETEDTODO:", todo);
+    console.log("DELETED TODO:", todo);
   }
-
 }
 
 var TODOLIST: Todo[] = [

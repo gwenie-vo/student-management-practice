@@ -4,8 +4,8 @@ Todo List
   <ul class="todo-list">
     <li class="todo-item" *ngFor="#todo of todolist">
       <input type="checkbox">
-      <div>{{todo.name}}</div>
-      <button (click)="deletedTodo()">delete</button>
+      <div >{{todo.name}}</div>
+      <button (click)="deletedTodo(todo)">delete</button>
     </li>
   </ul>
 </div>
