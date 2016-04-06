@@ -21,6 +21,13 @@ export class TodoListComponent {
     console.log("Edit todo", todo);
     todo.editing = true;
   }
+
+  updateEditingTodo(todo: Todo, editedName: string) {
+    editedName = editedName.trim();
+    console.log("AAAAAAAAAAA", editedName);
+    todo.name = editedName;
+    todo.editing = false;
+  }
 }
 
 /*

@@ -5,7 +5,7 @@ Todo List
     <li class="todo-item" *ngFor="#todo of todolist">
       <input type="checkbox" [checked]="todo.status===1">
       <label [class.completed]="todo.status===1" (dblclick)="editTodo(todo)" [hidden]="todo.editing">{{todo.name}}</label>
-      <input class="edit" *ngIf="todo.editing" [(ngModel)]="todo.name">
+      <input (keyup.enter)="updateEditingTodo(todo, editedtodo.value)" class="edit" *ngIf="todo.editing" #editedtodo [(ngModel)]="todo.name">
       <button (click)="deletedTodo(todo)">delete</button>
     </li>
   </ul>
