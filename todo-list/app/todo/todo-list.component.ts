@@ -28,6 +28,8 @@ export class TodoListComponent {
     todo.name = editedName;
     todo.editing = false;
   }
+
+
 }
 
 /*
