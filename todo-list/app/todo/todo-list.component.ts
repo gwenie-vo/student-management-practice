@@ -16,8 +16,16 @@ export class TodoListComponent {
     console.log("Todo " + todo.name + " has been delete")
     console.log("DELETED TODO:", todo);
   }
+
+  editTodo(todo) {
+    console.log("Edit todo", todo);
+    todo.editing = true;
+  }
 }
 
+/*
+ * markup data
+ */
 var TODOLIST: Todo[] = [
   { "id": 11, "status": TodoStatus.COMPLETED, "name": "Task 1" },
   { "id": 12, "status": TodoStatus.COMPLETED, "name": "Task 2" },

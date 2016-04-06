@@ -3,10 +3,10 @@ Todo List
 <div>
   <ul class="todo-list">
     <li class="todo-item" *ngFor="#todo of todolist">
-      <input type="checkbox">
-      <div >{{todo.name}}</div>
+      <input type="checkbox" [checked]="todo.status===1">
+      <label [class.completed]="todo.status===1" (dblclick)="editTodo(todo)" [hidden]="todo.editing">{{todo.name}}</label>
+      <input class="edit" *ngIf="todo.editing" [(ngModel)]="todo.name">
       <button (click)="deletedTodo(todo)">delete</button>
     </li>
   </ul>
 </div>
-

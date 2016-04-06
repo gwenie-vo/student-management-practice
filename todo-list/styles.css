@@ -25,3 +25,6 @@
   -moz-font-smoothing: antialiased;
   font-smoothing: antialiased;
 }
+.todo-list {
+  list-style: none;
+}
