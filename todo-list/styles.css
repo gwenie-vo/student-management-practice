@@ -28,3 +28,6 @@
 .todo-list {
   list-style: none;
 }
+.completed {
+  text-decoration: line-through;
+}
