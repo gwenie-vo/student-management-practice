@@ -49,7 +49,7 @@ export class TodoListComponent {
     editedName = editedName.trim();
     // console.log("New task name", editedName);
     if(editedName.length===0) {
-      return this.todoList.remove(todo);
+      return this.deletedTodo(todo);
     }
 
     todo.name = editedName;
