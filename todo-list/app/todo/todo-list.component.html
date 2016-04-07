@@ -2,10 +2,10 @@ Todo List
 <!-- todo list -->
 <div>
   <ul class="todo-list">
-    <li class="todo-item" *ngFor="#todo of todolist">
+    <li class="todo-item" *ngFor="#todo of todoList">
       <input type="checkbox" [checked]="todo.status===1">
       <label [class.completed]="todo.status===1" (dblclick)="editTodo(todo)" [hidden]="todo.editing">{{todo.name}}</label>
-      <input (blur)="updateEditingTodo(todo, editedtodo.value)" (keyup.enter)="updateEditingTodo(todo, editedtodo.value)" class="edit" *ngIf="todo.editing" #editedtodo [(ngModel)]="todo.name">
+      <input (keyup.escape)="cancelUpdateTodo(todo)" (blur)="updateEditingTodo(todo, editedtodo.value)" (keyup.enter)="updateEditingTodo(todo, editedtodo.value)" class="edit" *ngIf="todo.editing" #editedtodo [(ngModel)]="todo.name">
       <button (click)="deletedTodo(todo)">delete</button>
     </li>
   </ul>

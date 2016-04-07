@@ -7,7 +7,7 @@ import {Todo, TodoStatus}      from './todo';
 })
 
 export class TodoListComponent {
-  todolist = TODOLIST;
+  todoList = TODOLIST;
 
   /*
    * delete a todo
@@ -18,18 +18,22 @@ export class TodoListComponent {
   }
 
   editTodo(todo) {
-    console.log("Edit todo", todo);
     todo.editing = true;
   }
 
-  updateEditingTodo(todo: Todo, editedName: string) {
+  updateEditingTodo(todo, editedName: string) {
     editedName = editedName.trim();
     console.log("AAAAAAAAAAA", editedName);
+    if(editedName.length===0) {
+      return this.todoList.remove(todo);
+    }
     todo.name = editedName;
     todo.editing = false;
   }
 
-
+  cancelUpdateTodo(todo) {
+    todo.editing = false;
+  }
 }
 
 /*
