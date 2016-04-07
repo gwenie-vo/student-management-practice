@@ -17,14 +17,14 @@ export class TodoListComponent {
   /*
    * click enter to delete a todo
    */
-  // deletedTodo(todo) {
-  //   for (var i = 0; i < this.todoList.length; i++) {
-  //     if(todo.id===this.todoList[i].id) {
-  //       console.log("DELETED TODO ",i);
-  //       this.todoList.splice(i, 1);
-  //     }
-  //   }
-  // }
+  deletedTodo(todo) {
+    for (var i = 0; i < this.todoList.length; i++) {
+      if(todo.id===this.todoList[i].id) {
+        console.log("DELETED TODO ",i);
+        this.todoList.splice(i, 1);
+      }
+    }
+  }
 
   /*
    * set editing field
