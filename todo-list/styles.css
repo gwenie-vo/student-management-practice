@@ -25,8 +25,12 @@
   -moz-font-smoothing: antialiased;
   font-smoothing: antialiased;
 }
-.todo-list {
+li {
   list-style: none;
+}
+.filter li{
+  float: left;
+  padding-right: 30px;
 }
 .completed {
   text-decoration: line-through;
