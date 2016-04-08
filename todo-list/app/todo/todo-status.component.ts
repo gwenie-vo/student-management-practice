@@ -10,7 +10,7 @@ import {TodoService}     from './todo.service';
 
 export class TodoStatusComponent implements OnInit{
   todoList;
-  activeTodoList = null;
+  activeTodoList: Todo[];
 
   constructor(private _todoService: TodoService) {
     this.todoList = _todoService.getTodoList();
@@ -28,9 +28,11 @@ export class TodoStatusComponent implements OnInit{
    * count active items
    */
   countActiveTodo(todoList) {
+    this.activeTodoList = new Array<Todo>();
     for (var i = 0; i < todoList.length; i++) {
-    if (this.todoList[i].status === TodoStatus.ACTIVE) {
-        // this.activeTodoList.push(this.todoList[i]);
+      if (this.todoList[i].status === TodoStatus.ACTIVE) {
+        this.activeTodoList.push(this.todoList[i]);
+
       }
     }
   }
@@ -39,4 +41,11 @@ export class TodoStatusComponent implements OnInit{
     this.todoList = this._todoService.getTodoList();
     console.log("ALL TODO", this.todoList);
   }
+
+  allActiveTodo() {
+    this.countActiveTodo(this.todoList);
+    console.log("All Active Todo", this.activeTodoList);
+    // this.todoList = this.activeTodoList;
+  }
+
 }

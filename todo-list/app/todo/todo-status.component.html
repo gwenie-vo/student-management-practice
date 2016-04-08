@@ -1,6 +1,7 @@
 <ul class="filter">
-  <li class=count-active-todo>{{activeTodoList}} item left</li>
+  <li class=count-active-todo>{{activeTodoList.length}} item left</li>
   <li class="-all-item" (click)="listAllTodo()">All</li>
-  <li class="all-active">Active</li>
-  <li class="all-complete">Complete</li>
+  <li class="all-active" (click)="allActiveTodo()">Active</li>
+  <li class="all-complete"(click)="allCompleteTodo()">Complete</li>
+  <button type="button">Clear complete</button>
 </ul>
