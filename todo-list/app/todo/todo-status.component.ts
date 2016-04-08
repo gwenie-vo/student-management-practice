@@ -11,6 +11,7 @@ import {TodoService}     from './todo.service';
 export class TodoStatusComponent implements OnInit{
   todoList;
   activeTodoList: Todo[];
+  completedTodoList: Todo[];
 
   constructor(private _todoService: TodoService) {
     this.todoList = _todoService.getTodoList();
@@ -29,23 +30,48 @@ export class TodoStatusComponent implements OnInit{
    */
   countActiveTodo(todoList) {
     this.activeTodoList = new Array<Todo>();
+    this.completedTodoList = new Array<Todo>();
+
     for (var i = 0; i < todoList.length; i++) {
       if (this.todoList[i].status === TodoStatus.ACTIVE) {
         this.activeTodoList.push(this.todoList[i]);
-
+      } else {
+        this.completedTodoList.push(this.todoList[i]);
       }
     }
   }
 
+  /*
+   * list all active & completed todos after click "All"
+   */
   listAllTodo() {
     this.todoList = this._todoService.getTodoList();
     console.log("ALL TODO", this.todoList);
   }
 
+  /*
+   * list all active todos
+   */
   allActiveTodo() {
     this.countActiveTodo(this.todoList);
     console.log("All Active Todo", this.activeTodoList);
     // this.todoList = this.activeTodoList;
   }
 
+  /*
+   * list all completed todos
+   */
+  allCompleteTodo() {
+    this.countActiveTodo(this.todoList);
+    console.log("All Active Todo", this.completedTodoList);
+    // this.todoList = this.activeTodoList;
+  }
+
+  /*
+   * delete all completed todos
+   */
+  clearCompletedTodo(completedTodoList) {
+    this.completedTodoList = [];
+    console.log("asdddddd", this.completedTodoList);
+  }
 }
