@@ -1,5 +1,5 @@
 import {Component, OnInit} from 'angular2/core';
-import {Todo}      from './todo';
+import {Todo, TodoStatus}      from './todo';
 import {TodoService}     from './todo.service';
 
 @Component({
@@ -10,23 +10,28 @@ import {TodoService}     from './todo.service';
 
 export class TodoStatusComponent implements OnInit{
   todoList;
+  activeTodoList = null;
 
   constructor(private _todoService: TodoService) {
     this.todoList = _todoService.getTodoList();
     console.log("TODO LIST FOR STATUS",this.todoList);
   }
 
+  /*
+   * init countActiveTodo();
+   */
   ngOnInit() {
-    // this.countUncheckTodo(this.todoList);
+    this.countActiveTodo(this.todoList);
   }
 
-  // countUncheckTodo(todoList) {
-  //   if(todo.status===0) {
-  //     console.log("ACTIVE TODO");
-  //   }
-  // }
-
-  listAllTodo() {
-
+  /*
+   * count active items
+   */
+  countActiveTodo(todoList) {
+    for (var i = 0; i < todoList.length; i++) {
+    if (this.todoList[i].status === TodoStatus.ACTIVE) {
+        // this.activeTodoList.push(this.todoList[i]);
+      }
+    }
   }
 }

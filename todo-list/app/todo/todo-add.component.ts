@@ -14,13 +14,13 @@ export class TodoAddComponent {
 
   constructor(private _todoService: TodoService) {
     this.todoList = _todoService.getTodoList();
+    this.todo = new Todo();
   }
   /*
    * add new todo
    */
   addNewTodo(todoName: string) {
     //create an instance of Todo
-    this.todo = new Todo();
     this.todo.name = todoName;
     this.todo.status = TodoStatus.ACTIVE;
     this.todo.id = Math.floor(100000000 + Math.random() * 900000000);
