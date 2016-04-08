@@ -72,6 +72,6 @@ export class TodoStatusComponent implements OnInit{
    */
   clearCompletedTodo(completedTodoList) {
     this.completedTodoList = [];
-    console.log("asdddddd", this.completedTodoList);
+    console.log("Clear all completed Todo: ", this.completedTodoList);
   }
 }
