@@ -34,4 +34,9 @@ export class TodoStatusComponent implements OnInit{
       }
     }
   }
+
+  listAllTodo() {
+    this.todoList = this._todoService.getTodoList();
+    console.log("ALL TODO", this.todoList);
+  }
 }
