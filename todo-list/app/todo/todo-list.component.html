@@ -3,7 +3,7 @@
   <ul class="todo-list">
     <li class="todo-item" *ngFor="#todo of todoList">
       <input type="checkbox" [checked]="todo.status===1" (click)="toggleTodo(todo)">
-      <label [class.completed]="todo.status===1" (dblclick)="editTodo(todo)" [hidden]="todo.editing">{{todo.name}}</label>
+      <label [class.completed]="todo.status===1" (dblclick)="editTodo(todo)" [hidden]="todo.editing" class="label">{{todo.name}}</label>
       <input (keyup.escape)="cancelUpdateTodo(todo)"
              (blur)="updateEditingTodo(todo, editedtodo.value)"
              (keyup.enter)="updateEditingTodo(todo, editedtodo.value)" class="edit"

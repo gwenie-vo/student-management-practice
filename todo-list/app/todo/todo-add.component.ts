@@ -18,6 +18,7 @@ export class TodoAddComponent {
     this.todoList = _todoService.getTodoList();
     // this.todo = new Todo();
   }
+
   /*
    * add new todo
    */
