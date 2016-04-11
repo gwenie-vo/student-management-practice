@@ -1,6 +1,6 @@
 import {Component} from 'angular2/core';
-import {Todo, TodoStatus}      from './todo';
-import {TodoService}      from './todo.service';
+import {Todo, TodoStatus}  from './todo';
+import {TodoService}  from './todo.service';
 
 @Component({
   selector: 'todo-list-component',

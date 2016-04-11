@@ -1,7 +1,7 @@
 import {Component} from 'angular2/core';
-import {Todo, TodoStatus}      from './todo';
-import {FORM_DIRECTIVES}      from 'angular2/common';
-import {TodoService}      from './todo.service';
+import {Todo, TodoStatus}  from './todo';
+import {FORM_DIRECTIVES}  from 'angular2/common';
+import {TodoService}  from './todo.service';
 
 @Component({
   selector: 'todo-add-component',
