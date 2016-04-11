@@ -1,4 +1,4 @@
-import {Component, OnInit} from 'angular2/core';
+import {Component, OnInit, Input, Output, EventEmitter} from 'angular2/core';
 import {Todo, TodoStatus}  from './todo';
 import {TodoService}  from './todo.service';
 
@@ -9,13 +9,15 @@ import {TodoService}  from './todo.service';
 })
 
 export class TodoStatusComponent implements OnInit{
-  todoList;
+  @Input() todoList: Todo[];
+  @Output() todoStatus = new EventEmitter<Todo>();
+
   activeTodoList: Todo[];
   completedTodoList: Todo[];
 
   constructor(private _todoService: TodoService) {
-    this.todoList = _todoService.getTodoList();
-    console.log("TODO LIST FOR STATUS",this.todoList);
+    // this.todoList = _todoService.getTodoList();
+    // console.log("TODO LIST FOR STATUS",this.todoList);
   }
 
   /*
@@ -31,12 +33,13 @@ export class TodoStatusComponent implements OnInit{
   countActiveTodo(todoList) {
     this.activeTodoList = new Array<Todo>();
     this.completedTodoList = new Array<Todo>();
-
-    for (var i = 0; i < todoList.length; i++) {
-      if (this.todoList[i].status === TodoStatus.ACTIVE) {
-        this.activeTodoList.push(this.todoList[i]);
-      } else {
-        this.completedTodoList.push(this.todoList[i]);
+    if (todoList){
+      for (var i = 0; i < todoList.length; i++) {
+        if (this.todoList[i].status === TodoStatus.ACTIVE) {
+          this.activeTodoList.push(this.todoList[i]);
+        } else {
+          this.completedTodoList.push(this.todoList[i]);
+        }
       }
     }
   }
@@ -45,7 +48,7 @@ export class TodoStatusComponent implements OnInit{
    * list all active & completed todos after click "All"
    */
   listAllTodo() {
-    this.todoList = this._todoService.getTodoList();
+    this.todoStatus.next(this.todoList);
     console.log("ALL TODO", this.todoList);
   }
 
@@ -53,18 +56,16 @@ export class TodoStatusComponent implements OnInit{
    * list all active todos
    */
   allActiveTodo() {
-    this.countActiveTodo(this.todoList);
-    console.log("All Active Todo", this.activeTodoList);
-    // this.todoList = this.activeTodoList;
+    this.todoStatus.next(this.activeTodoList);
+    // console.log("All Active Todo", this.activeTodoList);
   }
 
   /*
    * list all completed todos
    */
   allCompleteTodo() {
-    this.countActiveTodo(this.todoList);
-    console.log("All Active Todo", this.completedTodoList);
-    // this.todoList = this.activeTodoList;
+    this.todoStatus.next(this.completedTodoList);
+    // console.log("All Complete Todo", this.completedTodoList);
   }
 
   /*
@@ -72,6 +73,7 @@ export class TodoStatusComponent implements OnInit{
    */
   clearCompletedTodo(completedTodoList) {
     this.completedTodoList = [];
-    console.log("Clear all completed Todo: ", this.completedTodoList);
+    this.todoStatus.next(this.completedTodoList);
+    // console.log("Clear all completed Todo: ", this.completedTodoList);
   }
 }

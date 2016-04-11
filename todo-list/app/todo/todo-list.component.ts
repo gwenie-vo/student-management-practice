@@ -1,19 +1,21 @@
 import {Component} from 'angular2/core';
 import {Todo, TodoStatus}  from './todo';
 import {TodoService}  from './todo.service';
+import { Input } from 'angular2/core';
 
 @Component({
   selector: 'todo-list-component',
   templateUrl: "./app/todo/todo-list.component.html",
-  providers: [TodoService]
+  // providers: [TodoService]
 })
 
 export class TodoListComponent {
-  todoList;
+  @Input() todoList: Todo[];
 
-  constructor(private _todoService: TodoService) {
-    this.todoList = _todoService.getTodoList();
-  }
+  // constructor(private _todoService: TodoService) {
+  //   // this.todoList = _todoService.getTodoList();
+  // }
+
   /*
    * click enter to delete a todo
    */

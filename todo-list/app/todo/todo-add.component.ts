@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core';
+import {Component, EventEmitter, Output} from 'angular2/core';
 import {Todo, TodoStatus}  from './todo';
 import {FORM_DIRECTIVES}  from 'angular2/common';
 import {TodoService}  from './todo.service';
@@ -11,12 +11,11 @@ import {TodoService}  from './todo.service';
 
 export class TodoAddComponent {
   todo: Todo;
-  todoList;
+  @Output() addTodo = new EventEmitter<Todo>();
   todoName: string;
 
   constructor(private _todoService: TodoService) {
-    this.todoList = _todoService.getTodoList();
-    // this.todo = new Todo();
+    // this.todoList = _todoService.getTodoList();
   }
 
   /*
@@ -28,10 +27,10 @@ export class TodoAddComponent {
     this.todo.name = this.todoName;
     this.todo.status = TodoStatus.ACTIVE;
     this.todo.id = Math.floor(100000000 + Math.random() * 900000000);
-    console.log("TODO", this.todo);
-
-    this.todoList.push(this.todo);
-    console.log("new todoList array", this.todoList);
+    console.log("addNewTodo", this.todo);
+    //throw the new Todo tobe ready for todoList catch
+    this.addTodo.next(this.todo);
+    //reset input
     this.todoName = "";
   }
 }
