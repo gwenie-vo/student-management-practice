@@ -1,7 +1,8 @@
 //define todo status
 export enum TodoStatus{
   ACTIVE = 0,
-  COMPLETED = 1
+  COMPLETED = 1,
+  ALL = 2
 }
 
 // Todo class

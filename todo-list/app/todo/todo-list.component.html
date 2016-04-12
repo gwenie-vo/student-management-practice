@@ -1,7 +1,7 @@
 <!-- todo list -->
-<input class="toggle-all" type="checkbox" #toggleall (click)="setAllTo()">
 <div>
   <ul class="todo-list">
+    <input class="toggle-all" type="checkbox" #toggleall >
     <li class="todo-item" *ngFor="#todo of todoList">
       <input class="checkbox" type="checkbox" [checked]="todo.status===1" (click)="toggleTodo(todo)">
       <label [class.completed]="todo.status===1" (dblclick)="editTodo(todo)" [hidden]="todo.editing" class="label">{{todo.name}}</label>

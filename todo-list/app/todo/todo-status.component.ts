@@ -10,15 +10,10 @@ import {TodoService}  from './todo.service';
 
 export class TodoStatusComponent implements OnInit{
   @Input() todoList: Todo[];
-  @Output() todoStatus = new EventEmitter<Todo>();
+  @Output() todoStatus = new EventEmitter<TodoStatus>();
 
   activeTodoList: Todo[];
   completedTodoList: Todo[];
-
-  constructor(private _todoService: TodoService) {
-    // this.todoList = _todoService.getTodoList();
-    // console.log("TODO LIST FOR STATUS",this.todoList);
-  }
 
   /*
    * init countActiveTodo();
@@ -48,7 +43,7 @@ export class TodoStatusComponent implements OnInit{
    * list all active & completed todos after click "All"
    */
   listAllTodo() {
-    this.todoStatus.next(this.todoList);
+    this.todoStatus.next(TodoStatus.ALL);
     console.log("ALL TODO", this.todoList);
   }
 
@@ -56,7 +51,7 @@ export class TodoStatusComponent implements OnInit{
    * list all active todos
    */
   allActiveTodo() {
-    this.todoStatus.next(this.activeTodoList);
+    this.todoStatus.next(TodoStatus.ACTIVE);
     // console.log("All Active Todo", this.activeTodoList);
   }
 
@@ -64,7 +59,7 @@ export class TodoStatusComponent implements OnInit{
    * list all completed todos
    */
   allCompleteTodo() {
-    this.todoStatus.next(this.completedTodoList);
+    this.todoStatus.next(TodoStatus.COMPLETED);
     // console.log("All Complete Todo", this.completedTodoList);
   }
 

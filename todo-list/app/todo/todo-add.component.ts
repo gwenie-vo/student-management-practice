@@ -14,10 +14,6 @@ export class TodoAddComponent {
   @Output() addTodo = new EventEmitter<Todo>();
   todoName: string;
 
-  constructor(private _todoService: TodoService) {
-    // this.todoList = _todoService.getTodoList();
-  }
-
   /*
    * add new todo
    */

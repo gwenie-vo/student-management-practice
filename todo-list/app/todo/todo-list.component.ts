@@ -12,10 +12,6 @@ import { Input } from 'angular2/core';
 export class TodoListComponent {
   @Input() todoList: Todo[];
 
-  // constructor(private _todoService: TodoService) {
-  //   // this.todoList = _todoService.getTodoList();
-  // }
-
   /*
    * click enter to delete a todo
    */
@@ -63,9 +59,5 @@ export class TodoListComponent {
   cancelUpdateTodo(todo) {
     todo.editing = false;
     todo.name = todo.originName;
-  }
-
-  setAllTo() {
-
   }
 }
