@@ -64,4 +64,8 @@ export class TodoListComponent {
     todo.editing = false;
     todo.name = todo.originName;
   }
+
+  setAllTo() {
+
+  }
 }

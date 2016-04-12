@@ -1,3 +1,3 @@
 <todo-add-component (addTodo)="addTodoParent($event)">todo-add-component</todo-add-component>
-<todo-list-component [todoList]="todoListParent">todo-list-component</todo-list-component>
+<todo-list-component class="todo-list-component" [todoList]="todoListParent">todo-list-component</todo-list-component>
 <todo-status-component [todoList]="todoListParent" (todoStatus)="allTodoParent($event)" (todoStatus)="allActiveTodoParent($event)" (todoStatus)="allCompletedParent($event)" class="todo-status" (clearCompletedTodo)="clearCompletedParent($event)">todo-status-component</todo-status-component>

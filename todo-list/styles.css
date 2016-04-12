@@ -27,6 +27,7 @@
   -moz-font-smoothing: antialiased;
   font-smoothing: antialiased;
 }
+
 .todo-list {
   padding:0;
 }
@@ -52,6 +53,25 @@
 }
 .todo-item .checkbox:checked:after {
   content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#bddad5" stroke-width="3"/><path fill="#5dc2af" d="M72 25L42 71 27 56l-4 4 20 20 34-52z"/></svg>');
+}
+.todo-list-component {
+  position: relative;
+}
+.toggle-all {
+  position: absolute;
+  top: -45px;
+  left: -12px;
+  -webkit-appearance: none;
+  transform: rotate(90deg);
+}
+.toggle-all:before {
+  content: "❯";
+  font-size: 22px;
+  color: rgb(230, 230, 230);
+  padding: 10px 27px;
+}
+.toggle-all:checked:before {
+  color: #737373;
 }
 .todo-item .edit {
   position: absolute;
@@ -96,6 +116,7 @@ li .label {
 }
 .completed {
   text-decoration: line-through;
+  color: #d9d9d9;
 }
 .new-todo {
   border: 0;
