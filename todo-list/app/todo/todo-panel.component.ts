@@ -20,7 +20,7 @@ export class TodoPanelComponent {
   status: TodoStatus = TodoStatus.ALL;
 
   /*
-   * call a child component to this parent component
+   * call a child component to this parent component - ****todoStatusComponent
    */
   @ViewChild(TodoStatusComponent) todoStatusComponent;
 
@@ -37,6 +37,7 @@ export class TodoPanelComponent {
   addTodoParent(todo: Todo){
     console.debug("addTodoParent:", todo);
     this.todos.push(todo);
+    // use ***todoStatusComponent in TodoStatusComponent here.
     this.todoStatusComponent.countActiveTodo(this.todos);
   }
 

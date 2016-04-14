@@ -2,6 +2,7 @@ import {Pipe, PipeTransform} from 'angular2/core';
 import { Todo, TodoStatus } from './todo';
 
 @Pipe({ name: 'todoStatusFilter', pure: false })
+
 export class TodoStatusFilterPipe implements PipeTransform {
   transform(todos: Todo[], [status]): Todo[] {
     console.log("data:", todos, status);
