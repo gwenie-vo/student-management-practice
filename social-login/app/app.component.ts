@@ -6,7 +6,7 @@ declare var FB: any;
   selector: "my-app",
   template: `
     <h2>Login by Facebook, Twitter, G+</h2>
-    <div class="fb-login-button" (click)="loginTest()" data-max-rows="2" data-size="large" data-show-faces="true" data-auto-logout-link="true"></div>
+    <div class="fb-login-button" data-max-rows="2" data-size="large" data-show-faces="true" data-auto-logout-link="true" onlogin="alert('aaa');"></div>
     <div id="status"></div>
   `
 })
@@ -31,43 +31,42 @@ export class AppComponent implements OnInit{
   /*
    * show login form popup
    */
-  loginTest(){
-    console.debug('loginTest');
-    FB.login(function(response) {
+  // loginTest(){
+  //   // console.debug('loginTest');
+  //   FB.login((response) => {
 
-      if(response.authResponse) {
-        console.log('Welcome!  Fetching your information.... ');
-        FB.api('/me', function(response) {
-          console.log('Good to see you, ' + response.name + '.');
-        });
-      } else {
-        console.log('User cancelled login or did not fully authorize.');
-      }
-    });
-  }
+  //     if(response.authResponse) {
+  //       console.log('Welcome!  Fetching your information.... ');
+  //       FB.api('/me', (response) => {
+  //         console.log('Good to see you, ' + response.name + '.');
+  //       });
+  //     } else {
+  //       console.log('User cancelled login or did not fully authorize.');
+  //     }
+  //   });
+  // }
 
   /*
    * call the check response Login status function
    */
-  checkLoginState() {
-    console.debug("checkLoginState1");
-    FB.getLoginStatus(response => {
-      this.statusChangeCallback(response);
-    });
-  }
+  // checkLoginState() {
+  //   FB.getLoginStatus(response => {
+  //     this.statusChangeCallback(response);
+  //   });
+  // }
 
   /*
    * function check status
    */
   statusChangeCallback(response) {
-    console.log('statusChangeCallback222');
-    console.log(response);
+    // console.log(response);
+    console.log("RESPONSEEEEEEEEEEEEE", response.status);
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
       this.testAPI();
     } else if (response.status === 'not_authorized') {
-      // The person is logged into Facebook, but not your app.
-      document.getElementById('status').innerHTML = 'Please log ' + 'into this app.';
+      document.getElementById('status').innerHTML = 'Please log ' +
+      'into this app.';
     } else {
       // The person is not logged into Facebook, so we're not sure if
       // they are logged into this app or not.
@@ -75,12 +74,15 @@ export class AppComponent implements OnInit{
     }
   }
 
+  /*
+   * show user's info
+   */
   testAPI() {
-    console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me', function(response) {
-      console.log('Successful login for: ' + response.name);
+    // console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me', (response) => {
+      // console.log('Successful login for: ' + response.name);
       document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!' + 'This is your ID: ' + response.id;
+      'Thanks for logging in, ' + response.name + '!' + 'This is your ID: ' + response.id;
     });
   }
 }
