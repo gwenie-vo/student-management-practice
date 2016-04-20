@@ -1,4 +1,6 @@
-import {Component, OnInit} from "angular2/core";
+import { Component, OnInit } from "angular2/core";
+import { RouteConfig, ROUTER_DIRECTIVES } from 'angular2/router';
+import { ShowUserInfoComponent } from './show-user-info.component';
 // var FB = "C"
 declare var FB: any;
 
@@ -6,12 +8,21 @@ declare var FB: any;
   selector: "my-app",
   template: `
     <h2>Login by Facebook, Twitter, G+</h2>
-    <div class="fb-login-button" data-max-rows="2" data-size="large" data-show-faces="true" data-auto-logout-link="true" onlogin="alert('aaa');"></div>
+    <div class="fb-login-button" data-max-rows="2" data-size="large" data-show-faces="true" data-auto-logout-link="true"></div>
     <div id="status"></div>
   `
+  // directives: [ROUTER_DIRECTIVES]
 })
 
-export class AppComponent implements OnInit{
+/*
+  config navigation link
+ */
+// @RouteConfig([
+//   { path: '/user-info', name: 'userInfo', component: ShowUserInfoComponent }
+//   // { path: '/edit-student/:id', name: 'EditStudent', component: StudentFormComponent }
+// ])
+
+export class AppComponent implements OnInit {
   /*
    * Load the app with appId
    */
@@ -49,11 +60,11 @@ export class AppComponent implements OnInit{
   /*
    * call the check response Login status function
    */
-  // checkLoginState() {
-  //   FB.getLoginStatus(response => {
-  //     this.statusChangeCallback(response);
-  //   });
-  // }
+  checkLoginState() {
+    FB.getLoginStatus(response => {
+      this.statusChangeCallback(response);
+    });
+  }
 
   /*
    * function check status

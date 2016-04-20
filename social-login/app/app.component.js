@@ -55,11 +55,12 @@ System.register(["angular2/core"], function(exports_1, context_1) {
                 /*
                  * call the check response Login status function
                  */
-                // checkLoginState() {
-                //   FB.getLoginStatus(response => {
-                //     this.statusChangeCallback(response);
-                //   });
-                // }
+                AppComponent.prototype.checkLoginState = function () {
+                    var _this = this;
+                    FB.getLoginStatus(function (response) {
+                        _this.statusChangeCallback(response);
+                    });
+                };
                 /*
                  * function check status
                  */
@@ -94,7 +95,7 @@ System.register(["angular2/core"], function(exports_1, context_1) {
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: "my-app",
-                        template: "\n    <h2>Login by Facebook, Twitter, G+</h2>\n    <div class=\"fb-login-button\" data-max-rows=\"2\" data-size=\"large\" data-show-faces=\"true\" data-auto-logout-link=\"true\" onlogin=\"alert('aaa');\"></div>\n    <div id=\"status\"></div>\n  "
+                        template: "\n    <h2>Login by Facebook, Twitter, G+</h2>\n    <div class=\"fb-login-button\" data-max-rows=\"2\" data-size=\"large\" data-show-faces=\"true\" data-auto-logout-link=\"true\"></div>\n    <div id=\"status\"></div>\n  "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
