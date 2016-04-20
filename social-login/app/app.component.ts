@@ -1,4 +1,4 @@
-import {Component} from "angular2/core";
+import {Component, OnInit} from "angular2/core";
 // var FB = "C"
 declare var FB: any;
 
@@ -6,27 +6,25 @@ declare var FB: any;
   selector: "my-app",
   template: `
     <h2>Login by Facebook, Twitter, G+</h2>
-    <div class="fb-login-button" (click)="loginTest()" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="true"></div>
+    <div class="fb-login-button" (click)="loginTest()" data-max-rows="2" data-size="large" data-show-faces="true" data-auto-logout-link="true"></div>
     <div id="status"></div>
   `
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit{
   /*
    * Load the app with appId
    */
   ngOnInit(){
-    console.log("FB:", FB);
     FB.init({
       appId: '1586800451610753',
-      cookie: true,  // enable cookies to allow the server to access
-      // the session
+      cookie: true,  // enable cookies to allow the server to access the session
       xfbml: true,  // parse social plugins on this page
       version: 'v2.5' // use graph api version 2.5
     });
 
     FB.getLoginStatus(response => {
-          this.statusChangeCallback(response);
+      this.statusChangeCallback(response);
     });
   }
 

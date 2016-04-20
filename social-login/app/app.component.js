@@ -26,11 +26,9 @@ System.register(["angular2/core"], function(exports_1, context_1) {
                  */
                 AppComponent.prototype.ngOnInit = function () {
                     var _this = this;
-                    console.log("FB:", FB);
                     FB.init({
                         appId: '1586800451610753',
                         cookie: true,
-                        // the session
                         xfbml: true,
                         version: 'v2.5' // use graph api version 2.5
                     });
@@ -96,7 +94,7 @@ System.register(["angular2/core"], function(exports_1, context_1) {
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: "my-app",
-                        template: "\n    <h2>Login by Facebook, Twitter, G+</h2>\n    <div class=\"fb-login-button\" (click)=\"loginTest()\" data-max-rows=\"1\" data-size=\"large\" data-show-faces=\"false\" data-auto-logout-link=\"true\"></div>\n    <div id=\"status\"></div>\n  "
+                        template: "\n    <h2>Login by Facebook, Twitter, G+</h2>\n    <div class=\"fb-login-button\" (click)=\"loginTest()\" data-max-rows=\"2\" data-size=\"large\" data-show-faces=\"true\" data-auto-logout-link=\"true\"></div>\n    <div id=\"status\"></div>\n  "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
