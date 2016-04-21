@@ -35,23 +35,26 @@ System.register(["angular2/core"], function(exports_1, context_1) {
                     FB.getLoginStatus(function (response) {
                         _this.statusChangeCallback(response);
                     });
+                    console.log("INit");
+                    twttr.anywhere(function (T) {
+                        console.log("token0:", T);
+                        T.bind("authComplete", function (e, user) {
+                            var token = user.attributes._identity;
+                            console.log("token:", token);
+                            //define the login function on your client through Twitter
+                        });
+                    });
                 };
                 /*
                  * show login form popup
                  */
-                // loginTest(){
-                //   // console.debug('loginTest');
-                //   FB.login((response) => {
-                //     if(response.authResponse) {
-                //       console.log('Welcome!  Fetching your information.... ');
-                //       FB.api('/me', (response) => {
-                //         console.log('Good to see you, ' + response.name + '.');
-                //       });
-                //     } else {
-                //       console.log('User cancelled login or did not fully authorize.');
-                //     }
-                //   });
-                // }
+                AppComponent.prototype.loginTest = function () {
+                    var _this = this;
+                    // console.debug('loginTest');
+                    FB.login(function (response) {
+                        _this.checkLoginState();
+                    });
+                };
                 /*
                  * call the check response Login status function
                  */
@@ -92,10 +95,23 @@ System.register(["angular2/core"], function(exports_1, context_1) {
                             'Thanks for logging in, ' + response.name + '!' + 'This is your ID: ' + response.id;
                     });
                 };
+                //describe the login actions
+                //function we link to the click on the custom login button through Twitter
+                AppComponent.prototype.doTWSignIn = function () {
+                    twttr.anywhere(function (T) {
+                        console.log("doTWSignIn:", T);
+                        T.signIn();
+                        T.bind("authComplete", function (e, user) {
+                            var token = user.attributes._identity;
+                            console.log("token2:", token);
+                            //define the login function on your client through Twitter
+                        });
+                    });
+                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: "my-app",
-                        template: "\n    <h2>Login by Facebook, Twitter, G+</h2>\n    <div class=\"fb-login-button\" data-max-rows=\"2\" data-size=\"large\" data-show-faces=\"true\" data-auto-logout-link=\"true\"></div>\n    <div id=\"status\"></div>\n  "
+                        template: "\n    <h2>Login by Facebook, Twitter, G+</h2>\n    <a href=\"#\" (click)=\"loginTest()\" data-auto-logout-link=\"true\" data-max-rows=\"1\" data-size=\"medium\" data-show-faces=\"true\">Login by Facebook</a>\n\n    <a href=\"#\" (click)=\"doTWSignIn()\">Login by Twitter</a>\n    <div id=\"status\"></div>\n  "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
