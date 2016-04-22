@@ -18,39 +18,39 @@ System.register(["angular2/core"], function(exports_1, context_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            // declare var twttr: any;
             AppComponent = (function () {
                 function AppComponent() {
                     this.lock = new Auth0Lock('atLbLHWAQbpHMdEhk02xp8TYYXE43dYo', 'huynhvo.auth0.com');
                     console.debug("Auth0Lock:", Auth0Lock);
                 }
                 AppComponent.prototype.login = function () {
+                    var _this = this;
                     var hash = this.lock.parseHash();
                     // console.log("this.lock:", this.lock);
                     this.lock.show({
                         connections: ['twitter', 'facebook', 'linkedin']
                     });
                     if (hash) {
-                        if (hash.error)
+                        if (hash.error) {
                             console.log('There was an error logging in', hash.error);
-                        else
+                        }
+                        else {
                             this.lock.getProfile(hash.id_token, function (err, profile) {
                                 if (err) {
                                     console.log(err);
                                     return;
                                 }
+                                console.log(profile);
+                                _this.userProfile = profile;
                                 localStorage.setItem('profile', JSON.stringify(profile));
                                 localStorage.setItem('id_token', hash.id_token);
                             });
+                        }
                     }
                 };
                 AppComponent.prototype.logout = function () {
                     localStorage.removeItem('profile');
                     localStorage.removeItem('id_token');
-                };
-                AppComponent.prototype.loggedIn = function () {
-                    console.debug("loggedIn");
-                    // return tokenNotExpired();
                 };
                 AppComponent = __decorate([
                     core_1.Component({
@@ -58,7 +58,8 @@ System.register(["angular2/core"], function(exports_1, context_1) {
                         // <h2 > Login by Facebook, Twitter, G + </h2>
                         // < a href= "#"(click) = "loginTest()" data- auto - logout - link="true" data- max - rows="1" data- size="medium" data- show - faces="true" > Login by Facebook< /a>
                         // < div id= "status" > </div>
-                        template: "\n    <button (click)=\"login()\">Login</button>\n    <button (click)=\"logout()\">Logout</button>\n  "
+                        // <button (click)="logout()">Logout</button>
+                        template: "\n    <button (click)=\"login()\">Login to use the website</button>\n    <ul *ngIf=\"userProfile\">\n      <li>{{userProfile.name}}</li>\n      <li>{{userProfile.user_id}}</li>\n    </ul>\n  "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);

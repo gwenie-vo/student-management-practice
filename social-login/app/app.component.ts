@@ -4,46 +4,53 @@ import { ShowUserInfoComponent } from './show-user-info.component';
 // var FB = "C"
 declare var FB: any;
 declare var Auth0Lock: any;
-// declare var twttr: any;
 
 @Component({
   selector: "my-app",
   // <h2 > Login by Facebook, Twitter, G + </h2>
   // < a href= "#"(click) = "loginTest()" data- auto - logout - link="true" data- max - rows="1" data- size="medium" data- show - faces="true" > Login by Facebook< /a>
   // < div id= "status" > </div>
+  // <button (click)="logout()">Logout</button>
   template: `
-    <button (click)="login()">Login</button>
-    <button (click)="logout()">Logout</button>
+    <button (click)="login()">Login to use the website</button>
+    <ul *ngIf="userProfile">
+      <li>{{userProfile.name}}</li>
+      <li>{{userProfile.user_id}}</li>
+    </ul>
   `
 })
 
 export class AppComponent {
 
   lock = new Auth0Lock('atLbLHWAQbpHMdEhk02xp8TYYXE43dYo', 'huynhvo.auth0.com');
+  userProfile: Object;
 
   constructor() {
-     console.debug("Auth0Lock:", Auth0Lock);
-        }
+    console.debug("Auth0Lock:", Auth0Lock);
+  }
 
   login() {
     var hash = this.lock.parseHash();
     // console.log("this.lock:", this.lock);
     this.lock.show({
-    connections: ['twitter', 'facebook', 'linkedin']
-  });
+      connections: ['twitter', 'facebook', 'linkedin']
+    });
 
     if (hash) {
-      if (hash.error)
+      if (hash.error) {
         console.log('There was an error logging in', hash.error);
-      else
-        this.lock.getProfile(hash.id_token, function(err, profile) {
+      } else {
+        this.lock.getProfile(hash.id_token, (err, profile) => {
           if (err) {
             console.log(err);
             return;
           }
+          console.log(profile);
+          this.userProfile = profile;
           localStorage.setItem('profile', JSON.stringify(profile));
           localStorage.setItem('id_token', hash.id_token);
         });
+      }
     }
   }
 
@@ -52,10 +59,9 @@ export class AppComponent {
     localStorage.removeItem('id_token');
   }
 
-  loggedIn() {
-     console.debug("loggedIn");
-    // return tokenNotExpired();
-  }
+  // loggedIn() {
+  //    console.debug("loggedIn");
+  // }
 
   /*
    * Load the app with appId
