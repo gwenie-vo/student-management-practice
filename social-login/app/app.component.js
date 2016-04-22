@@ -18,100 +18,47 @@ System.register(["angular2/core"], function(exports_1, context_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
+            // declare var twttr: any;
             AppComponent = (function () {
                 function AppComponent() {
+                    this.lock = new Auth0Lock('atLbLHWAQbpHMdEhk02xp8TYYXE43dYo', 'huynhvo.auth0.com');
+                    console.debug("Auth0Lock:", Auth0Lock);
                 }
-                /*
-                 * Load the app with appId
-                 */
-                AppComponent.prototype.ngOnInit = function () {
-                    var _this = this;
-                    FB.init({
-                        appId: '1586800451610753',
-                        cookie: true,
-                        xfbml: true,
-                        version: 'v2.5' // use graph api version 2.5
+                AppComponent.prototype.login = function () {
+                    var hash = this.lock.parseHash();
+                    // console.log("this.lock:", this.lock);
+                    this.lock.show({
+                        connections: ['twitter', 'facebook', 'linkedin']
                     });
-                    FB.getLoginStatus(function (response) {
-                        _this.statusChangeCallback(response);
-                    });
-                    console.log("INit");
-                    twttr.anywhere(function (T) {
-                        console.log("token0:", T);
-                        T.bind("authComplete", function (e, user) {
-                            var token = user.attributes._identity;
-                            console.log("token:", token);
-                            //define the login function on your client through Twitter
-                        });
-                    });
-                };
-                /*
-                 * show login form popup
-                 */
-                AppComponent.prototype.loginTest = function () {
-                    var _this = this;
-                    // console.debug('loginTest');
-                    FB.login(function (response) {
-                        _this.checkLoginState();
-                    });
-                };
-                /*
-                 * call the check response Login status function
-                 */
-                AppComponent.prototype.checkLoginState = function () {
-                    var _this = this;
-                    FB.getLoginStatus(function (response) {
-                        _this.statusChangeCallback(response);
-                    });
-                };
-                /*
-                 * function check status
-                 */
-                AppComponent.prototype.statusChangeCallback = function (response) {
-                    // console.log(response);
-                    console.log("RESPONSEEEEEEEEEEEEE", response.status);
-                    if (response.status === 'connected') {
-                        // Logged into your app and Facebook.
-                        this.testAPI();
-                    }
-                    else if (response.status === 'not_authorized') {
-                        document.getElementById('status').innerHTML = 'Please log ' +
-                            'into this app.';
-                    }
-                    else {
-                        // The person is not logged into Facebook, so we're not sure if
-                        // they are logged into this app or not.
-                        document.getElementById('status').innerHTML = 'Please log ' + 'into Facebook.';
+                    if (hash) {
+                        if (hash.error)
+                            console.log('There was an error logging in', hash.error);
+                        else
+                            this.lock.getProfile(hash.id_token, function (err, profile) {
+                                if (err) {
+                                    console.log(err);
+                                    return;
+                                }
+                                localStorage.setItem('profile', JSON.stringify(profile));
+                                localStorage.setItem('id_token', hash.id_token);
+                            });
                     }
                 };
-                /*
-                 * show user's info
-                 */
-                AppComponent.prototype.testAPI = function () {
-                    // console.log('Welcome!  Fetching your information.... ');
-                    FB.api('/me', function (response) {
-                        // console.log('Successful login for: ' + response.name);
-                        document.getElementById('status').innerHTML =
-                            'Thanks for logging in, ' + response.name + '!' + 'This is your ID: ' + response.id;
-                    });
+                AppComponent.prototype.logout = function () {
+                    localStorage.removeItem('profile');
+                    localStorage.removeItem('id_token');
                 };
-                //describe the login actions
-                //function we link to the click on the custom login button through Twitter
-                AppComponent.prototype.doTWSignIn = function () {
-                    twttr.anywhere(function (T) {
-                        console.log("doTWSignIn:", T);
-                        T.signIn();
-                        T.bind("authComplete", function (e, user) {
-                            var token = user.attributes._identity;
-                            console.log("token2:", token);
-                            //define the login function on your client through Twitter
-                        });
-                    });
+                AppComponent.prototype.loggedIn = function () {
+                    console.debug("loggedIn");
+                    // return tokenNotExpired();
                 };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: "my-app",
-                        template: "\n    <h2>Login by Facebook, Twitter, G+</h2>\n    <a href=\"#\" (click)=\"loginTest()\" data-auto-logout-link=\"true\" data-max-rows=\"1\" data-size=\"medium\" data-show-faces=\"true\">Login by Facebook</a>\n\n    <a href=\"#\" (click)=\"doTWSignIn()\">Login by Twitter</a>\n    <div id=\"status\"></div>\n  "
+                        // <h2 > Login by Facebook, Twitter, G + </h2>
+                        // < a href= "#"(click) = "loginTest()" data- auto - logout - link="true" data- max - rows="1" data- size="medium" data- show - faces="true" > Login by Facebook< /a>
+                        // < div id= "status" > </div>
+                        template: "\n    <button (click)=\"login()\">Login</button>\n    <button (click)=\"logout()\">Logout</button>\n  "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
