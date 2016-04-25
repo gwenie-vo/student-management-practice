@@ -21,14 +21,14 @@ System.register(["angular2/core"], function(exports_1, context_1) {
             AppComponent = (function () {
                 function AppComponent() {
                     this.lock = new Auth0Lock('atLbLHWAQbpHMdEhk02xp8TYYXE43dYo', 'huynhvo.auth0.com');
-                    console.debug("Auth0Lock:", Auth0Lock);
+                    // console.debug("Auth0Lock:", Auth0Lock);
                 }
                 AppComponent.prototype.login = function () {
                     var _this = this;
                     var hash = this.lock.parseHash();
                     // console.log("this.lock:", this.lock);
                     this.lock.show({
-                        connections: ['twitter', 'facebook', 'linkedin']
+                        connections: ['twitter', 'facebook', 'google-oauth2']
                     });
                     if (hash) {
                         if (hash.error) {
@@ -52,14 +52,13 @@ System.register(["angular2/core"], function(exports_1, context_1) {
                     localStorage.removeItem('profile');
                     localStorage.removeItem('id_token');
                 };
+                AppComponent.prototype.loggedIn = function () {
+                    // return tokenNotExpired();
+                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: "my-app",
-                        // <h2 > Login by Facebook, Twitter, G + </h2>
-                        // < a href= "#"(click) = "loginTest()" data- auto - logout - link="true" data- max - rows="1" data- size="medium" data- show - faces="true" > Login by Facebook< /a>
-                        // < div id= "status" > </div>
-                        // <button (click)="logout()">Logout</button>
-                        template: "\n    <button (click)=\"login()\">Login to use the website</button>\n    <ul *ngIf=\"userProfile\">\n      <li>{{userProfile.name}}</li>\n      <li>{{userProfile.user_id}}</li>\n    </ul>\n  "
+                        template: "\n    <button (click)=\"login()\">Login to use the website</button>\n    <button *ngIf=\"loggedIn()\" (click)=\"logout()\">Logout</button>\n    <ul *ngIf=\"userProfile\">\n      <li>Name: {{userProfile.name}}</li>\n      <li>User ID: {{userProfile.user_id}}</li>\n      <li *ngIf=\"userProfile.gender\">Gender: {{userProfile.gender}}</li>\n      <li>Profile Picture: {{userProfile.picture}}</li>\n    </ul>\n  "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
