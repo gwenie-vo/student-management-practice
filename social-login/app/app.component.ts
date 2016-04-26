@@ -1,7 +1,7 @@
 import { Component, provide } from "angular2/core";
 import { RouteConfig, Router, APP_BASE_HREF, ROUTER_PROVIDERS, ROUTER_DIRECTIVES, CanActivate } from 'angular2/router';
 import { HTTP_PROVIDERS, Http } from 'angular2/http';
-// import { AuthHttp, tokenNotExpired } from 'angular2-jwt';
+import { AuthHttp, tokenNotExpired } from 'angular2-jwt';
 
 // var FB = "C"
 declare var FB: any;
@@ -27,7 +27,23 @@ export class AppComponent {
   userProfile: Object;
 
   constructor() {
-    // console.debug("Auth0Lock:", Auth0Lock);
+    console.debug("Auth0Lock:", Auth0Lock);
+  }
+
+  ngOnInit(){
+    var hash = this.lock.parseHash();
+
+    this.lock.getProfile(hash.id_token, (err, profile) => {
+      console.log("Err:", err);
+               if (err) {
+        console.log(err);
+        return;
+          }
+          console.log(profile);
+          localStorage.setItem('profile', JSON.stringify(profile));
+          localStorage.setItem('id_token', hash.id_token);
+          this.userProfile = profile;
+    });
   }
 
   login() {
@@ -47,23 +63,23 @@ export class AppComponent {
             return;
           }
           console.log(profile);
-          this.userProfile = profile;
           localStorage.setItem('profile', JSON.stringify(profile));
           localStorage.setItem('id_token', hash.id_token);
+          this.userProfile = profile;
         });
       }
     }
   }
 
-
-
   logout() {
     localStorage.removeItem('profile');
     localStorage.removeItem('id_token');
+    this.lock.logout({ ref: window.location.href });
   }
 
   loggedIn() {
-    // return tokenNotExpired();
+    return tokenNotExpired();
+    // console.log("NHU HUYNH");
   }
 }
 

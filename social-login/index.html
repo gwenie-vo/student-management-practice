@@ -8,11 +8,12 @@
     <!-- IE required polyfills, in this exact order -->
     <script src="node_modules/es6-shim/es6-shim.min.js"></script>
     <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
-
     <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
     <script src="node_modules/systemjs/dist/system.src.js"></script>
     <script src="node_modules/rxjs/bundles/Rx.js"></script>
     <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+    <script src="node_modules/angular2/bundles/router.dev.js"></script>
+    <script src="node_modules/angular2/bundles/http.dev.js"></script>
     <script type="text/javascript" src="//connect.facebook.net/en_US/sdk.js"></script>
     <!-- Auth0 Lock script -->
     <script type="text/javascript" src="//cdn.auth0.com/js/lock-9.0.min.js"></script>
@@ -26,14 +27,16 @@
           app: {
             format: 'register',
             defaultExtension: 'js'
-          }
+          },
+          // "angular2-jwt": {
+          //   "defaultExtension": "js"
+          // }
         },
         map: {
           "angular2-jwt": "node_modules/angular2-jwt/angular2-jwt.js"
         }
       });
-      System.import('app/main')
-            .then(null, console.error.bind(console));
+      System.import('app/main').then(null, console.error.bind(console));
     </script>
 
   </head>
