@@ -35,12 +35,15 @@ System.register(["angular2/core", 'angular2-jwt'], function(exports_1, context_1
                             console.log(err);
                             return;
                         }
+                        // set user profile to localStorage
                         console.log(profile);
                         localStorage.setItem('profile', JSON.stringify(profile));
                         localStorage.setItem('id_token', hash.id_token);
+                        //set response profile for this.userProfile;
                         _this.userProfile = profile;
                     });
                 };
+                // click login button to get profile
                 AppComponent.prototype.login = function () {
                     var _this = this;
                     var hash = this.lock.parseHash();
@@ -66,6 +69,7 @@ System.register(["angular2/core", 'angular2-jwt'], function(exports_1, context_1
                         }
                     }
                 };
+                //remove localStorage
                 AppComponent.prototype.logout = function () {
                     localStorage.removeItem('profile');
                     localStorage.removeItem('id_token');
@@ -73,12 +77,11 @@ System.register(["angular2/core", 'angular2-jwt'], function(exports_1, context_1
                 };
                 AppComponent.prototype.loggedIn = function () {
                     return angular2_jwt_1.tokenNotExpired();
-                    // console.log("NHU HUYNH");
                 };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: "my-app",
-                        template: "\n    <button (click)=\"login()\">Login to use the website</button>\n    <button *ngIf=\"loggedIn()\" (click)=\"logout()\">Logout</button>\n    <ul *ngIf=\"userProfile\">\n      <li>Name: {{userProfile.name}}</li>\n      <li>User ID: {{userProfile.user_id}}</li>\n      <li *ngIf=\"userProfile.gender\">Gender: {{userProfile.gender}}</li>\n      <li>Profile Picture: {{userProfile.picture}}</li>\n    </ul>\n  "
+                        template: "\n    <button (click)=\"login()\"> Login to use the website</button>\n    <button *ngIf=\"loggedIn()\" (click)=\"logout()\">Logout</button>\n    <ul *ngIf=\"userProfile\">\n      <li>Name: {{userProfile.name}}</li>\n      <li>User ID: {{userProfile.user_id}}</li>\n      <li *ngIf=\"userProfile.gender\">Gender: {{userProfile.gender}}</li>\n      <li>Profile Picture: {{userProfile.picture}}</li>\n    </ul>\n  "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);

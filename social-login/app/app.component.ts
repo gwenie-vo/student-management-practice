@@ -10,7 +10,7 @@ declare var Auth0Lock: any;
 @Component({
   selector: "my-app",
   template: `
-    <button (click)="login()">Login to use the website</button>
+    <button (click)="login()"> Login to use the website</button>
     <button *ngIf="loggedIn()" (click)="logout()">Logout</button>
     <ul *ngIf="userProfile">
       <li>Name: {{userProfile.name}}</li>
@@ -32,27 +32,29 @@ export class AppComponent {
 
   ngOnInit(){
     var hash = this.lock.parseHash();
-
     this.lock.getProfile(hash.id_token, (err, profile) => {
       console.log("Err:", err);
-               if (err) {
+      if (err) {
         console.log(err);
         return;
-          }
-          console.log(profile);
-          localStorage.setItem('profile', JSON.stringify(profile));
-          localStorage.setItem('id_token', hash.id_token);
-          this.userProfile = profile;
+      }
+      // set user profile to localStorage
+      console.log(profile);
+      localStorage.setItem('profile', JSON.stringify(profile));
+      localStorage.setItem('id_token', hash.id_token);
+
+      //set response profile for this.userProfile;
+      this.userProfile = profile;
     });
   }
 
+  // click login button to get profile
   login() {
     var hash = this.lock.parseHash();
     // console.log("this.lock:", this.lock);
     this.lock.show({
       connections: ['twitter', 'facebook', 'google-oauth2']
     });
-
     if (hash) {
       if (hash.error) {
         console.log('There was an error logging in', hash.error);
@@ -71,6 +73,7 @@ export class AppComponent {
     }
   }
 
+  //remove localStorage
   logout() {
     localStorage.removeItem('profile');
     localStorage.removeItem('id_token');
@@ -79,7 +82,6 @@ export class AppComponent {
 
   loggedIn() {
     return tokenNotExpired();
-    // console.log("NHU HUYNH");
   }
 }
 
