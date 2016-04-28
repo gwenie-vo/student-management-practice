@@ -30,8 +30,11 @@ System.register(['angular2/core', './slider.service'], function(exports_1, conte
                 };
                 SliderComponent.prototype.getImages = function () {
                     var _this = this;
-                    this._sliderService.getImages().then(function (images) { return _this.images = images; });
-                    console.log("Images", this.images);
+                    console.log("RS:", this._sliderService.getImages());
+                    this._sliderService.getImages().then(function (images) {
+                        _this.images = images;
+                        console.log("Images", _this.images);
+                    });
                 };
                 SliderComponent = __decorate([
                     core_1.Component({
