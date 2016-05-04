@@ -24,17 +24,42 @@ System.register(['angular2/core', './slider.service'], function(exports_1, conte
             SliderComponent = (function () {
                 function SliderComponent(_sliderService) {
                     this._sliderService = _sliderService;
+                    this.currentIdx = 0;
                 }
                 SliderComponent.prototype.ngOnInit = function () {
                     this.getImages();
                 };
+                /*
+                 * get images from mock-data by service
+                 */
                 SliderComponent.prototype.getImages = function () {
                     var _this = this;
-                    console.log("RS:", this._sliderService.getImages());
                     this._sliderService.getImages().then(function (images) {
                         _this.images = images;
-                        console.log("Images", _this.images);
                     });
+                };
+                /*
+                 * click next arrow to see the next image
+                 */
+                SliderComponent.prototype.slideNext = function () {
+                    if (this.currentIdx < this.images.length - 1) {
+                        this.currentIdx++;
+                    }
+                    else {
+                        this.currentIdx = 0;
+                    }
+                };
+                /*
+                 * click prev arrow to see the previous image
+                 */
+                SliderComponent.prototype.slidePrev = function () {
+                    console.log("current", this.currentIdx);
+                    if (this.currentIdx > 0) {
+                        this.currentIdx--;
+                    }
+                    else {
+                        this.currentIdx = this.images.length - 1;
+                    }
                 };
                 SliderComponent = __decorate([
                     core_1.Component({
