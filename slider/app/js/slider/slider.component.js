@@ -65,7 +65,10 @@ System.register(['angular2/core', './slider.service'], function(exports_1, conte
                 // auto slide every 3 seconds
                 SliderComponent.prototype.autoSlide = function () {
                     var _this = this;
-                    setInterval(function () { _this.currentIdx++; }, 3000);
+                    // console.log(this.images.length);
+                    if (this.currentIdx < 8) {
+                        setInterval(function () { _this.currentIdx++; }, 3000);
+                    }
                 };
                 SliderComponent = __decorate([
                     core_1.Component({

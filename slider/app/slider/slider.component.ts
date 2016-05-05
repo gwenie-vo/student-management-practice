@@ -53,6 +53,9 @@ export class SliderComponent implements OnInit {
 
   // auto slide every 3 seconds
   autoSlide() {
-    setInterval( () => {this.currentIdx++}, 3000);
+    // console.log(this.images.length);
+    if (this.currentIdx < 8) {
+      setInterval( () => {this.currentIdx++}, 3000);
+    }
   }
 }
