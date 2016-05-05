@@ -6,10 +6,16 @@ System.register([], function(exports_1, context_1) {
         setters:[],
         execute: function() {
             exports_1("IMAGES", IMAGES = [
-                { "name": "1", "src": "./app/images/pink-flower.jpg" },
-                { "name": "2", "src": "./app/images/purple-flower.jpg" },
-                { "name": "3", "src": "./app/images/red-flower.jpg" },
-                { "name": "4", "src": "./app/images/white-flower.jpg" },
+                { "name": "1", "src": "./app/images/amsterdam.jpg" },
+                { "name": "2", "src": "./app/images/barpark.jpg" },
+                { "name": "3", "src": "./app/images/florence.jpg" },
+                { "name": "4", "src": "./app/images/gate.jpg" },
+                { "name": "4", "src": "./app/images/ny.jpg" },
+                { "name": "4", "src": "./app/images/panorama.jpg" },
+                { "name": "4", "src": "./app/images/port.jpg" },
+                { "name": "4", "src": "./app/images/praga.jpg" },
+                { "name": "4", "src": "./app/images/santorini.jpg" },
+                { "name": "4", "src": "./app/images/red-flower.jpg" },
             ]);
         }
     }
