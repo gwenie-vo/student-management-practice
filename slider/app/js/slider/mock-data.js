@@ -14,8 +14,7 @@ System.register([], function(exports_1, context_1) {
                 { "name": "4", "src": "./app/images/panorama.jpg" },
                 { "name": "4", "src": "./app/images/port.jpg" },
                 { "name": "4", "src": "./app/images/praga.jpg" },
-                { "name": "4", "src": "./app/images/santorini.jpg" },
-                { "name": "4", "src": "./app/images/red-flower.jpg" },
+                { "name": "4", "src": "./app/images/santorini.jpg" }
             ]);
         }
     }

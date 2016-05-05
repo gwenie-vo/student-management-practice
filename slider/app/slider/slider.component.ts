@@ -16,6 +16,7 @@ export class SliderComponent implements OnInit {
 
   ngOnInit() {
     this.getImages();
+    this.autoSlide();
   }
 
   /*
@@ -48,5 +49,10 @@ export class SliderComponent implements OnInit {
     } else {
       this.currentIdx = this.images.length-1;
     }
+  }
+
+  // auto slide every 3 seconds
+  autoSlide() {
+    setInterval( () => {this.currentIdx++}, 3000);
   }
 }

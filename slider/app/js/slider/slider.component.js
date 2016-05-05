@@ -28,6 +28,7 @@ System.register(['angular2/core', './slider.service'], function(exports_1, conte
                 }
                 SliderComponent.prototype.ngOnInit = function () {
                     this.getImages();
+                    this.autoSlide();
                 };
                 /*
                  * get images from mock-data by service
@@ -60,6 +61,11 @@ System.register(['angular2/core', './slider.service'], function(exports_1, conte
                     else {
                         this.currentIdx = this.images.length - 1;
                     }
+                };
+                // auto slide every 3 seconds
+                SliderComponent.prototype.autoSlide = function () {
+                    var _this = this;
+                    setInterval(function () { _this.currentIdx++; }, 3000);
                 };
                 SliderComponent = __decorate([
                     core_1.Component({

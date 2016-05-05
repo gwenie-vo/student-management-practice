@@ -27,7 +27,7 @@ System.register(['angular2/core', './slider/slider.component'], function(exports
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n    <slider></slider>\n   ",
+                        template: "\n    <h1>{{title}}</h1>\n    <slider></slider>\n   ",
                         directives: [slider_component_1.SliderComponent]
                     }), 
                     __metadata('design:paramtypes', [])
